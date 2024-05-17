@@ -99,9 +99,12 @@ int main() {
         printf("Track Values: %d %d %d %d\n", trackValue1, trackValue2, trackValue3, trackValue4);
 
         // 트래킹 핀 값을 바탕으로 자동차 제어 로직
-        if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 1) {
+        if (f == 3){
+            Car_Stop();    
+            delay(10000);
+        }
+        else if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 1) {
             n = 0;
-            f = 0;
             Car_Run(40, 40);
         } 
         else if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 0 && trackValue4 == 1) {
@@ -110,7 +113,7 @@ int main() {
         } 
         else if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 0) {
             n = 0;
-                Car_Run(40, 40);
+            Car_Run(40, 40);
         }
         else if (trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 1 && trackValue4 == 0) {
             n = 0;
@@ -198,14 +201,14 @@ int main() {
             delay(80);
         }
         else if(trackValue2 == 1 && trackValue3 == 1 && trackValue1 == 1 && trackValue4 == 1){
-            f = 0;
             if (n >= 15){
                 Car_Stop();
                 delay(3000);
             }
             else if(n == 7){
-                Car_Back(80, 80);   
-                delay(60);
+                Car_Back(70, 70);   
+                delay(50);
+                f += 1;
             }
             else{
             Car_Run(30,30);
@@ -213,7 +216,6 @@ int main() {
             }
         }
         else{
-            f = 0;
             n = 0;
             Car_Back(30, 30);
         } 
