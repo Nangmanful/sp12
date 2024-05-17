@@ -88,6 +88,7 @@ int main() {
 
     i2c_init();
     int n = 0;
+    int f = 0;
     while (1) {
         int trackValue1 = digitalRead(TRACKING_PIN1);
         int trackValue2 = digitalRead(TRACKING_PIN2);
@@ -100,29 +101,37 @@ int main() {
         // 트래킹 핀 값을 바탕으로 자동차 제어 로직
         if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 1) {
             n = 0;
+            f = 0;
             Car_Run(40, 40);
             delay(20);
         } 
         else if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 0 && trackValue4 == 1) {
             n = 0;
-            Car_Left(100, 100);
-            delay(100);
-            Car_Run(50, 50);
-            delay(50);
-            Car_Left(100, 100);
-            delay(100);
+            if (f == 5){
+            Car_Left(200, 200);
+            delay(1000);
+            }
+            else{
+            Car_Run(40, 40);
+            delay(20);
+            f += 1;
+            }
         } 
         else if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 0) {
             n = 0;
-            Car_Right(100, 100);
-            delay(100);
-            Car_Run(50, 50);
-            delay(50);
-            Car_Right(100, 100);
-            delay(100);
+            if (f==5){
+                Car_Right(200, 200);
+                delay(1000);
+            }
+            else{
+                Car_Run(40, 40);
+                delay(20);
+                f += 1;
+            }
         }
         else if (trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 1 && trackValue4 == 0) {
             n = 0;
+            f = 0;
             Car_Left(100, 100);
             delay(100);
             Car_Run(50, 50);
@@ -132,6 +141,7 @@ int main() {
         }
         else if (trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 1 && trackValue4 == 1) {
             n = 0;
+            f = 0;
             Car_Left(100, 100);
             delay(100);
             Car_Run(50, 50);
@@ -141,6 +151,7 @@ int main() {
         }
         else if (trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 0 && trackValue4 == 0) {
             n = 0;
+            f = 0;
             Car_Left(100, 100);
             delay(100);
             Car_Run(50, 50);
@@ -150,6 +161,7 @@ int main() {
         } 
         else if (trackValue2 == 1 && trackValue3 == 0 && trackValue1 == 0 && trackValue4 == 0) {
             n = 0;
+            f = 0;
             Car_Right(100, 100);
             delay(100);
             Car_Run(50, 50);
@@ -159,11 +171,13 @@ int main() {
         } 
         else if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 0 && trackValue4 == 0) {
             n = 0;
+            f = 0;
             Car_Run(50, 50);
             delay(20);
         } 
         else if(trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 0 && trackValue4 == 1){
             n = 0;
+            f = 0;
             Car_Left(100, 100);
             delay(100);
             Car_Run(50, 50);
@@ -172,7 +186,8 @@ int main() {
             delay(100);
         }
         else if(trackValue2 == 1 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 0){
-            n = 0;            
+            n = 0;
+            f = 0;
             Car_Right(100, 100);
             delay(100);
             Car_Run(50, 50);
@@ -182,6 +197,7 @@ int main() {
         }
         else if(trackValue2 == 1 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 1){
             n = 0;
+            f = 0;
             Car_Right(100, 100);
             delay(100);
             Car_Run(50, 50);
@@ -191,6 +207,7 @@ int main() {
         }
         else if(trackValue2 == 1 && trackValue3 == 0 && trackValue1 == 0 && trackValue4 == 1){
             n = 0;
+            f = 0;
             Car_Right(100, 100);
             delay(100);
             Car_Run(50, 50);
@@ -199,6 +216,7 @@ int main() {
             delay(100);
         }
         else if(trackValue2 == 1 && trackValue3 == 1 && trackValue1 == 1 && trackValue4 == 1){
+            f = 0;
             if (n == 10){
                 Car_Stop();
                 delay(3000);
@@ -209,6 +227,7 @@ int main() {
             }
         }
         else{
+            f = 0;
             n = 0;
             Car_Back(30, 30);
             delay(10);
