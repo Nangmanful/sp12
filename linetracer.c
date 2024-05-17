@@ -2,10 +2,10 @@
 #include <wiringPi.h>
 
 // 4개의 트래킹 핀 정의 (WiringPi 핀 번호, 실제 GPIO 핀 번호는 주석으로 표시)
-#define TRACKING_PIN1 0  // WiringPi pin 0, corresponds to GPIO 17
-#define TRACKING_PIN2 1  // WiringPi pin 1, corresponds to GPIO 18
-#define TRACKING_PIN3 2  // WiringPi pin 2, corresponds to GPIO 27
-#define TRACKING_PIN4 3  // WiringPi pin 3, corresponds to GPIO 22
+#define TRACKING_PIN1 1  // WiringPi pin 0, corresponds to GPIO 17
+#define TRACKING_PIN2 0  // WiringPi pin 1, corresponds to GPIO 18
+#define TRACKING_PIN3 3  // WiringPi pin 2, corresponds to GPIO 27
+#define TRACKING_PIN4 2  // WiringPi pin 3, corresponds to GPIO 22
 #define MOTOR_PIN 1      // Motor control pin, WiringPi pin 1, corresponds to GPIO 18
 
 // 자동차 구조체 정의
