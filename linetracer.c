@@ -225,7 +225,7 @@ int main() {
             f = 0;
             n = 0;
             k += 1;
-            if (k == 12) {
+            if (k == 200) {
                 Car_Stop();
                 delay(50000);
             }
