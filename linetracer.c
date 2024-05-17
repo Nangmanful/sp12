@@ -207,11 +207,11 @@ int main() {
             delay(80);
         }
         else if(trackValue2 == 1 && trackValue3 == 1 && trackValue1 == 1 && trackValue4 == 1){
-            if (n == 10){
+            if (n == 9){
                 Car_Stop();
                 delay(5000);
             }
-            else if(n == 7){
+            else if(n == 6){
                 Car_Back(70, 70);   
                 delay(50);
                 f += 1;
@@ -224,7 +224,8 @@ int main() {
         else{
             f = 0;
             n = 0;
-            if (k == 10) {
+            k += 1;
+            if (k == 12) {
                 Car_Stop();
                 delay(50000);
             }
