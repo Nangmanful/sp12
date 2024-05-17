@@ -93,10 +93,15 @@ int main() {
     int n = 0;
     int f = 0;
     int k = 0;
+    int l = 0;
     while (1) {
         if(digitalRead(pin) == LOW){
             Car_Stop();    
             close(i2c_fd);   
+        }
+        if(l == 10){
+            Car_Stop();
+            close(i2c_fd);
         }
         int trackValue1 = digitalRead(TRACKING_PIN1);
         int trackValue2 = digitalRead(TRACKING_PIN2);
@@ -111,18 +116,19 @@ int main() {
             Car_Stop();    
             delay(1000);
             f = 0;
+            l += 1;
         }
         if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 1) {
             n = 0;
-            Car_Run(40, 40);
+            Car_Run(50, 50);
         } 
         else if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 0 && trackValue4 == 1) {
             n = 0;
-            Car_Run(40, 40);
+            Car_Run(50, 50);
         } 
         else if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 0) {
             n = 0;
-            Car_Run(40, 40);
+            Car_Run(50, 50);
         }
         else if (trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 1 && trackValue4 == 0) {
             n = 0;
@@ -214,12 +220,12 @@ int main() {
                 delay(5000);
             }
             else if(n == 6){
-                Car_Back(70, 70);   
+                Car_Back(80, 80);   
                 delay(50);
                 f += 1;
             }
             else{
-            Car_Run(30,30);
+            Car_Run(50,50);
             n += 1;
             }
         }
