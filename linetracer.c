@@ -101,9 +101,10 @@ int main() {
         // 트래킹 핀 값을 바탕으로 자동차 제어 로직
         if (f == 3){
             Car_Stop();    
-            delay(10000);
+            delay(3000);
+            f = 0;
         }
-        else if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 1) {
+        if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 1) {
             n = 0;
             Car_Run(40, 40);
         } 
@@ -201,9 +202,9 @@ int main() {
             delay(80);
         }
         else if(trackValue2 == 1 && trackValue3 == 1 && trackValue1 == 1 && trackValue4 == 1){
-            if (n >= 15){
+            if (n == 10){
                 Car_Stop();
-                delay(3000);
+                delay(5000);
             }
             else if(n == 7){
                 Car_Back(70, 70);   
