@@ -103,33 +103,33 @@ int main() {
             printf("Forward: TrackValue1=%d TrackValue2=%d TrackValue3=%d TrackValue4=%d\n", trackValue1, trackValue2, trackValue3, trackValue4);
         } 
         else if(trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 1 && trackValue4 == 1){
-            Car_Right(150, 150);
-            delay(100);
+            Car_Left(150, 150);
+            delay(500);
             printf("Right: TrackValue1=%d TrackValue2=%d TrackValue3=%d TrackValue4=%d\n", trackValue1, trackValue2, trackValue3, trackValue4);
         }
         else if(trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 0 && trackValue4 == 1){
-            Car_Right(150, 150);
-            delay(100);
+            Car_Left(150, 150);
+            delay(500);
             printf("Right: TrackValue1=%d TrackValue2=%d TrackValue3=%d TrackValue4=%d\n", trackValue1, trackValue2, trackValue3, trackValue4);
         }
         else if(trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 0 && trackValue4 == 1){
-            Car_Right(150, 150);
-            delay(100);
+            Car_Left(150, 150);
+            delay(500);
             printf("Right: TrackValue1=%d TrackValue2=%d TrackValue3=%d TrackValue4=%d\n", trackValue1, trackValue2, trackValue3, trackValue4);
         }
         else if(trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 0){
-            Car_Left(150, 150);
-            delay(100);
+            Car_Right(150, 150);
+            delay(500);
             printf("Left: TrackValue1=%d TrackValue2=%d TrackValue3=%d TrackValue4=%d\n", trackValue1, trackValue2, trackValue3, trackValue4);
         }
         else if(trackValue2 == 1 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 0){
-            Car_Left(150, 150);
-            delay(100);
+            Car_Right(150, 150);
+            delay(500);
             printf("Left: TrackValue1=%d TrackValue2=%d TrackValue3=%d TrackValue4=%d\n", trackValue1, trackValue2, trackValue3, trackValue4);
         }
         else if(trackValue2 == 1 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 1){
-            Car_Left(150, 150);
-            delay(100);
+            Car_Right(150, 150);
+            delay(500);
             printf("Left: TrackValue1=%d TrackValue2=%d TrackValue3=%d TrackValue4=%d\n", trackValue1, trackValue2, trackValue3, trackValue4);
         }
         else if(trackValue2 == 1 && trackValue3 == 1 && trackValue1 == 1 && trackValue4 == 1){
