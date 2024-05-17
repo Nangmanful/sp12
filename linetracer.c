@@ -76,10 +76,13 @@ void Car_Right(int speed1, int speed2) {
 
 
 int main() {
+    int pin =27;
     if (wiringPiSetup() == -1) {
         printf("WiringPi setup failed!\n");
         return 1;
     }
+    pinMode(pin, INPUT);
+    pullUpDnControl(pin, PUD_UP);
 
     pinMode(TRACKING_PIN1, INPUT);
     pinMode(TRACKING_PIN2, INPUT);
@@ -91,6 +94,10 @@ int main() {
     int f = 0;
     int k = 0;
     while (1) {
+        if(digitalRead(pin) == LOW){
+            Car_Stop();    
+            close(i2c_fd);   
+        }
         int trackValue1 = digitalRead(TRACKING_PIN1);
         int trackValue2 = digitalRead(TRACKING_PIN2);
         int trackValue3 = digitalRead(TRACKING_PIN3);
@@ -102,7 +109,7 @@ int main() {
         // 트래킹 핀 값을 바탕으로 자동차 제어 로직
         if (f == 3){
             Car_Stop();    
-            delay(100);
+            delay(1000);
             f = 0;
         }
         if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 1) {
@@ -119,7 +126,6 @@ int main() {
         }
         else if (trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 1 && trackValue4 == 0) {
             n = 0;
-            f = 0;
             k = 0;
             Car_Left(100, 100);
             delay(80);
@@ -130,7 +136,6 @@ int main() {
         }
         else if (trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 1 && trackValue4 == 1) {
             n = 0;
-            f = 0;
             k = 0;
             Car_Left(100, 100);
             delay(80);
@@ -141,7 +146,6 @@ int main() {
         }
         else if (trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 0 && trackValue4 == 0) {
             n = 0;
-            f = 0;
             k = 0;
             Car_Left(100, 100);
             delay(80);
@@ -152,7 +156,6 @@ int main() {
         } 
         else if (trackValue2 == 1 && trackValue3 == 0 && trackValue1 == 0 && trackValue4 == 0) {
             n = 0;
-            f = 0;
             k = 0;
             Car_Right(100, 100);
             delay(80);
@@ -163,12 +166,10 @@ int main() {
         } 
         else if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 0 && trackValue4 == 0) {
             n = 0;
-            f = 0;
             Car_Run(50, 50);
         } 
         else if(trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 0 && trackValue4 == 1){
             n = 0;
-            f = 0;
             k = 0;
             Car_Left(100, 100);
             delay(80);
@@ -179,7 +180,6 @@ int main() {
         }
         else if(trackValue2 == 1 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 0){
             n = 0;
-            f = 0;
             k = 0;
             Car_Right(100, 100);
             delay(80);
@@ -190,7 +190,6 @@ int main() {
         }
         else if(trackValue2 == 1 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 1){
             n = 0;
-            f = 0;
             k = 0;
             Car_Right(100, 100);
             delay(80);
@@ -201,7 +200,6 @@ int main() {
         }
         else if(trackValue2 == 1 && trackValue3 == 0 && trackValue1 == 0 && trackValue4 == 1){
             n = 0;
-            f = 0;
             k = 0;
             Car_Right(100, 100);
             delay(80);
@@ -229,13 +227,7 @@ int main() {
             f = 0;
             n = 0;
             k += 1;
-            if (k == 200) {
-                Car_Stop();
-                delay(50000);
-            }
-            else{
-                Car_Back(30, 30);
-            }
+            Car_Back(30, 30);
         } 
         delay(10);
     }
