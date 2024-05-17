@@ -99,10 +99,6 @@ int main() {
             Car_Stop();    
             close(i2c_fd);   
         }
-        if(l == 10){
-            Car_Stop();
-            close(i2c_fd);
-        }
         int trackValue1 = digitalRead(TRACKING_PIN1);
         int trackValue2 = digitalRead(TRACKING_PIN2);
         int trackValue3 = digitalRead(TRACKING_PIN3);
@@ -114,21 +110,21 @@ int main() {
         // 트래킹 핀 값을 바탕으로 자동차 제어 로직
         if (f == 3){
             Car_Stop();    
-            delay(1000);
+            delay(100);
             f = 0;
             l += 1;
         }
         if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 1) {
             n = 0;
-            Car_Run(50, 50);
+            Car_Run(40, 40);
         } 
         else if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 0 && trackValue4 == 1) {
             n = 0;
-            Car_Run(50, 50);
+            Car_Run(40, 40);
         } 
         else if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 0) {
             n = 0;
-            Car_Run(50, 50);
+            Car_Run(40, 40);
         }
         else if (trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 1 && trackValue4 == 0) {
             n = 0;
@@ -172,7 +168,7 @@ int main() {
         } 
         else if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 0 && trackValue4 == 0) {
             n = 0;
-            Car_Run(50, 50);
+            Car_Run(40, 40);
         } 
         else if(trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 0 && trackValue4 == 1){
             n = 0;
@@ -217,11 +213,11 @@ int main() {
         else if(trackValue2 == 1 && trackValue3 == 1 && trackValue1 == 1 && trackValue4 == 1){
             if (n == 9){
                 Car_Stop();
-                delay(5000);
+                delay(10000);
             }
             else if(n == 6){
-                Car_Back(80, 80);   
-                delay(50);
+                Car_Back(100, 100);   
+                delay(30);
                 f += 1;
             }
             else{
