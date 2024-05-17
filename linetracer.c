@@ -225,9 +225,9 @@ int main() {
             f = 0;
             n = 0;
             k += 1;
-            Car_Back(25, 25);
+            Car_Back(30, 30);
         } 
-        delay(10);
+        delay(20);
     }
 
     close(i2c_fd);
