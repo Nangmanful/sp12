@@ -98,24 +98,31 @@ int main() {
         printf("Track Values: %d %d %d %d\n", trackValue1, trackValue2, trackValue3, trackValue4);
 
         // 트래킹 핀 값을 바탕으로 자동차 제어 로직
-        if (trackValue2 == 0 && trackValue3 == 0) {
-            Car_Run(100, 100);
+        if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 1) {
+            Car_Run(10, 10);
             printf("Forward: TrackValue1=%d TrackValue2=%d TrackValue3=%d TrackValue4=%d\n", trackValue1, trackValue2, trackValue3, trackValue4);
         } 
-        else if(trackValue2 == 0 && trackValue3 == 1){
-            Car_Right(100, 100);
-            printf("Forward: TrackValue1=%d TrackValue2=%d TrackValue3=%d TrackValue4=%d\n", trackValue1, trackValue2, trackValue3, trackValue4);
+        else if(trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 1 && trackValue4 == 1){
+            Car_Right(10, 10);
+            printf("Right: TrackValue1=%d TrackValue2=%d TrackValue3=%d TrackValue4=%d\n", trackValue1, trackValue2, trackValue3, trackValue4);
         }
-        else if(trackValue2 == 1 && trackValue3 == 0){
-            Car_Left(100, 100);
-            printf("Forward: TrackValue1=%d TrackValue2=%d TrackValue3=%d TrackValue4=%d\n", trackValue1, trackValue2, trackValue3, trackValue4);
+        else if(trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 0 && trackValue4 == 1){
+            Car_Right(10, 10);
+            printf("Right: TrackValue1=%d TrackValue2=%d TrackValue3=%d TrackValue4=%d\n", trackValue1, trackValue2, trackValue3, trackValue4);
         }
-        else {
+        else if(trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 0){
+            Car_Left(10, 10);
+            printf("Left: TrackValue1=%d TrackValue2=%d TrackValue3=%d TrackValue4=%d\n", trackValue1, trackValue2, trackValue3, trackValue4);
+        }
+        else if(trackValue2 == 1 && trackValue3 == 1 && trackValue1 == 1 && trackValue4 == 1){
             Car_Stop();
             printf("Stop: TrackValue1=%d TrackValue2=%d TrackValue3=%d TrackValue4=%d\n", trackValue1, trackValue2, trackValue3, trackValue4);
         }
-
-        delay(100); // 0.1초 대기
+        else{
+            Car_Run(10, 10);
+            printf("Forward: TrackValue1=%d TrackValue2=%d TrackValue3=%d TrackValue4=%d\n", trackValue1, trackValue2, trackValue3, trackValue4);
+        } 
+        delay(50);
     }
 
     close(i2c_fd);
