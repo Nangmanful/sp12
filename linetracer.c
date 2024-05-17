@@ -7,10 +7,10 @@
 #define TRACKING_PIN3 3  // WiringPi pin 2, corresponds to GPIO 27
 #define TRACKING_PIN4 2  // WiringPi pin 3, corresponds to GPIO 22
 
-// #define MOTOR_LEFT_FORWARD 4    // WiringPi pin 4, corresponds to GPIO 23
-// #define MOTOR_LEFT_BACKWARD 5   // WiringPi pin 5, corresponds to GPIO 24
-// #define MOTOR_RIGHT_FORWARD 6   // WiringPi pin 6, corresponds to GPIO 25
-// #define MOTOR_RIGHT_BACKWARD 7  // WiringPi pin 7, corresponds to GPIO 4
+#define MOTOR_LEFT_FORWARD 4    // WiringPi pin 4, corresponds to GPIO 23
+#define MOTOR_LEFT_BACKWARD 5   // WiringPi pin 5, corresponds to GPIO 24
+#define MOTOR_RIGHT_FORWARD 6   // WiringPi pin 6, corresponds to GPIO 25
+#define MOTOR_RIGHT_BACKWARD 8  // WiringPi pin 7, corresponds to GPIO 4
 
 // 자동차 초기화 함수
 void car_init() {
