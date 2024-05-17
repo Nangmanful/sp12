@@ -166,7 +166,7 @@ int main() {
         }
         else if(trackValue2 == 1 && trackValue3 == 1 && trackValue1 == 1 && trackValue4 == 1){
             if (n == 30){
-                Car_Stop()
+                Car_Stop();
             }
             else{
             Car_Run(30,30);
