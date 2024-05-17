@@ -84,37 +84,29 @@ void Car_Spin_Right(int speed1, int speed2) {
     Ctrl_Car(1, speed1, 0, speed2);
 }
 
-void Ctrl_Servo(int id, int angle) {
-    if (angle < 0) angle = 0;
-    if (angle > 180) angle = 180;
-    int reg = 0x03;
-    unsigned char data[2] = {id, angle};
-    write_array(reg, data, 2);
-}
-
 int main() {
     // I2C 초기화
     i2c_init();
 
-    // 기본 동작 테스트
-    Car_Run(255, 255);  // 전진
-    sleep(1);
-    Car_Stop();
-    sleep(1);
+    // // 기본 동작 테스트
+    // Car_Run(255, 255);  // 전진
+    // sleep(1);
+    // Car_Stop();
+    // sleep(1);
 
-    Car_Back(255, 255);  // 후진
-    sleep(1);
-    Car_Stop();
-    sleep(1);
+    // Car_Back(255, 255);  // 후진
+    // sleep(1);
+    // Car_Stop();
+    // sleep(1);
 
-    Car_Left(255, 255);  // 좌회전
-    sleep(1);
-    Car_Stop();
-    sleep(1);
+    // Car_Left(255, 255);  // 좌회전
+    // sleep(1);
+    // Car_Stop();
+    // sleep(1);
 
-    Car_Right(255, 255);  // 우회전
-    sleep(1);
-    Car_Stop();
+    // Car_Right(255, 255);  // 우회전
+    // sleep(1);
+    // Car_Stop();
 
     // I2C 종료
     close(i2c_fd);
