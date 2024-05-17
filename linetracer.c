@@ -5,26 +5,32 @@
 #define TRACKING_PIN 0  // WiringPi pin 0, corresponds to GPIO 17
 #define MOTOR_PIN 1     // WiringPi pin 1, corresponds to GPIO 18
 
-// 자동차 클래스 정의
-class Car {
-public:
-    Car() {
-        pinMode(MOTOR_PIN, OUTPUT);
-        digitalWrite(MOTOR_PIN, LOW);
-    }
+// 자동차 구조체 정의
+typedef struct {
+    int motorPin;
+} Car;
 
-    void forward() {
-        digitalWrite(MOTOR_PIN, HIGH);
-    }
+// 자동차 초기화 함수
+void car_init(Car *car, int motorPin) {
+    car->motorPin = motorPin;
+    pinMode(motorPin, OUTPUT);
+    digitalWrite(motorPin, LOW);
+}
 
-    void stop() {
-        digitalWrite(MOTOR_PIN, LOW);
-    }
+// 전진 함수
+void car_forward(Car *car) {
+    digitalWrite(car->motorPin, HIGH);
+}
 
-    void cleanup() {
-        digitalWrite(MOTOR_PIN, LOW);
-    }
-};
+// 정지 함수
+void car_stop(Car *car) {
+    digitalWrite(car->motorPin, LOW);
+}
+
+// 정리 함수
+void car_cleanup(Car *car) {
+    digitalWrite(car->motorPin, LOW);
+}
 
 int main() {
     // WiringPi 초기화
@@ -36,20 +42,22 @@ int main() {
     // 핀 설정
     pinMode(TRACKING_PIN, INPUT);
 
+    // 자동차 구조체 초기화
     Car car;
+    car_init(&car, MOTOR_PIN);
 
     while (1) {
         int trackValue = digitalRead(TRACKING_PIN);
         printf("Track Value: %d\n", trackValue);
 
         if (trackValue == 0) {
-            car.forward();
+            car_forward(&car);
         } else {
-            car.stop();
+            car_stop(&car);
         }
         delay(100); // 0.1초 대기
     }
 
-    car.cleanup();
+    car_cleanup(&car);
     return 0;
 }
