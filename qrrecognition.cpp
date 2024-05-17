@@ -6,7 +6,7 @@
 int main() {
     std::cout << "OpenCV Version: " << CV_VERSION << std::endl;
     
-    cv::VideoCapture cap(10); // 기본 카메라 열기
+    cv::VideoCapture cap(14); // 기본 카메라 열기
 
     if (!cap.isOpened()) {
         std::cerr << "카메라를 열 수 없습니다." << std::endl;
