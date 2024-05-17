@@ -63,10 +63,10 @@ int main() {
 
         // 트래킹 핀 값을 바탕으로 자동차 제어 로직
         if (trackValue1 == 0 || trackValue2 == 0 || trackValue3 == 0 || trackValue4 == 0) {
-            car_forward(&car);
+            //car_forward(&car);
             printf("Forward: TrackValue1=%d TrackValue2=%d TrackValue3=%d TrackValue4=%d\n", trackValue1, trackValue2, trackValue3, trackValue4);
         } else {
-            car_stop(&car);
+            //car_stop(&car);
             printf("Stop: TrackValue1=%d TrackValue2=%d TrackValue3=%d TrackValue4=%d\n", trackValue1, trackValue2, trackValue3, trackValue4);
         }
 
