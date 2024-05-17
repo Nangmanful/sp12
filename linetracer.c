@@ -99,19 +99,19 @@ int main() {
 
         // 트래킹 핀 값을 바탕으로 자동차 제어 로직
         if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 1) {
-            Car_Run(10, 10);
+            Car_Run(50, 50);
             printf("Forward: TrackValue1=%d TrackValue2=%d TrackValue3=%d TrackValue4=%d\n", trackValue1, trackValue2, trackValue3, trackValue4);
         } 
         else if(trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 1 && trackValue4 == 1){
-            Car_Right(10, 10);
+            Car_Right(50, 50);
             printf("Right: TrackValue1=%d TrackValue2=%d TrackValue3=%d TrackValue4=%d\n", trackValue1, trackValue2, trackValue3, trackValue4);
         }
         else if(trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 0 && trackValue4 == 1){
-            Car_Right(10, 10);
+            Car_Right(50, 50);
             printf("Right: TrackValue1=%d TrackValue2=%d TrackValue3=%d TrackValue4=%d\n", trackValue1, trackValue2, trackValue3, trackValue4);
         }
         else if(trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 0){
-            Car_Left(10, 10);
+            Car_Left(50, 50);
             printf("Left: TrackValue1=%d TrackValue2=%d TrackValue3=%d TrackValue4=%d\n", trackValue1, trackValue2, trackValue3, trackValue4);
         }
         else if(trackValue2 == 1 && trackValue3 == 1 && trackValue1 == 1 && trackValue4 == 1){
@@ -119,7 +119,7 @@ int main() {
             printf("Stop: TrackValue1=%d TrackValue2=%d TrackValue3=%d TrackValue4=%d\n", trackValue1, trackValue2, trackValue3, trackValue4);
         }
         else{
-            Car_Run(10, 10);
+            Car_Run(50, 50);
             printf("Forward: TrackValue1=%d TrackValue2=%d TrackValue3=%d TrackValue4=%d\n", trackValue1, trackValue2, trackValue3, trackValue4);
         } 
         delay(50);
