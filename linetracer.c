@@ -99,13 +99,12 @@ int main() {
 
         // 트래킹 핀 값을 바탕으로 자동차 제어 로직
         if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 1) {
-            Car_Run(30, 30);
-            printf("Forward: TrackValue1=%d TrackValue2=%d TrackValue3=%d TrackValue4=%d\n", trackValue1, trackValue2, trackValue3, trackValue4);
+            Car_Run(50, 50);
         } 
         else if(trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 1 && trackValue4 == 1){
             Car_Left(100, 100);
             delay(100);
-            Car_Run(30, 30);
+            Car_Run(50, 50);
             delay(50);
             Car_Left(100, 100);
             delay(100);
@@ -113,7 +112,7 @@ int main() {
         else if(trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 0 && trackValue4 == 1){
             Car_Left(100, 100);
             delay(100);
-            Car_Run(30, 30);
+            Car_Run(50, 50);
             delay(50);
             Car_Left(100, 100);
             delay(100);
@@ -121,7 +120,7 @@ int main() {
         else if(trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 0 && trackValue4 == 1){
             Car_Left(100, 100);
             delay(100);
-            Car_Run(30, 30);
+            Car_Run(50, 50);
             delay(50);
             Car_Left(100, 100);
             delay(100);
@@ -129,7 +128,7 @@ int main() {
         else if(trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 0){
             Car_Right(100, 100);
             delay(100);
-            Car_Run(30, 30);
+            Car_Run(50, 50);
             delay(50);
             Car_Right(100, 100);
             delay(100);
@@ -137,7 +136,7 @@ int main() {
         else if(trackValue2 == 1 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 0){
             Car_Right(100, 100);
             delay(100);
-            Car_Run(30, 30);
+            Car_Run(50, 50);
             delay(50);
             Car_Right(100, 100);
             delay(100);
@@ -145,7 +144,7 @@ int main() {
         else if(trackValue2 == 1 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 1){
             Car_Right(100, 100);
             delay(100);
-            Car_Run(30, 30);
+            Car_Run(50, 50);
             delay(50);
             Car_Right(100, 100);
             delay(100);
@@ -154,10 +153,7 @@ int main() {
             Car_Stop();
         }
         else{
-            Car_Right(100, 100);
-            delay(1000);
-            Car_Left(100, 100);
-            delay(1000);
+            Car_Back(30, 30);
         } 
         delay(10);
     }
