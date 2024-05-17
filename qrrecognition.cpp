@@ -4,7 +4,7 @@
 #include <iostream>
 
 int main() {
-    VideoCapture cap(0, cv::CAP_V4L2);
+    cv::VideoCapture cap(0, cv::CAP_V4L2);
 
     if (!cap.isOpened()) {
         std::cerr << "카메라를 열 수 없습니다." << std::endl;
