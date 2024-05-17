@@ -216,6 +216,7 @@ int main() {
             }
         }
         else{
+            f = 0;
             n = 0;
             Car_Back(30, 30);
         } 
