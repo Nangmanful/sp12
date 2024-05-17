@@ -1,83 +1,94 @@
 #include <stdio.h>
 #include <wiringPi.h>
 #include <wiringPiI2C>
+#include <stdlib.h>
+#include <unistd.h>
+#include <fcntl.h>
+#include <sys/ioctl.h>
+#include <linux/i2c-dev.h>
+#include <math.h>
+#include <errno.h>
 
-// 4개의 트래킹 핀 정의 (WiringPi 핀 번호, 실제 GPIO 핀 번호는 주석으로 표시)
 #define TRACKING_PIN1 7  
 #define TRACKING_PIN2 0  
 #define TRACKING_PIN3 3  
 #define TRACKING_PIN4 2  
 
-#define MOTOR_RIGHT 8   
-#define MOTOR_LEFT 9
+#define I2C_ADDR 0x16 
 
-// 자동차 초기화 함수
-void car_init() {
-    pinMode(MOTOR_LEFT, OUTPUT);
-    pinMode(MOTOR_RIGHT, OUTPUT);
-
-    digitalWrite(MOTOR_LEFT, LOW);
-    digitalWrite(MOTOR_RIGHT, LOW);
-}
-
-// 전진 함수
-void forward() {
-    digitalWrite(MOTOR_LEFT, HIGH);
-    digitalWrite(MOTOR_RIGHT, HIGH);
-}
-
-// 후진 함수
-void backward() {
-    digitalWrite(MOTOR_LEFT, LOW);
-    digitalWrite(MOTOR_RIGHT, LOW);
-}
-
-// 좌회전 함수
-void left() {
-    digitalWrite(MOTOR_LEFT, HIGH);
-    digitalWrite(MOTOR_RIGHT, LOW);
-}
-
-// 우회전 함수
-void right() {
-    digitalWrite(MOTOR_LEFT, LOW);
-    digitalWrite(MOTOR_RIGHT, HIGH);
-}
-
-// 정지 함수
-void stop() {
-    digitalWrite(MOTOR_LEFT, LOW);
-    digitalWrite(MOTOR_RIGHT, LOW);
-}
-
-// 회전 함수 (각도)
-void turn(int angle) {
-    int duration = angle * 10;  // 각도에 따라 회전 지속 시간 조절 (단위는 ms)
-    if (angle > 0) {
-        right();
-    } else {
-        left();
+int i2c_fd;
+void i2c_init() {
+    if ((i2c_fd = open("/dev/i2c-1", O_RDWR)) < 0) {
+        perror("Failed to open the i2c bus");
+        exit(1);
     }
-    delay(duration);
-    stop();
+    if (ioctl(i2c_fd, I2C_SLAVE, I2C_ADDR) < 0) {
+        perror("Failed to acquire bus access and/or talk to slave");
+        exit(1);
+    }
 }
+
+void write_u8(int reg, int data) {
+    unsigned char buffer[2];
+    buffer[0] = reg;
+    buffer[1] = data;
+    if (write(i2c_fd, buffer, 2) != 2) {
+        perror("Failed to write to the i2c bus");
+    }
+}
+
+void write_array(int reg, unsigned char *data, int length) {
+    unsigned char buffer[length + 1];
+    buffer[0] = reg;
+    for (int i = 0; i < length; i++) {
+        buffer[i + 1] = data[i];
+    }
+    if (write(i2c_fd, buffer, length + 1) != length + 1) {
+        perror("Failed to write to the i2c bus");
+    }
+}
+
+void Ctrl_Car(int l_dir, int l_speed, int r_dir, int r_speed) {
+    int reg = 0x01;
+    unsigned char data[4] = {l_dir, l_speed, r_dir, r_speed};
+    write_array(reg, data, 4);
+}
+
+void Car_Run(int speed1, int speed2) {
+    Ctrl_Car(1, speed1, 1, speed2);
+}
+
+void Car_Stop() {
+    int reg = 0x02;
+    write_u8(reg, 0x00);
+}
+
+void Car_Back(int speed1, int speed2) {
+    Ctrl_Car(0, speed1, 0, speed2);
+}
+
+void Car_Left(int speed1, int speed2) {
+    Ctrl_Car(0, speed1, 1, speed2);
+}
+
+void Car_Right(int speed1, int speed2) {
+    Ctrl_Car(1, speed1, 0, speed2);
+}
+
 
 int main() {
-    // WiringPi 초기화
     if (wiringPiSetup() == -1) {
         printf("WiringPi setup failed!\n");
         return 1;
     }
 
-    // 4개의 트래킹 핀을 입력으로 설정
     pinMode(TRACKING_PIN1, INPUT);
     pinMode(TRACKING_PIN2, INPUT);
     pinMode(TRACKING_PIN3, INPUT);
     pinMode(TRACKING_PIN4, INPUT);
 
-    // 자동차 초기화
-    car_init();
-    
+    i2c_init();
+
     while (1) {
         int trackValue1 = digitalRead(TRACKING_PIN1);
         int trackValue2 = digitalRead(TRACKING_PIN2);
@@ -89,24 +100,25 @@ int main() {
 
         // 트래킹 핀 값을 바탕으로 자동차 제어 로직
         if (trackValue2 == 0 && trackValue3 == 0) {
-            //forward();
+            Car_Run(100, 100);
             printf("Forward: TrackValue1=%d TrackValue2=%d TrackValue3=%d TrackValue4=%d\n", trackValue1, trackValue2, trackValue3, trackValue4);
         } 
         else if(trackValue2 == 0 && trackValue3 == 1){
-            //right();
+            Car_Right(100, 100);
             printf("Forward: TrackValue1=%d TrackValue2=%d TrackValue3=%d TrackValue4=%d\n", trackValue1, trackValue2, trackValue3, trackValue4);
         }
         else if(trackValue2 == 1 && trackValue3 == 0){
-            //left();
+            Car_Left(100, 100);
             printf("Forward: TrackValue1=%d TrackValue2=%d TrackValue3=%d TrackValue4=%d\n", trackValue1, trackValue2, trackValue3, trackValue4);
         }
         else {
-            //stop();
+            Car_Stop();
             printf("Stop: TrackValue1=%d TrackValue2=%d TrackValue3=%d TrackValue4=%d\n", trackValue1, trackValue2, trackValue3, trackValue4);
         }
 
         delay(100); // 0.1초 대기
     }
 
+    close(i2c_fd);
     return 0;
 }
