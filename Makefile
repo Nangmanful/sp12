@@ -1,17 +1,23 @@
-CC=gcc
-CFLAGS=-I/usr/local/include -L/usr/local/lib -lwiringPi
+CC = gcc
+CFLAGS = -I/usr/local/include -L/usr/local/lib -lwiringPi
+
 CXX = g++
-CXXFLAGS = 'pkg-config --cflags --libs opencv4'
+CXXFLAGS = $(shell pkg-config --cflags --libs opencv4)
+
+all: linetracer qrrecognition
 
 linetracer: linetracer.o
-	$(CC) -o linetracer linetracer.o $(CFLAGS)
+	$(CC) -o $@ $^ $(CFLAGS)
 
 linetracer.o: linetracer.c
-	$(CC) -c linetracer.c $(CFLAGS)
+	$(CC) -c $< $(CFLAGS)
 
-qrrecognition: qrrecognition.cpp
-	$(CXX) qrrecognition.cpp -o qrrecognition $(CXXFLAGS) 
+qrrecognition: qrrecognition.o
+	$(CXX) -o $@ $^ $(CXXFLAGS)
+
+qrrecognition.o: qrrecognition.cpp
+	$(CXX) -c $< $(CXXFLAGS)
 
 clean:
 	rm -f linetracer linetracer.o
-	rm -f qrrecognition
+	rm -f qrrecognition qrrecognition.o
