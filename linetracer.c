@@ -199,13 +199,13 @@ int main() {
         }
         else if(trackValue2 == 1 && trackValue3 == 1 && trackValue1 == 1 && trackValue4 == 1){
             f = 0;
-            if (n == 15){
+            if (n >= 15){
                 Car_Stop();
                 delay(3000);
             }
             else if(n == 7){
-                Car_Back(100, 100);   
-                delay(100);
+                Car_Back(80, 80);   
+                delay(60);
             }
             else{
             Car_Run(30,30);
