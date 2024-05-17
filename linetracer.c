@@ -113,6 +113,24 @@ int main() {
             Car_Run(50, 50);
             delay(20);
         }
+        else if (trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 1 && trackValue4 == 0) {
+            n = 0;
+            Car_Left(100, 100);
+            delay(100);
+            Car_Run(50, 50);
+            delay(50);
+            Car_Left(100, 100);
+            delay(100);
+        }
+        else if (trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 1 && trackValue4 == 1) {
+            n = 0;
+            Car_Left(100, 100);
+            delay(100);
+            Car_Run(50, 50);
+            delay(50);
+            Car_Left(100, 100);
+            delay(100);
+        }
         else if (trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 0 && trackValue4 == 0) {
             n = 0;
             Car_Run(50, 50);
@@ -128,15 +146,6 @@ int main() {
             Car_Run(50, 50);
             delay(20);
         } 
-        else if(trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 1 && trackValue4 == 1){
-            n = 0;
-            Car_Left(100, 100);
-            delay(100);
-            Car_Run(50, 50);
-            delay(50);
-            Car_Left(100, 100);
-            delay(100);
-        }
         else if(trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 0 && trackValue4 == 1){
             n = 0;
             Car_Left(100, 100);
@@ -164,9 +173,19 @@ int main() {
             Car_Right(100, 100);
             delay(100);
         }
+        else if(trackValue2 == 1 && trackValue3 == 0 && trackValue1 == 0 && trackValue4 == 1){
+            n = 0;
+            Car_Right(100, 100);
+            delay(100);
+            Car_Run(50, 50);
+            delay(50);
+            Car_Right(100, 100);
+            delay(100);
+        }
         else if(trackValue2 == 1 && trackValue3 == 1 && trackValue1 == 1 && trackValue4 == 1){
-            if (n == 30){
+            if (n == 5){
                 Car_Stop();
+                delay(3000);
             }
             else{
             Car_Run(30,30);
@@ -176,7 +195,7 @@ int main() {
         else{
             n = 0;
             Car_Back(40, 40);
-            delay(30);
+            delay(10);
         } 
         delay(10);
     }
