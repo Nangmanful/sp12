@@ -24,7 +24,7 @@ make
 ```
 
 
-## START
+## 
 # LINETRACER
 
 ```bash
