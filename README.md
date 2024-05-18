@@ -38,10 +38,12 @@ Or use the linked remote control to shut it down.
 We tested the track in both clockwise and counterclockwise directions.
 
 Clockwise<br>
+
 https://github.com/Nangmanful/sp12/assets/154849613/08da5865-4399-42b9-84d0-dd6f86393573
 
 
 Counterclockwise<br>
+
 https://github.com/Nangmanful/sp12/assets/154849613/909b5be8-a4cf-4695-bdd4-833216020d9b
 
 
