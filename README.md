@@ -28,7 +28,7 @@ make
 ```bash
 sudo ./linetracer
 ```
-Then Raspbot will move tracing the black line.
+Then Raspbot will move, tracing the black line. <br>
 To stop the program, press Ctrl + C <br>
 Or use the linked remote control to shut it down.
 
