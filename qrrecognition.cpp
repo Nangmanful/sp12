@@ -53,7 +53,7 @@ std::string qrrecognition() {
 
 
 
-// int main() {
+int main() {
 //     cv::VideoCapture cap(0, cv::CAP_V4L2);
 
 //     if (!cap.isOpened()) {
@@ -86,5 +86,5 @@ std::string qrrecognition() {
 
 //     cap.release();
 //     cv::destroyAllWindows();
-//     return 0;
-// }
+     return 0;
+}
