@@ -44,8 +44,8 @@ const char* qrrecognition() {
             const char* data2 = data.c_str();;
             return data2;
         }
-
-        char c = (char)cv::waitKey(25);
+        cv::imshow("QR 코드 스캐너", frame);
+        //char c = (char)cv::waitKey(25);
         //if (c == 27) // ESC 키
         //    break;
         std::cout << "카메라 작동 중" << std::endl;
