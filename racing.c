@@ -182,7 +182,7 @@ int main() {
             int v4 = digitalRead(TRACKING_PIN4);
             if(direct == 'l'){
                 while(v1==1 && v2==0 && v3 ==0 && v4 ==1){
-                    Car_Run(255,255);
+                    // Car_Run(255,255);
                     v1 = digitalRead(TRACKING_PIN1);
                     v2 = digitalRead(TRACKING_PIN2);
                     v3 = digitalRead(TRACKING_PIN3);
@@ -193,7 +193,7 @@ int main() {
             }
             else if(direct == 'r'){
                 while(v1==1 && v2==0 && v3 ==0 && v4 ==1){
-                    Car_Run(255,255);
+                    // Car_Run(255,255);
                     v1 = digitalRead(TRACKING_PIN1);
                     v2 = digitalRead(TRACKING_PIN2);
                     v3 = digitalRead(TRACKING_PIN3);
