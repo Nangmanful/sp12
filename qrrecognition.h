@@ -12,7 +12,7 @@
 extern "C" {
 #endif
 
-string qrrecognition();
+std::string qrrecognition();
 
 #ifdef __cplusplus
 }
