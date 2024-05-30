@@ -119,7 +119,7 @@ int main() {
                 // return 1;
     }
 
-    printf("Connected to server\n");
+    printf("Connected to server\0");
     while (1) {
         int index_x; // our
         int index_y; // our
@@ -129,24 +129,24 @@ int main() {
         Node node;
         Item now_item;
         ClientAction game_state;
-        printf("qr시작");
+        printf("qr시작\0");
         index = qrrecognition();
-        printf("qr끝");
+        printf("qr끝\0");
         if (strcmp(index, "77") == 0) { // no qr recognition
-                printf("no qr\n");
+                printf("no qr\0");
         }
         else {
             Car_Stop();
             index_x = index[0] - '0'; // ASCII 값을 실제 숫자로 변환
             index_y = index[1] - '0'; // ASCII 값을 실제 숫자로 변환
-            printf("%d %d", index_x, index_y);
-            printf("데이터 송수신 시작");
+            printf("%d %d\n", index_x, index_y);
+            printf("데이터 송수신 시작\0");
 
         //서버 통신
 
             // 서버로부터 데이터 수신
             if (recv(sock, &info, sizeof(DGIST), 0) < 0) {
-                perror("Recv failed");
+                perror("Recv failed\0");
                 // return 1;
             }
 
@@ -162,7 +162,7 @@ int main() {
             game_state.action = move;
 
             if (send(sock, &game_state, sizeof(ClientAction), 0) < 0) {
-                perror("Send failed");
+                perror("Send failed\0");
                 // return 1;
             }
         }
