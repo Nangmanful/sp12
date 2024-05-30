@@ -131,8 +131,8 @@ int main() {
         ClientAction game_state;
 
         index = qrrecognition();
-        if (index == "77") {//no qr recognition
-            printf("no qr");
+        if (strcmp(index, "77") == 0) { // no qr recognition
+                printf("no qr\n");
         }
         else {
             Car_Stop();
