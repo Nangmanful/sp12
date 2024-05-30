@@ -182,36 +182,36 @@ int main() {
             int v4 = digitalRead(TRACKING_PIN4);
             if(direct == 'l'){
                 while(v1==1 && v2==0 && v3 ==0 && v4 ==1){
-                    // Car_Run(255,255);
+                    Car_Run(55,55);
                     v1 = digitalRead(TRACKING_PIN1);
                     v2 = digitalRead(TRACKING_PIN2);
                     v3 = digitalRead(TRACKING_PIN3);
                     v4 = digitalRead(TRACKING_PIN4);
                 }
-                Car_Stop(255,255);
+                Car_Left(255, 255);
                 delay(500);
             }
             else if(direct == 'r'){
                 while(v1==1 && v2==0 && v3 ==0 && v4 ==1){
-                    // Car_Run(255,255);
+                    Car_Run(55,55);
                     v1 = digitalRead(TRACKING_PIN1);
                     v2 = digitalRead(TRACKING_PIN2);
                     v3 = digitalRead(TRACKING_PIN3);
                     v4 = digitalRead(TRACKING_PIN4);
                 }
-                Car_Stop();
+                Car_Right(255, 255);
                 delay(500);
             }
             while(strcmp(qrrecognition(), "77") == 0){
                 if(direct == 'b'){
-                //    Car_Back(255,255);
+                    Car_Back(55,55);
                     if(digitalRead(pin) == LOW){
                         Car_Stop();    
                         close(i2c_fd);   
                     }
                 }
                 else{
-                  //  Car_Run(255,255);
+                    Car_Run(55,55);
                     if(digitalRead(pin) == LOW){
                         Car_Stop();    
                         close(i2c_fd);   
