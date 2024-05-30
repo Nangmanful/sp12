@@ -129,8 +129,9 @@ int main() {
         Node node;
         Item now_item;
         ClientAction game_state;
-
+        printf("qr시작");
         index = qrrecognition();
+        print("qr끝");
         if (strcmp(index, "77") == 0) { // no qr recognition
                 printf("no qr\n");
         }
@@ -140,7 +141,7 @@ int main() {
             index_y = index[1] - '0'; // ASCII 값을 실제 숫자로 변환
             printf("%d %d", index_x, index_y);
         }
-
+        printf("데이터 송수신 시작");
 
         //서버 통신
 
