@@ -188,7 +188,7 @@ int main() {
                     v3 = digitalRead(TRACKING_PIN3);
                     v4 = digitalRead(TRACKING_PIN4);
                 }
-                Car_Left(255,255);
+                Car_Stop(255,255);
                 delay(500);
             }
             else if(direct == 'r'){
@@ -199,7 +199,7 @@ int main() {
                     v3 = digitalRead(TRACKING_PIN3);
                     v4 = digitalRead(TRACKING_PIN4);
                 }
-                Car_Right(255,255);
+                Car_Stop();
                 delay(500);
             }
             while(strcmp(qrrecognition(), "77") == 0){
