@@ -28,8 +28,8 @@ const char* qrrecognition() {
 
         // 경과된 시간이 1초 이상인지 확인합니다.
         double elapsed_time = static_cast<double>(current_time - start_time) / CLOCKS_PER_SEC;
-        if (elapsed_time >= 0.5) {
-            std::cout << "0.5초 지남" << std::endl;
+        if (elapsed_time >= 1.0) {
+            std::cout << "1초 지남" << std::endl;
             break;
         }
 
@@ -44,7 +44,7 @@ const char* qrrecognition() {
             const char* data2 = data.c_str();;
             return data2;
         }
-        cv::imshow("QR 코드 스캐너", frame);
+        //cv::imshow("QR 코드 스캐너", frame);
         //char c = (char)cv::waitKey(25);
         //if (c == 27) // ESC 키
         //    break;
