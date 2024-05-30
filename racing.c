@@ -83,8 +83,8 @@ void Car_Right(int speed1, int speed2) {
     Ctrl_Car(1, speed1, 0, speed2);
 }
 
-
 int main() {
+    char* qrrecognition();
     int pin = 27;
     if (wiringPiSetup() == -1) {
         printf("WiringPi setup failed!\n");
@@ -99,7 +99,7 @@ int main() {
     pinMode(TRACKING_PIN4, INPUT);
 
     i2c_init();
-
+    char* qrrecognition(); // 추가된 부분
     while (1) {
         int index_x; // our
         int index_y; // our
@@ -160,7 +160,7 @@ int main() {
 
             game_state.row = index_x;
             game_state.col = index_y;
-            game_state.action = 0;
+            game_state.action = move;
 
             if (send(sock, &game_state, sizeof(ClientAction), 0) < 0) {
                 perror("Send failed");
