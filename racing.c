@@ -98,7 +98,6 @@ int main() {
     pinMode(TRACKING_PIN4, INPUT);
 
     i2c_init();
-    char* qrrecognition(); // 추가된 부분
     while (1) {
         int index_x; // our
         int index_y; // our
