@@ -165,9 +165,6 @@ int main() {
                 perror("Send failed");
                 // return 1;
             }
-
-
-        }
         /*
             algorithm 구현(linetracer)
         */
