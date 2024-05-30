@@ -35,7 +35,7 @@ const char* qrrecognition() {
         if (frame.empty()) break;
 
         std::vector<cv::Point> points;
-        std::string data = qrDecoder.detectAndDecode(frame, points);
+        const char* data = qrDecoder.detectAndDecode(frame, points);
         
         if (!data.empty()) {
             return data;
