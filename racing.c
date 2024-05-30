@@ -175,30 +175,29 @@ int main() {
 
         // linetracer
         while(1){
-
             int v1 = digitalRead(TRACKING_PIN1);
             int v2 = digitalRead(TRACKING_PIN2);
             int v3 = digitalRead(TRACKING_PIN3);
             int v4 = digitalRead(TRACKING_PIN4);
             if(direct == 'l'){
-                while(v1==1 && v2==0 && v3 ==0 && v4 ==1){
-                    Car_Run(55,55);
-                    v1 = digitalRead(TRACKING_PIN1);
-                    v2 = digitalRead(TRACKING_PIN2);
-                    v3 = digitalRead(TRACKING_PIN3);
-                    v4 = digitalRead(TRACKING_PIN4);
-                }
+                // while(v1==1 && v2==0 && v3 ==0 && v4 ==1){
+                //     Car_Run(55,55);
+                //     v1 = digitalRead(TRACKING_PIN1);
+                //     v2 = digitalRead(TRACKING_PIN2);
+                //     v3 = digitalRead(TRACKING_PIN3);
+                //     v4 = digitalRead(TRACKING_PIN4);
+                // }
                 Car_Left(255, 255);
                 delay(500);
             }
             else if(direct == 'r'){
-                while(v1==1 && v2==0 && v3 ==0 && v4 ==1){
-                    Car_Run(55,55);
-                    v1 = digitalRead(TRACKING_PIN1);
-                    v2 = digitalRead(TRACKING_PIN2);
-                    v3 = digitalRead(TRACKING_PIN3);
-                    v4 = digitalRead(TRACKING_PIN4);
-                }
+                // while(v1==1 && v2==0 && v3 ==0 && v4 ==1){
+                //     Car_Run(55,55);
+                //     v1 = digitalRead(TRACKING_PIN1);
+                //     v2 = digitalRead(TRACKING_PIN2);
+                //     v3 = digitalRead(TRACKING_PIN3);
+                //     v4 = digitalRead(TRACKING_PIN4);
+                // }
                 Car_Right(255, 255);
                 delay(500);
             }
