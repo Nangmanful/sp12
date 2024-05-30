@@ -131,7 +131,7 @@ int main() {
         ClientAction game_state;
         printf("qr시작");
         index = qrrecognition();
-        print("qr끝");
+        printf("qr끝");
         if (strcmp(index, "77") == 0) { // no qr recognition
                 printf("no qr\n");
         }
