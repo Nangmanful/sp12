@@ -98,6 +98,28 @@ int main() {
     pinMode(TRACKING_PIN4, INPUT);
 
     i2c_init();
+    int sock;
+    struct sockaddr_in server_addr;
+
+            // 소켓 생성
+    sock = socket(AF_INET, SOCK_STREAM, 0);
+    if (sock == -1) {
+        perror("Could not create socket");
+                // return 1;
+    }
+
+            // 서버 주소 구조체 설정
+    server_addr.sin_family = AF_INET;
+    server_addr.sin_addr.s_addr = inet_addr("127.0.0.1");
+    server_addr.sin_port = htons(PORT);
+
+            // 서버에 연결
+    if (connect(sock, (struct sockaddr*)&server_addr, sizeof(server_addr)) < 0) {
+                perror("Connect failed");
+                // return 1;
+    }
+
+    printf("Connected to server\n");
     while (1) {
         int index_x; // our
         int index_y; // our
@@ -110,39 +132,18 @@ int main() {
 
         index = qrrecognition();
         if (index == "77") {//no qr recognition
-
+            printf("no qr");
         }
         else {
             Car_Stop();
             index_x = (int)index[0];
             index_y = (int)index[1];
+            printf("%d %d", index_x, index_y);
         }
 
 
         //서버 통신
-        if (index != "77") {
-            int sock;
-            struct sockaddr_in server_addr;
 
-            // 소켓 생성
-            sock = socket(AF_INET, SOCK_STREAM, 0);
-            if (sock == -1) {
-                perror("Could not create socket");
-                // return 1;
-            }
-
-            // 서버 주소 구조체 설정
-            server_addr.sin_family = AF_INET;
-            server_addr.sin_addr.s_addr = inet_addr("127.0.0.1");
-            server_addr.sin_port = htons(PORT);
-
-            // 서버에 연결
-            if (connect(sock, (struct sockaddr*)&server_addr, sizeof(server_addr)) < 0) {
-                perror("Connect failed");
-                // return 1;
-            }
-
-            printf("Connected to server\n");
             // 서버로부터 데이터 수신
             if (recv(sock, &info, sizeof(DGIST), 0) < 0) {
                 perror("Recv failed");
@@ -165,7 +166,7 @@ int main() {
                 // return 1;
             }
 
-            close(sock);
+
         }
         /*
             algorithm 구현(linetracer)
@@ -180,5 +181,6 @@ int main() {
         Car_Run(40, 40);
 
     }
+    close(sock);    
     return 0;
 }
