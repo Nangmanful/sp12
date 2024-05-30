@@ -1,14 +1,13 @@
-
 # 컴파일러 설정
 CXX = g++
-CC = g++
+CC = gcc
 
 # 컴파일 옵션
 CXXFLAGS = -c `pkg-config --cflags opencv4`
 CFLAGS = -c
 
 # 링크 옵션
-LDFLAGS = `pkg-config --libs opencv4`
+LDFLAGS = `pkg-config --libs opencv4` -lwiringPi
 
 # 대상 파일
 TARGET = myprogram
