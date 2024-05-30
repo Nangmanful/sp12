@@ -25,6 +25,8 @@
 #define BUF_SIZE 1024
 
 int i2c_fd;
+
+
 void i2c_init() {
     if ((i2c_fd = open("/dev/i2c-1", O_RDWR)) < 0) {
         perror("Failed to open the i2c bus");
@@ -121,6 +123,7 @@ int main() {
 
     printf("Connected to server\0");
     while (1) {
+        char direct = 'r';
         int index_x; // our
         int index_y; // our
         char* index;
@@ -171,12 +174,44 @@ int main() {
         */
 
         // linetracer
-        int trackValue1 = digitalRead(TRACKING_PIN1);
-        int trackValue2 = digitalRead(TRACKING_PIN2);
-        int trackValue3 = digitalRead(TRACKING_PIN3);
-        int trackValue4 = digitalRead(TRACKING_PIN4);
-        
-        Car_Run(40, 40);
+        while(1){
+
+            int v1 = digitalRead(TRACKING_PIN1);
+            int v2 = digitalRead(TRACKING_PIN2);
+            int v3 = digitalRead(TRACKING_PIN3);
+            int v4 = digitalRead(TRACKING_PIN4);
+            if(direct == 'l'){
+                while(v1==1 && v2==0 && v3 ==0 && v4 ==1){
+                    Car_Run(255,255);
+                    v1 = digitalRead(TRACKING_PIN1);
+                    v2 = digitalRead(TRACKING_PIN2);
+                    v3 = digitalRead(TRACKING_PIN3);
+                    v4 = digitalRead(TRACKING_PIN4);
+                }
+                Car_Left(255,255);
+                delay(500);
+            }
+            else if(direct == 'r'){
+                while(v1==1 && v2==0 && v3 ==0 && v4 ==1){
+                    Car_Run(255,255);
+                    v1 = digitalRead(TRACKING_PIN1);
+                    v2 = digitalRead(TRACKING_PIN2);
+                    v3 = digitalRead(TRACKING_PIN3);
+                    v4 = digitalRead(TRACKING_PIN4);
+                }
+                Car_Right(255,255);
+                delay(500);
+            }
+            while(strcmp(qrrecognition(), "77") == 0){
+                if(direct == 'b'){
+                    Car_Back(255,255);
+                }
+                else{
+                    Car_Run(255,255);
+                }
+            }
+            break;
+        }
 
     }
     close(sock);    
