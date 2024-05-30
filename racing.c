@@ -204,14 +204,14 @@ int main() {
             }
             while(strcmp(qrrecognition(), "77") == 0){
                 if(direct == 'b'){
-                    Car_Back(255,255);
+                //    Car_Back(255,255);
                     if(digitalRead(pin) == LOW){
                         Car_Stop();    
                         close(i2c_fd);   
                     }
                 }
                 else{
-                    Car_Run(255,255);
+                  //  Car_Run(255,255);
                     if(digitalRead(pin) == LOW){
                         Car_Stop();    
                         close(i2c_fd);   
@@ -220,7 +220,7 @@ int main() {
             }
             break;
         }
-
+        Car_Stop();
     }
     close(sock);    
     return 0;
