@@ -1,7 +1,7 @@
 
 # 컴파일러 설정
 CXX = g++
-CC = gcc
+CC = g++
 
 # 컴파일 옵션
 CXXFLAGS = -c `pkg-config --cflags opencv4`
