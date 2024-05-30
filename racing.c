@@ -228,21 +228,21 @@ int main() {
         }
         if(direct == 'l'){ // left
             while(strcmp(qrvalue, "77") == 0 || strcmp(qrvalue, index) == 0){
-                int v1 = digitalRead(TRACKING_PIN1);
-                int v2 = digitalRead(TRACKING_PIN2);
-                int v3 = digitalRead(TRACKING_PIN3);
-                int v4 = digitalRead(TRACKING_PIN4);
-                    if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 1) {
+                int trackvalue1 = digitalRead(TRACKING_PIN1);
+                int trackvalue2 = digitalRead(TRACKING_PIN2);
+                int trackvalue3 = digitalRead(TRACKING_PIN3);
+                int trackvalue4 = digitalRead(TRACKING_PIN4);
+                    if (trackvalue2 == 0 && trackvalue3 == 0 && trackvalue1 == 1 && trackvalue4 == 1) {
                     Car_Run(40, 40);
                     } 
-                    else if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 0 && trackValue4 == 1) {
+                    else if (trackvalue2 == 0 && trackvalue3 == 0 && trackvalue1 == 0 && trackvalue4 == 1) {
                         Car_Run(40, 40);
                     }
-                    else if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 0) {
+                    else if (trackvalue2 == 0 && trackvalue3 == 0 && trackvalue1 == 1 && trackvalue4 == 0) {
             
                         Car_Run(40, 40);
                     }
-                    else if (trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 1 && trackValue4 == 0) {
+                    else if (trackvalue2 == 0 && trackvalue3 == 1 && trackvalue1 == 1 && trackvalue4 == 0) {
                     
                         Car_Left(100, 100);
                         delay(80);
@@ -251,7 +251,7 @@ int main() {
                         Car_Left(100, 100);
                         delay(80);
                     }
-                else if (trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 1 && trackValue4 == 1) {
+                else if (trackvalue2 == 0 && trackvalue3 == 1 && trackvalue1 == 1 && trackvalue4 == 1) {
                     Car_Left(100, 100);
                     delay(80);
                     Car_Run(50, 50);
@@ -259,7 +259,7 @@ int main() {
                     Car_Left(100, 100);
                     delay(80);
                 }
-                else if (trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 0 && trackValue4 == 0) {
+                else if (trackvalue2 == 0 && trackvalue3 == 1 && trackvalue1 == 0 && trackvalue4 == 0) {
                     Car_Left(100, 100);
                     delay(80);
                     Car_Run(50, 50);
@@ -267,13 +267,13 @@ int main() {
                     Car_Left(100, 100);
                     delay(80);
                 } 
-                else if (trackValue2 == 1 && trackValue3 == 0 && trackValue1 == 0 && trackValue4 == 0) {
+                else if (trackvalue2 == 1 && trackvalue3 == 0 && trackvalue1 == 0 && trackvalue4 == 0) {
                     Car_Back(60, 60);
                 } 
-                else if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 0 && trackValue4 == 0) {
+                else if (trackvalue2 == 0 && trackvalue3 == 0 && trackvalue1 == 0 && trackvalue4 == 0) {
                     Car_Run(40, 40);
                 } 
-                else if(trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 0 && trackValue4 == 1){
+                else if(trackvalue2 == 0 && trackvalue3 == 1 && trackvalue1 == 0 && trackvalue4 == 1){
                     Car_Left(100, 100);
                     delay(80);
                     Car_Run(50, 50);
@@ -281,16 +281,16 @@ int main() {
                     Car_Left(100, 100);
                     delay(80);
                 }
-                else if(trackValue2 == 1 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 0){
+                else if(trackvalue2 == 1 && trackvalue3 == 0 && trackvalue1 == 1 && trackvalue4 == 0){
                     Car_Back(60, 60);
                 }
-                else if(trackValue2 == 1 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 1){
+                else if(trackvalue2 == 1 && trackvalue3 == 0 && trackvalue1 == 1 && trackvalue4 == 1){
                     Car_Back(60, 60);
                 }
-                else if(trackValue2 == 1 && trackValue3 == 0 && trackValue1 == 0 && trackValue4 == 1){
+                else if(trackvalue2 == 1 && trackvalue3 == 0 && trackvalue1 == 0 && trackvalue4 == 1){
                     Car_Back(60, 60);
                 }
-                else if(trackValue2 == 1 && trackValue3 == 1 && trackValue1 == 1 && trackValue4 == 1){
+                else if(trackvalue2 == 1 && trackvalue3 == 1 && trackvalue1 == 1 && trackvalue4 == 1){
                     Car_Back(60, 60);
                 }
                 else{
@@ -302,29 +302,29 @@ int main() {
     }
     else if(direct == 'r'){
         while(strcmp(qrvalue, "77") == 0 || strcmp(qrvalue, index) == 0){
-        int v1 = digitalRead(TRACKING_PIN1);
-        int v2 = digitalRead(TRACKING_PIN2);
-        int v3 = digitalRead(TRACKING_PIN3);
-        int v4 = digitalRead(TRACKING_PIN4);
-        if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 1) {
+        int trackvalue1 = digitalRead(TRACKING_PIN1);
+        int trackvalue2 = digitalRead(TRACKING_PIN2);
+        int trackvalue3 = digitalRead(TRACKING_PIN3);
+        int trackvalue4 = digitalRead(TRACKING_PIN4);
+        if (trackvalue2 == 0 && trackvalue3 == 0 && trackvalue1 == 1 && trackvalue4 == 1) {
                     Car_Run(40, 40);
         } 
-        else if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 0 && trackValue4 == 1) {
+        else if (trackvalue2 == 0 && trackvalue3 == 0 && trackvalue1 == 0 && trackvalue4 == 1) {
                         Car_Run(40, 40);
         }
-                    else if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 0) {
+                    else if (trackvalue2 == 0 && trackvalue3 == 0 && trackvalue1 == 1 && trackvalue4 == 0) {
                         Car_Run(40, 40);
                     }
-                    else if (trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 1 && trackValue4 == 0) {
+                    else if (trackvalue2 == 0 && trackvalue3 == 1 && trackvalue1 == 1 && trackvalue4 == 0) {
                         Car_Back(60, 60);
                     }
-                else if (trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 1 && trackValue4 == 1) {
+                else if (trackvalue2 == 0 && trackvalue3 == 1 && trackvalue1 == 1 && trackvalue4 == 1) {
                     Car_Back(60, 60);
                 }
-                else if (trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 0 && trackValue4 == 0) {
+                else if (trackvalue2 == 0 && trackvalue3 == 1 && trackvalue1 == 0 && trackvalue4 == 0) {
                     Car_Back(60, 60);
                 } 
-                else if (trackValue2 == 1 && trackValue3 == 0 && trackValue1 == 0 && trackValue4 == 0) {
+                else if (trackvalue2 == 1 && trackvalue3 == 0 && trackvalue1 == 0 && trackvalue4 == 0) {
                     Car_Right(100, 100);
                     delay(80);
                     Car_Run(50, 50);
@@ -332,13 +332,13 @@ int main() {
                     Car_Right(100, 100);
                     delay(80);
                 } 
-                else if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 0 && trackValue4 == 0) {
+                else if (trackvalue2 == 0 && trackvalue3 == 0 && trackvalue1 == 0 && trackvalue4 == 0) {
                     Car_Run(40, 40);
                 } 
-                else if(trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 0 && trackValue4 == 1){
+                else if(trackvalue2 == 0 && trackvalue3 == 1 && trackvalue1 == 0 && trackvalue4 == 1){
                     Car_Back(60, 60);
                 }
-                else if(trackValue2 == 1 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 0){
+                else if(trackvalue2 == 1 && trackvalue3 == 0 && trackvalue1 == 1 && trackvalue4 == 0){
                 
                     Car_Right(100, 100);
                     delay(80);
@@ -347,7 +347,7 @@ int main() {
                     Car_Right(100, 100);
                     delay(80);
                 }
-                else if(trackValue2 == 1 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 1){
+                else if(trackvalue2 == 1 && trackvalue3 == 0 && trackvalue1 == 1 && trackvalue4 == 1){
                     
                     Car_Right(100, 100);
                     delay(80);
@@ -356,7 +356,7 @@ int main() {
                     Car_Right(100, 100);
                     delay(80);
                 }
-                else if(trackValue2 == 1 && trackValue3 == 0 && trackValue1 == 0 && trackValue4 == 1){
+                else if(trackvalue2 == 1 && trackvalue3 == 0 && trackvalue1 == 0 && trackvalue4 == 1){
                     Car_Right(100, 100);
                     delay(80);
                     Car_Run(50, 50);
@@ -364,7 +364,7 @@ int main() {
                     Car_Right(100, 100);
                     delay(80);
                 }
-                else if(trackValue2 == 1 && trackValue3 == 1 && trackValue1 == 1 && trackValue4 == 1){
+                else if(trackvalue2 == 1 && trackvalue3 == 1 && trackvalue1 == 1 && trackvalue4 == 1){
                     Car_Back(60, 60);
                 }
                 else{
@@ -376,11 +376,11 @@ int main() {
     }
     else if(direct == 'f'){
         while(strcmp(qrvalue, "77") == 0 || strcmp(qrvalue, index) == 0){
-        int v1 = digitalRead(TRACKING_PIN1);
-        int v2 = digitalRead(TRACKING_PIN2);
-        int v3 = digitalRead(TRACKING_PIN3);
-        int v4 = digitalRead(TRACKING_PIN4);
-        if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 1) {
+        int trackvalue1 = digitalRead(TRACKING_PIN1);
+        int trackvalue2 = digitalRead(TRACKING_PIN2);
+        int trackvalue3 = digitalRead(TRACKING_PIN3);
+        int trackvalue4 = digitalRead(TRACKING_PIN4);
+        if (trackvalue2 == 0 && trackvalue3 == 0 && trackvalue1 == 1 && trackvalue4 == 1) {
                     Car_Run(40, 40);
         }
         else{
@@ -393,12 +393,12 @@ int main() {
 
     else if(direct == 'b'){
        while(strcmp(qrvalue, "77") == 0 || strcmp(qrvalue, index) == 0){
-        int v1 = digitalRead(TRACKING_PIN1);
-        int v2 = digitalRead(TRACKING_PIN2);
-        int v3 = digitalRead(TRACKING_PIN3);
-        int v4 = digitalRead(TRACKING_PIN4);
-        if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 1) {
-                    Car_Run(40, 40);
+        int trackvalue1 = digitalRead(TRACKING_PIN1);
+        int trackvalue2 = digitalRead(TRACKING_PIN2);
+        int trackvalue3 = digitalRead(TRACKING_PIN3);
+        int trackvalue4 = digitalRead(TRACKING_PIN4);
+        if (trackvalue2 == 0 && trackvalue3 == 0 && trackvalue1 == 1 && trackvalue4 == 1) {
+                    Car_Back(40, 40);
         } 
         else{
                     Car_Back(30, 30);
