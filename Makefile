@@ -1,10 +1,14 @@
+
 # 컴파일러 설정
 CXX = g++
 CC = gcc
 
 # 컴파일 옵션
-CXXFLAGS = -c
+CXXFLAGS = -c `pkg-config --cflags opencv4`
 CFLAGS = -c
+
+# 링크 옵션
+LDFLAGS = `pkg-config --libs opencv4`
 
 # 대상 파일
 TARGET = myprogram
@@ -25,7 +29,7 @@ all: $(TARGET)
 
 # 실행 파일 생성
 $(TARGET): $(OBJS)
-	$(CXX) -o $@ $(OBJS)
+	$(CXX) -o $@ $(OBJS) $(LDFLAGS)
 
 # C 소스 파일 컴파일
 %.o: %.c
