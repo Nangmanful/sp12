@@ -110,12 +110,12 @@ int main() {
         Item now_item;
         ClientAction game_state;
 
-        if (qrrecognition() == "77") {//no qr recognition
+        index = qrrecognition();
+        if (index == "77") {//no qr recognition
 
         }
         else {
             Car_Stop();
-            index = qrrecognition();
             index_x = (int)index[0];
             index_y = (int)index[1];
         }
