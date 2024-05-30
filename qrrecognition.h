@@ -12,7 +12,7 @@
 extern "C" {
 #endif
 
-char* qrrecognition();
+string qrrecognition();
 
 #ifdef __cplusplus
 }
