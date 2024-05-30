@@ -54,7 +54,6 @@ const char* qrrecognition() {
 
 
 
-int main() {
 //     cv::VideoCapture cap(0, cv::CAP_V4L2);
 
 //     if (!cap.isOpened()) {
@@ -87,5 +86,3 @@ int main() {
 
 //     cap.release();
 //     cv::destroyAllWindows();
-     return 0;
-}
