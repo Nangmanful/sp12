@@ -173,6 +173,42 @@ int main() {
             algorithm 구현(linetracer)
         */
 
+        // Greedy algorithm
+        int past_x;
+        int past_y;
+        int present_x = index_x;
+        int present_y = index_y;
+        int future_x;
+        int future_y;
+        char run_direct;
+
+        int fpp_x = future_x-past_x;
+        int fpp_y = future_y-past_y;
+        int fp_x = future_x-present_x;
+        int fp_y = future_y-present_y;
+        int pp_x = present_x-past_x;
+        int pp_y = present_y-past_y;
+
+        if(fpp_x==0 && fpp_y==0){run_direct = 'b';}
+        else if(abs(fpp_x)==2 && fpp_y==0){run_direct = 'f';}
+        else if(fpp_x==0 && abs(fpp_y)==2){run_direct = 'f';}
+        else if(pp_x==1 && pp_y==0){
+            if(fp_x==0 && fp_y==-1){run_direct = 'r';}
+            else if(fp_x=0 && fp_y==1){run_direct = 'l';}
+        }
+        else if(pp_x==-1 && pp_y==0){
+            if(fp_x==0 && fp_y==-1){run_direct = 'l';}
+            else if(fp_x==0 && fp_y==1){run_direct = 'r';}
+        }
+        else if(pp_x==0 && pp_y==1){
+            if(fp_x==-1 && fp_y==0){run_direct = 'l';}
+            else if(fp_x==1 && fp_y==0){run_direct = 'r';}
+        }
+        else if(pp_x==0 && pp_y==-1){
+            if(fp_x==-1 && fp_y==0){run_direct = 'r';}
+            else if(fp_x==1 && fp_y==0){run_direct = 'l';}
+        }
+        
         // linetracer
         char* qrvalue = qrrecognition();
         if(direct == 'l'){ // left
