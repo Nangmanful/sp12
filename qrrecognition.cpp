@@ -8,7 +8,7 @@
 
 #include <ctime>
 
-char* qrrecognition() {
+string qrrecognition() {
     cv::VideoCapture cap(0, cv::CAP_V4L2);
 
     if (!cap.isOpened()) {
