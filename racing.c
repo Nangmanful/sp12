@@ -14,11 +14,6 @@
 #include <sys/socket.h>
 
 
-const char* qrrecognition() { //example
-
-    return "00";
-}
-
 #define TRACKING_PIN1 7  
 #define TRACKING_PIN2 0  
 #define TRACKING_PIN3 3  
