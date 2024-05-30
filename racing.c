@@ -11,7 +11,6 @@
 #include <linux/i2c-dev.h>
 #include <math.h>
 #include <errno.h>
-#include <ncurses.h>
 
 #include <sys/socket.h>
 
@@ -87,19 +86,6 @@ void Car_Right(int speed1, int speed2) {
 }
 
 int main() {
-    initscr();              // ncurses 초기화
-    cbreak();               // 입력 버퍼 없이 즉시 입력 읽기
-    noecho();               // 입력 문자를 화면에 표시하지 않음
-    keypad(stdscr, TRUE);   // 기능 키(예: F1, 화살표 키 등) 허용
-    int ch;
-
-    printw("Press ESC to exit...\n");
-    refresh();
-
-    while((ch = getch()) != 27) { // 27은 ESC 키의 ASCII 코드
-        // ESC 키가 눌리지 않았을 때의 동작
-        printw("You pressed: %c\n", ch);
-        refresh();
     int pin = 27;
     if (wiringPiSetup() == -1) {
         printf("WiringPi setup failed!\n");
@@ -228,14 +214,6 @@ int main() {
         }
 
     }
-    }
-
-    // ESC 키가 눌렸을 때의 동작
-    printw("ESC key pressed. Exiting...\n");
-    refresh();
-    getch(); // 사용자 입력 대기
-
-    endwin(); // ncurses 종료
     close(sock);    
     return 0;
 }
