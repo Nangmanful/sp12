@@ -140,8 +140,7 @@ int main() {
             index_x = index[0] - '0'; // ASCII 값을 실제 숫자로 변환
             index_y = index[1] - '0'; // ASCII 값을 실제 숫자로 변환
             printf("%d %d", index_x, index_y);
-        }
-        printf("데이터 송수신 시작");
+            printf("데이터 송수신 시작");
 
         //서버 통신
 
@@ -166,6 +165,7 @@ int main() {
                 perror("Send failed");
                 // return 1;
             }
+        }
         /*
             algorithm 구현(linetracer)
         */
