@@ -84,7 +84,6 @@ void Car_Right(int speed1, int speed2) {
 }
 
 int main() {
-    char* qrrecognition();
     int pin = 27;
     if (wiringPiSetup() == -1) {
         printf("WiringPi setup failed!\n");
