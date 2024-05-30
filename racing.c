@@ -12,7 +12,7 @@
 #include <errno.h>
 #include <arpa/inet.h>
 #include <sys/socket.h>
-
+#include <netinet/in.h>
 
 #define TRACKING_PIN1 7  
 #define TRACKING_PIN2 0  
