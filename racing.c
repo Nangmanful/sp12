@@ -136,8 +136,8 @@ int main() {
         }
         else {
             Car_Stop();
-            index_x = (int)index[0];
-            index_y = (int)index[1];
+            index_x = index[0] - '0'; // ASCII 값을 실제 숫자로 변환
+            index_y = index[1] - '0'; // ASCII 값을 실제 숫자로 변환
             printf("%d %d", index_x, index_y);
         }
 
