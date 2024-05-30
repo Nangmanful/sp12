@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "qrrecognition.h" //function qrrecogntion();
+#include <netinet/in.h>
 #include "server.h"
 #include <string.h>
 #include <wiringPi.h>
@@ -12,7 +13,6 @@
 #include <errno.h>
 #include <arpa/inet.h>
 #include <sys/socket.h>
-#include <netinet/in.h>
 
 #define TRACKING_PIN1 7  
 #define TRACKING_PIN2 0  
