@@ -10,8 +10,8 @@ CFLAGS = -c
 TARGET = myprogram
 
 # 소스 파일
-C_SOURCES = main.c
-CPP_SOURCES = header.cpp
+C_SOURCES = racing.c
+CPP_SOURCES = qrrecognition.cpp
 
 # 객체 파일
 C_OBJS = $(C_SOURCES:.c=.o)
