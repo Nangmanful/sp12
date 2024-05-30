@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "qrrecognition.h" //function qrrecogntion();
-#include <netinet/in.h>
+#include <arpa/inet.h>
 #include "server.h"
 #include <string.h>
 #include <wiringPi.h>
@@ -11,7 +11,7 @@
 #include <linux/i2c-dev.h>
 #include <math.h>
 #include <errno.h>
-#include <arpa/inet.h>
+
 #include <sys/socket.h>
 
 #define TRACKING_PIN1 7  
