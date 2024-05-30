@@ -174,52 +174,189 @@ int main() {
         */
 
         // linetracer
-        while(1){
-            int v1 = digitalRead(TRACKING_PIN1);
-            int v2 = digitalRead(TRACKING_PIN2);
-            int v3 = digitalRead(TRACKING_PIN3);
-            int v4 = digitalRead(TRACKING_PIN4);
-            if(direct == 'l'){
-                // while(v1==1 && v2==0 && v3 ==0 && v4 ==1){
-                //     Car_Run(55,55);
-                //     v1 = digitalRead(TRACKING_PIN1);
-                //     v2 = digitalRead(TRACKING_PIN2);
-                //     v3 = digitalRead(TRACKING_PIN3);
-                //     v4 = digitalRead(TRACKING_PIN4);
-                // }
-                Car_Left(255, 255);
-                delay(500);
-            }
-            else if(direct == 'r'){
-                // while(v1==1 && v2==0 && v3 ==0 && v4 ==1){
-                //     Car_Run(55,55);
-                //     v1 = digitalRead(TRACKING_PIN1);
-                //     v2 = digitalRead(TRACKING_PIN2);
-                //     v3 = digitalRead(TRACKING_PIN3);
-                //     v4 = digitalRead(TRACKING_PIN4);
-                // }
-                Car_Right(255, 255);
-                delay(500);
-            }
-            while(strcmp(qrrecognition(), "77") == 0){
-                if(direct == 'b'){
-                    Car_Back(55,55);
-                    if(digitalRead(pin) == LOW){
-                        Car_Stop();    
-                        close(i2c_fd);   
+        char* qrvalue = qrrecognition();
+        if(direct == 'l'){ // left
+            while(strcmp(qrvalue, "77") == 0 || strcmp(qrvalue, index) == 0){
+                int v1 = digitalRead(TRACKING_PIN1);
+                int v2 = digitalRead(TRACKING_PIN2);
+                int v3 = digitalRead(TRACKING_PIN3);
+                int v4 = digitalRead(TRACKING_PIN4);
+                    if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 1) {
+                    Car_Run(40, 40);
+                    } 
+                    else if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 0 && trackValue4 == 1) {
+                        Car_Run(40, 40);
                     }
+                    else if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 0) {
+            
+                        Car_Run(40, 40);
+                    }
+                    else if (trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 1 && trackValue4 == 0) {
+                    
+                        Car_Left(100, 100);
+                        delay(80);
+                        Car_Run(50, 50);
+                        delay(30);
+                        Car_Left(100, 100);
+                        delay(80);
+                    }
+                else if (trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 1 && trackValue4 == 1) {
+                    Car_Left(100, 100);
+                    delay(80);
+                    Car_Run(50, 50);
+                    delay(30);
+                    Car_Left(100, 100);
+                    delay(80);
+                }
+                else if (trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 0 && trackValue4 == 0) {
+                    Car_Left(100, 100);
+                    delay(80);
+                    Car_Run(50, 50);
+                    delay(30);
+                    Car_Left(100, 100);
+                    delay(80);
+                } 
+                else if (trackValue2 == 1 && trackValue3 == 0 && trackValue1 == 0 && trackValue4 == 0) {
+                    Car_Back(60, 60);
+                } 
+                else if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 0 && trackValue4 == 0) {
+                    Car_Run(40, 40);
+                } 
+                else if(trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 0 && trackValue4 == 1){
+                    Car_Left(100, 100);
+                    delay(80);
+                    Car_Run(50, 50);
+                    delay(30);
+                    Car_Left(100, 100);
+                    delay(80);
+                }
+                else if(trackValue2 == 1 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 0){
+                    Car_Back(60, 60);
+                }
+                else if(trackValue2 == 1 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 1){
+                    Car_Back(60, 60);
+                }
+                else if(trackValue2 == 1 && trackValue3 == 0 && trackValue1 == 0 && trackValue4 == 1){
+                    Car_Back(60, 60);
+                }
+                else if(trackValue2 == 1 && trackValue3 == 1 && trackValue1 == 1 && trackValue4 == 1){
+                    Car_Back(60, 60);
                 }
                 else{
-                    Car_Run(55,55);
-                    if(digitalRead(pin) == LOW){
-                        Car_Stop();    
-                        close(i2c_fd);   
-                    }
-                }
+                    Car_Back(30, 30);
+                } 
+            delay(10);
+            qrvalue = qrrecognition();
             }
-            break;
+    }
+    else if(direct == 'r'){
+        while(strcmp(qrvalue, "77") == 0 || strcmp(qrvalue, index) == 0){
+        int v1 = digitalRead(TRACKING_PIN1);
+        int v2 = digitalRead(TRACKING_PIN2);
+        int v3 = digitalRead(TRACKING_PIN3);
+        int v4 = digitalRead(TRACKING_PIN4);
+        if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 1) {
+                    Car_Run(40, 40);
+        } 
+        else if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 0 && trackValue4 == 1) {
+                        Car_Run(40, 40);
         }
-        Car_Stop();
+                    else if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 0) {
+                        Car_Run(40, 40);
+                    }
+                    else if (trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 1 && trackValue4 == 0) {
+                        Car_Back(60, 60);
+                    }
+                else if (trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 1 && trackValue4 == 1) {
+                    Car_Back(60, 60);
+                }
+                else if (trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 0 && trackValue4 == 0) {
+                    Car_Back(60, 60);
+                } 
+                else if (trackValue2 == 1 && trackValue3 == 0 && trackValue1 == 0 && trackValue4 == 0) {
+                    Car_Right(100, 100);
+                    delay(80);
+                    Car_Run(50, 50);
+                    delay(30);
+                    Car_Right(100, 100);
+                    delay(80);
+                } 
+                else if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 0 && trackValue4 == 0) {
+                    Car_Run(40, 40);
+                } 
+                else if(trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 0 && trackValue4 == 1){
+                    Car_Back(60, 60);
+                }
+                else if(trackValue2 == 1 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 0){
+                
+                    Car_Right(100, 100);
+                    delay(80);
+                    Car_Run(50, 50);
+                    delay(30);
+                    Car_Right(100, 100);
+                    delay(80);
+                }
+                else if(trackValue2 == 1 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 1){
+                    
+                    Car_Right(100, 100);
+                    delay(80);
+                    Car_Run(50, 50);
+                    delay(30);
+                    Car_Right(100, 100);
+                    delay(80);
+                }
+                else if(trackValue2 == 1 && trackValue3 == 0 && trackValue1 == 0 && trackValue4 == 1){
+                    Car_Right(100, 100);
+                    delay(80);
+                    Car_Run(50, 50);
+                    delay(30);
+                    Car_Right(100, 100);
+                    delay(80);
+                }
+                else if(trackValue2 == 1 && trackValue3 == 1 && trackValue1 == 1 && trackValue4 == 1){
+                    Car_Back(60, 60);
+                }
+                else{
+                    Car_Back(30, 30);
+                } 
+            delay(10);
+            qrvalue = qrrecognition();
+            }
+    }
+    else if(direct == 'f'){
+        while(strcmp(qrvalue, "77") == 0 || strcmp(qrvalue, index) == 0){
+        int v1 = digitalRead(TRACKING_PIN1);
+        int v2 = digitalRead(TRACKING_PIN2);
+        int v3 = digitalRead(TRACKING_PIN3);
+        int v4 = digitalRead(TRACKING_PIN4);
+        if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 1) {
+                    Car_Run(40, 40);
+        }
+        else{
+                    Car_Run(40, 40);
+        } 
+            delay(10);
+            qrvalue = qrrecognition();
+        }
+    }
+
+    else if(direct == 'b'){
+       while(strcmp(qrvalue, "77") == 0 || strcmp(qrvalue, index) == 0){
+        int v1 = digitalRead(TRACKING_PIN1);
+        int v2 = digitalRead(TRACKING_PIN2);
+        int v3 = digitalRead(TRACKING_PIN3);
+        int v4 = digitalRead(TRACKING_PIN4);
+        if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 1) {
+                    Car_Run(40, 40);
+        } 
+        else{
+                    Car_Back(30, 30);
+        } 
+            delay(10);
+            qrvalue = qrrecognition();
+
+        }
+    }
     }
     close(sock);    
     return 0;
