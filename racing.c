@@ -211,6 +211,21 @@ int main() {
         
         // linetracer
         char* qrvalue = qrrecognition();
+        if(index_x ==0 && index_y == 0){
+            direct == 'f';
+        }
+        else if(index_x ==0 && index_y == 1){
+            direct == 'l';
+        }
+        else if(index_x ==1 && index_y == 0){
+            direct == 'r';
+        }
+        else if(index_x == 1 && index_y == 1){
+            direct == 'b';
+        }
+        else if(index_x == 2 && index_y == 2){
+            direct == 'n';
+        }
         if(direct == 'l'){ // left
             while(strcmp(qrvalue, "77") == 0 || strcmp(qrvalue, index) == 0){
                 int v1 = digitalRead(TRACKING_PIN1);
@@ -392,6 +407,9 @@ int main() {
             qrvalue = qrrecognition();
 
         }
+    }
+    else if(direct == 'n'){
+        Car_Stop();
     }
     }
     close(sock);    
