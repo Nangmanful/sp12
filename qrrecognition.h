@@ -1,14 +1,10 @@
 #pragma once
 
-#include <string>
-
-#include <ctime>
-
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-std::string qrrecognition();
+const char* qrrecognition();
 
 #ifdef __cplusplus
 }
