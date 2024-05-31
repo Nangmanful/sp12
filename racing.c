@@ -178,7 +178,7 @@ int main() {
                 Car_Stop();
                 break;
             }
-            if (strcmp(index, "21") {
+            if (strcmp(index, "21") == 0) {
                 Car_Run(20,20);
                 delay(1000);
                 Car_Run(40,40);
