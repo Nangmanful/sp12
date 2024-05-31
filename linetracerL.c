@@ -223,7 +223,7 @@ int main() {
             f = 0;
             n = 0;
             k += 1;
-            Car_Back(30, 30);
+            Car_Back(50, 50);
         } 
         delay(10);
     }
