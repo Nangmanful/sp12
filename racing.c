@@ -179,22 +179,29 @@ int main() {
                 break;
             }
             if (strcmp(index, "21") == 0) {
+                Car_Run(60,60);
+                delay(1000);
                 Car_Run(20,20);
                 delay(1000);
                 Car_Run(40,40);
-                delay(1000);
-                Car_Run(30,30);
-                delay(1000);
+                delay(1000);                
+            }
+            if (strcmp(index, "02" == 0) {
                 Car_Left(40,40);
-                delay(1000);
+                delay(2000);
                 Car_Left(40,-40);
+                delay(2000);
+                Car_Stop();
                 delay(1000);
-                
+                Car_Back(40,40);
+                delay(2000);
+                Car_Back(-40,40);
+                delay(2000);
             }
 
             //계산 후 direct 정해짐
             if (strcmp(index, "00") == 0) {      //direct == f
-                printf("00직진진\0");
+                printf("00직진\0");
                 Car_Run(60, 60);       //일단 라인벗어나지 않는 거 가정. qr지나갈 때까지 달리기
                 delay(20);
                 while (qrrecognition() == "77") {
