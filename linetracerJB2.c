@@ -192,12 +192,12 @@ int main() {
                 delay(100);
             }
             else if(n == 7){
-                Car_Back(100, 100);   
+                Car_Run(100, 100);   
                 delay(30);
                 f += 1;
             }
             else{
-            Car_Run(40,40);
+            Car_Back(40,40);
             n += 1;
             }
         }
@@ -205,7 +205,7 @@ int main() {
             f = 0;
             n = 0;
             k += 1;
-            Car_Back(50, 50);
+            Car_Run(50, 50);
         } 
         delay(10);
     }
