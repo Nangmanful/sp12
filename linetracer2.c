@@ -175,12 +175,12 @@ int main() {
             n = 0;
             k = 0;            
             printf("what\n");
-            Car_Left(80, 80);
-            delay(100);
-            Car_Run(50, 50);
-            delay(30);
-            Car_Left(80, 80);
-            delay(100);
+            // Car_Left(80, 80);
+            // delay(100);
+            // Car_Run(50, 50);
+            // delay(30);
+            // Car_Left(80, 80);
+            // delay(100);
             printf("the\n");
         } 
         else if(trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 0 && trackValue4 == 1){
