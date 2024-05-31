@@ -131,7 +131,7 @@ int main() {
             k = 0;
             Car_Left(50, 50);
             delay(80);
-            Car_Back(50, 50);
+            Car_Run(50, 50);
             delay(30);
             Car_Left(50, 50);
             delay(80);
@@ -141,7 +141,7 @@ int main() {
             k = 0;
             Car_Left(50, 50);
             delay(80);
-            Car_Back(50, 50);
+            Car_Run(50, 50);
             delay(30);
             Car_Left(50, 50);
             delay(80);
@@ -151,7 +151,7 @@ int main() {
             k = 0;
             Car_Left(50, 50);
             delay(80);
-            Car_Back(50, 50);
+            Car_Run(50, 50);
             delay(30);
             Car_Left(50, 50);
             delay(80);
@@ -161,7 +161,7 @@ int main() {
             k = 0;
             Car_Right(50, 50);
             delay(80);
-            Car_Back(50, 50);
+            Car_Run(50, 50);
             delay(30);
             Car_Right(50, 50);
             delay(80);
@@ -178,7 +178,7 @@ int main() {
             k = 0;
             Car_Left(50, 50);
             delay(80);
-            Car_Back(50, 50);
+            Car_Run(50, 50);
             delay(30);
             Car_Left(50, 50);
             delay(80);
@@ -188,7 +188,7 @@ int main() {
             k = 0;
             Car_Right(50, 50);
             delay(80);
-            Car_Back(50, 50);
+            Car_Run(50, 50);
             delay(30);
             Car_Right(50, 50);
             delay(80);
@@ -198,7 +198,7 @@ int main() {
             k = 0;
             Car_Right(50, 50);
             delay(80);
-            Car_Back(50, 50);
+            Car_Run(50, 50);
             delay(30);
             Car_Right(50, 50);
             delay(80);
@@ -208,7 +208,7 @@ int main() {
             k = 0;
             Car_Right(50, 50);
             delay(80);
-            Car_Back(50, 50);
+            Car_Run(50, 50);
             delay(30);
             Car_Right(50, 50);
             delay(80);
