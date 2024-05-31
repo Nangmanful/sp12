@@ -319,6 +319,31 @@ int main() {
 
         // linetracer
 
+
+        //test set
+    if(index_x==0 && index_y==0){
+        run_direct = 'f';   
+    }
+    else if(index_x == 0 && index_y ==1){
+        run_direct = 'l';
+    }
+    else if(index_x == 1 && index_y == 1){
+        run_direct = 'r';
+    }
+    else if(index_x == 1 && index_y ==2){
+        run_direct = 'l';
+    }
+    else if(index_x == 2 && index_y ==2){
+        run_direct = 'l';
+    }
+    else if(index_x == 2 && index_y ==1){
+        run_direct = 'f';
+    }
+    else{
+        run_direct ='f';
+    }
+        //test set
+        
     if(run_direct == 'l'){ // left
         if((index_x == 0 && index_y == 0) || (index_x ==4 && index_y == 0)||(index_x == 0 && index_y == 4) || (index_x ==4 && index_y == 4)){
             int n = 0; 
