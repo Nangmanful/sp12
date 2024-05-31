@@ -212,19 +212,9 @@ int main() {
             delay(80);
         }
         else if(trackValue2 == 1 && trackValue3 == 1 && trackValue1 == 1 && trackValue4 == 1){
-            if (n == 10){
-                Car_Stop();
-                delay(100);
-            }
-            else if(n == 7){
-                Car_Back(100, 100);   
-                delay(30);
-                f += 1;
-            }
-            else{
-            Car_Run(40,40);
-            n += 1;
-            }
+            Car_Back(50, 50);   
+            delay(20);
+            f += 1;
         }
         else{
             f = 0;
