@@ -133,9 +133,11 @@ int main() {
         char* index;
         DGIST info;
         client_info player_info;
+        client_info enemy_info;
         Node node;
         Item now_item;
         ClientAction game_state;
+        Car_Stop();
         printf("qr시작\0");
         index = qrrecognition();
         printf("qr끝\0");
@@ -143,7 +145,6 @@ int main() {
                 printf("no qr\0");
         }
         else {
-            Car_Stop();
             index_x = index[0] - '0'; // ASCII 값을 실제 숫자로 변환
             index_y = index[1] - '0'; // ASCII 값을 실제 숫자로 변환
             printf("%d %d\n", index_x, index_y);
@@ -159,15 +160,65 @@ int main() {
 
             // 버퍼를 구조체로 복사
             player_info = info.players[0];
+            enemy_info = info.players[1];
+            int ex;
+            int ey;
+            ex = enemy_info.col;
+            ey = enemy_info.row;
             node = info.map[index_x][index_y];
             now_item = node.item;
             int item_state;
             item_state = now_item.status;
 
+            //bomb
+            int eleft_x = ex;
+            int eleft_y = ey-1;
+            int eup_x = ex-1;
+            int eup_y = ey;
+            int eright_x = ex;
+            int eright_y = ey+1;
+            int edown_x = ex+1;
+            int edown_y = ey;
+    
+            Node enode_r, enode_l, enode_u, enode_d, ebest_node;
+            Item er_item, el_item, eu_item, ed_item;
+    
+            if(eleft_x>=0 && eleft_x<=4 && eleft_y>=0 && eleft_y<=4){
+                enode_l = info.map[eleft_x][eleft_y];
+                el_item = enode_l.item;}
+            else{el_item.score = -100;}
+            if(eright_x>=0 && eright_x<=4 && eright_y>=0 && eright_y<=4){
+                enode_r = info.map[eright_x][eright_y];
+                er_item = enode_r.item;}
+            else{er_item.score = -100;}
+            if(eup_x>=0 && eup_x<=4 && eup_y>=0 && eup_y<=4){
+                enode_u = info.map[eup_x][eup_y];
+                eu_item = enode_u.item;}
+            else{eu_item.score = -100;}
+            if(edown_x>=0 && edown_x<=4 && edown_y>=0 && edown_y<=4){
+                enode_d = info.map[edown_x][edown_y];
+                ed_item = enode_d.item;}
+            else{ed_item.score = -100;}
+    
+            if(el_item.score>er_item.score){ebest_node = enode_l;}
+            else{ebest_node = enode_r;}
+            Item ebest_item = ebest_node.item;
+            if(eu_item.score>ebest_item.score){ebest_node = enode_u;}
+            if(ed_item.score>ebest_item.score){ebest_node = enode_d;}
+    
+            int efuture_x = ebest_node.col;
+            int efuture_y = ebest_node.row;
+            //bomb check
+
+            
             game_state.col = index_x;
             game_state.row = index_y;
-            game_state.action = move;
-
+            if(index_x == efuture_x && index_y == efuture_y){
+                game_state.action = setBomb;
+            }
+            else{
+                game_state.action = move;
+            }
             if (send(sock, &game_state, sizeof(ClientAction), 0) < 0) {
                 perror("Send failed\0");
                 // return 1;
