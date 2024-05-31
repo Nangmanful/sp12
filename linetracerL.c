@@ -226,14 +226,10 @@ int main() {
             }
         }
         else{
+            f = 0;
             n = 0;
-            k = 0;
-            Car_Left(100, 100);
-            delay(80);
-            Car_Run(50, 50);
-            delay(30);
-            Car_Left(100, 100);
-            delay(80);
+            k += 1;
+            Car_Back(30, 30);
         } 
         delay(10);
     }
