@@ -214,6 +214,7 @@ int main() {
 
         if(l_item.score>r_item.score){best_node = node_l;}
         else{best_node = node_r;}
+        Item best_item = best_node.item;
         if(u_item.score>best_item.score){best_node = node_u;}
         if(d_item.score>best_item.score){best_node = node_d;}
 
