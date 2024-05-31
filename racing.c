@@ -144,7 +144,7 @@ int main() {
         else {
             index_x = index[0] - '0'; // ASCII 값을 실제 숫자로 변환
             index_y = index[1] - '0'; // ASCII 값을 실제 숫자로 변환
-            printf("%d %d\n", index_x, index_y);
+            printf("%d %d\0", index_x, index_y);
             printf("데이터 송수신 시작\0");
 
             //서버 통신
