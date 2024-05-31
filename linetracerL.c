@@ -103,7 +103,7 @@ int main() {
         int trackValue2 = digitalRead(TRACKING_PIN2);
         int trackValue3 = digitalRead(TRACKING_PIN3);
         int trackValue4 = digitalRead(TRACKING_PIN4);
-
+        trackValue4 = 1;
         // 각 트래킹 핀의 값을 출력
         printf("Track Values: %d %d %d %d\n", trackValue1, trackValue2, trackValue3, trackValue4);
 
@@ -226,10 +226,14 @@ int main() {
             }
         }
         else{
-            f = 0;
             n = 0;
-            k += 1;
-            Car_Back(30, 30);
+            k = 0;
+            Car_Left(100, 100);
+            delay(80);
+            Car_Run(50, 50);
+            delay(30);
+            Car_Left(100, 100);
+            delay(80);
         } 
         delay(10);
     }
