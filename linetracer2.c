@@ -16,6 +16,7 @@
 #define I2C_ADDR 0x16 
 
 int i2c_fd;
+
 void i2c_init() {
     if ((i2c_fd = open("/dev/i2c-1", O_RDWR)) < 0) {
         perror("Failed to open the i2c bus");
@@ -27,16 +28,18 @@ void i2c_init() {
     }
 }
 
-void write_u8(int reg, int data) {
+bool write_u8(int reg, int data) {
     unsigned char buffer[2];
     buffer[0] = reg;
     buffer[1] = data;
     if (write(i2c_fd, buffer, 2) != 2) {
         perror("Failed to write to the i2c bus");
+        return false;
     }
+    return true;
 }
 
-void write_array(int reg, unsigned char *data, int length) {
+bool write_array(int reg, unsigned char *data, int length) {
     unsigned char buffer[length + 1];
     buffer[0] = reg;
     for (int i = 0; i < length; i++) {
@@ -44,7 +47,9 @@ void write_array(int reg, unsigned char *data, int length) {
     }
     if (write(i2c_fd, buffer, length + 1) != length + 1) {
         perror("Failed to write to the i2c bus");
+        return false;
     }
+    return true;
 }
 
 void Ctrl_Car(int l_dir, int l_speed, int r_dir, int r_speed) {
@@ -74,9 +79,8 @@ void Car_Right(int speed1, int speed2) {
     Ctrl_Car(1, speed1, 0, speed2);
 }
 
-
 int main() {
-    int pin =27;
+    int pin = 27;
     if (wiringPiSetup() == -1) {
         printf("WiringPi setup failed!\n");
         return 1;
@@ -90,6 +94,7 @@ int main() {
     pinMode(TRACKING_PIN4, INPUT);
 
     i2c_init();
+
     int n = 0;
     int f = 0;
     int k = 0;
@@ -98,6 +103,7 @@ int main() {
         if(digitalRead(pin) == LOW){
             Car_Stop();    
             close(i2c_fd);   
+            break;
         }
         int trackValue1 = digitalRead(TRACKING_PIN1);
         int trackValue2 = digitalRead(TRACKING_PIN2);
@@ -173,11 +179,13 @@ int main() {
         } 
         else if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 0 && trackValue4 == 0) {
             n = 0;
-            k = 0;            
-            printf("what\n");
-            Car_Left(80, 80);
-            delay(1000);
-            printf("the\n");
+            k = 0;
+            Car_Left(100, 100);
+            delay(80);
+            Car_Run(50, 50);
+            delay(30);
+            Car_Left(100, 100);
+            delay(80);
         } 
         else if(trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 0 && trackValue4 == 1){
             n = 0;
@@ -230,8 +238,8 @@ int main() {
                 f += 1;
             }
             else{
-            Car_Run(40,40);
-            n += 1;
+                Car_Run(40,40);
+                n += 1;
             }
         }
         else{
