@@ -186,7 +186,7 @@ int main() {
                 Car_Run(40,40);
                 delay(1000);                
             }
-            if (strcmp(index, "02" == 0) {
+            if (strcmp(index, "02") == 0) {
                 Car_Left(40,40);
                 delay(2000);
                 Car_Left(40,-40);
