@@ -121,6 +121,9 @@ int main() {
                 // return 1;
     }
 
+    int present_x = -1;
+    int present_y = -1;
+
     printf("Connected to server\0");
     while (1) {
         char direct = 'r';
@@ -160,8 +163,8 @@ int main() {
             int item_state;
             item_state = now_item.status;
 
-            game_state.row = index_x;
-            game_state.col = index_y;
+            game_state.col = index_x;
+            game_state.row = index_y;
             game_state.action = move;
 
             if (send(sock, &game_state, sizeof(ClientAction), 0) < 0) {
@@ -173,13 +176,52 @@ int main() {
             algorithm 구현(linetracer)
         */
 
+        // Finding future_x & future_y
+
+        int past_x = present_x;
+        int past_y = present_y;
+        present_x = index_x;
+        present_y = index_y;
+
+        int left_x = present_x;
+        int left_y = present_y-1;
+        int up_x = present_x-1;
+        int up_y = present_y;
+        int right_x = present_x;
+        int right_y = present_y+1;
+        int down_x = present_x+1;
+        int down_y = present_y;
+
+        Node node_r, node_l, node_u, node_d, best_node;
+        Item r_item, l_item, u_item, d_item;
+
+        if(left_x>=0 && left_x<=4 && left_y>=0 && left_y<=4){
+            node_l = info.map[left_x][left_y];
+            l_item = node_l.item;}
+        else{l_item.score = -100;}
+        if(right_x>=0 && right_x<=4 && right_y>=0 && right_y<=4){
+            node_r = info.map[right_x][right_y];
+            r_item = node_r.item;}
+        else{r_item.score = -100;}
+        if(up_x>=0 && up_x<=4 && up_y>=0 && up_y<=4){
+            node_u = info.map[up_x][up_y];
+            u_item = node_u.item;}
+        else{u_item.score = -100;}
+        if(down_x>=0 && down_x<=4 && down_y>=0 && down_y<=4){
+            node_d = info.map[down_x][down_y];
+            d_item = node_d.item;}
+        else{d_item.score = -100;}
+
+        if(l_item.score>r_item.score){best_node = node_l;}
+        else{best_node = node_r;}
+        if(u_item.score>best_item.score){best_node = node_u;}
+        if(d_item.score>best_item.score){best_node = node_d;}
+        int future_x = best_node.col;
+        int future_y = best_node.row;
+
+
         // Greedy algorithm
-        int past_x;
-        int past_y;
-        int present_x = index_x;
-        int present_y = index_y;
-        int future_x;
-        int future_y;
+        
         char run_direct;
 
         int fpp_x = future_x-past_x;
@@ -189,6 +231,17 @@ int main() {
         int pp_x = present_x-past_x;
         int pp_y = present_y-past_y;
 
+        if(past_x==-1 && past_y==-1){
+            if(present_x==0 && present_y==0){
+                if(fp_x==0 && fp_y==1){run_direct = 'f';}
+                else if(fp_x==1 && fp_y==0){run_direct = 'r';}
+            else if(present_x==4 && present_y==4){
+                if(fp_x==0 && fp_y==-1){run_direct = 'f';}
+                else if(fp_x==-1 && fp_y==0){run_direct = 'r';}
+            }
+            }
+        }
+        else{
         if(fpp_x==0 && fpp_y==0){run_direct = 'b';}
         else if(abs(fpp_x)==2 && fpp_y==0){run_direct = 'f';}
         else if(fpp_x==0 && abs(fpp_y)==2){run_direct = 'f';}
@@ -208,7 +261,8 @@ int main() {
             if(fp_x==-1 && fp_y==0){run_direct = 'r';}
             else if(fp_x==1 && fp_y==0){run_direct = 'l';}
         }
-        
+        }
+
         // linetracer
         char* qrvalue = qrrecognition();
         if(index_x ==0 && index_y == 0){
