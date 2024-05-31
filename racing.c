@@ -357,7 +357,7 @@ int main() {
     time_t current_time = start_time;
 
     // 2초 동안 루프를 실행합니다.
-    while (difftime(current_time, start_time) < 2.0) {
+    while (difftime(current_time, start_time) < 3.0) {
 
         if(digitalRead(pin) == LOW){
             Car_Stop();    
@@ -513,7 +513,7 @@ int main() {
     time_t current_time = start_time;
 
     // 2초 동안 루프를 실행합니다.
-    while (difftime(current_time, start_time) < 2.0){
+    while (difftime(current_time, start_time) < 3.0){
         if(digitalRead(pin) == LOW){
             Car_Stop();    
             close(i2c_fd);   
@@ -673,7 +673,7 @@ int main() {
     time_t current_time = start_time;
 
     // 2초 동안 루프를 실행합니다.
-    while (difftime(current_time, start_time) < 2.0){
+    while (difftime(current_time, start_time) < 3.0){
         if(digitalRead(pin) == LOW){
             Car_Stop();    
             close(i2c_fd);   
@@ -839,7 +839,7 @@ int main() {
     time_t current_time = start_time;
 
     // 2초 동안 루프를 실행합니다.
-    while (difftime(current_time, start_time) < 2.0) {
+    while (difftime(current_time, start_time) < 3.0) {
 
         if(digitalRead(pin) == LOW){
             Car_Stop();    
@@ -994,7 +994,7 @@ int main() {
     time_t current_time = start_time;
 
     // 2초 동안 루프를 실행합니다.
-    while (difftime(current_time, start_time) < 2.0) {
+    while (difftime(current_time, start_time) < 3.0) {
         if(digitalRead(pin) == LOW){
             Car_Stop();    
             close(i2c_fd);   
@@ -1152,7 +1152,7 @@ time_t start_time = time(NULL);
     time_t current_time = start_time;
 
     // 2초 동안 루프를 실행합니다.
-    while (difftime(current_time, start_time) < 2.0) {
+    while (difftime(current_time, start_time) < 3.0) {
         if(digitalRead(pin) == LOW){
             Car_Stop();    
             close(i2c_fd);   
@@ -1320,7 +1320,7 @@ time_t start_time = time(NULL);
     time_t current_time = start_time;
 
     // 2초 동안 루프를 실행합니다.
-    while (difftime(current_time, start_time) < 2.0) {
+    while (difftime(current_time, start_time) < 3.0) {
 
         if(digitalRead(pin) == LOW){
             Car_Stop();    
