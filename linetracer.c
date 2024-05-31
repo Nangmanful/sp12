@@ -213,7 +213,7 @@ int main() {
         else if(trackValue2 == 1 && trackValue3 == 1 && trackValue1 == 1 && trackValue4 == 1){
             if (n == 10){
                 Car_Stop();
-                delay(10000);
+                delay(100);
             }
             else if(n == 7){
                 Car_Back(100, 100);   
