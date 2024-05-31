@@ -116,92 +116,92 @@ int main() {
         }
         if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 1) {
             n = 0;
-            Car_Run(40, 40);
+            Car_Run(50, 50);
         } 
         else if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 0 && trackValue4 == 1) {
             n = 0;
-            Car_Run(40, 40);
+            Car_Run(50, 50);
         }
         else if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 0) {
             n = 0;
-            Car_Run(40, 40);
+            Car_Run(50, 50);
         }
         else if (trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 1 && trackValue4 == 0) {
             n = 0;
             k = 0;
-            Car_Left(140, 140);
+            Car_Left(140, 100);
             delay(100);
             Car_Run(50, 50);
             delay(30);
-            Car_Left(140, 140);
+            Car_Left(140, 100);
             delay(100);
         }
         else if (trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 1 && trackValue4 == 1) {
             n = 0;
             k = 0;
-            Car_Left(140, 140);
+            Car_Left(140, 100);
             delay(100);
             Car_Run(50, 50);
             delay(30);
-            Car_Left(140, 140);
+            Car_Left(140, 100);
             delay(100);
         }
         else if (trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 0 && trackValue4 == 0) {
             n = 0;
             k = 0;
-            Car_Left(140, 140);
+            Car_Left(140, 100);
             delay(100);
             Car_Run(50, 50);
             delay(30);
-            Car_Left(140, 140);
+            Car_Left(140, 100);
             delay(100);
         } 
         else if (trackValue2 == 1 && trackValue3 == 0 && trackValue1 == 0 && trackValue4 == 0) {
             n = 0;
             k = 0;
-            Car_Left(140, 140);
+            Car_Left(140, 100);
             delay(100);
             Car_Run(50, 50);
             delay(30);
-            Car_Left(140, 140);
+            Car_Left(140, 100);
             delay(100);
         } 
         else if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 0 && trackValue4 == 0) {
             n = 0;
-            Car_Run(40, 40);
+            Car_Run(50, 50);
         } 
         else if(trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 0 && trackValue4 == 1){
             n = 0;
             k = 0;
-            Car_Left(140, 140);
+            Car_Left(140, 100);
             delay(100);
             Car_Run(50, 50);
             delay(30);
-            Car_Left(140, 140);
+            Car_Left(140, 100);
             delay(100);
         }
         else if(trackValue2 == 1 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 0){
             n = 0;
             k = 0;
-            Car_Right(100, 100);
+            Car_Right(140, 100);
             delay(80);
             Car_Run(50, 50);
             delay(30);
-            Car_Right(100, 100);
+            Car_Right(140, 100);
             delay(80);
         }
         else if(trackValue2 == 1 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 1){
             n = 0;
-            Car_Run(40, 40);
+            Car_Run(50, 50);
         }
         else if(trackValue2 == 1 && trackValue3 == 0 && trackValue1 == 0 && trackValue4 == 1){
             n = 0;
             k = 0;
-            Car_Right(100, 100);
+            Car_Right(140, 100);
             delay(80);
             Car_Run(50, 50);
             delay(30);
-            Car_Right(100, 100);
+            Car_Right(140, 100);
             delay(80);
         }
         else if(trackValue2 == 1 && trackValue3 == 1 && trackValue1 == 1 && trackValue4 == 1){
@@ -215,15 +215,15 @@ int main() {
                 f += 1;
             }
             else{
-            Car_Run(40,40);
-            n += 1;
+            Car_Run(50, 50);
+                n += 1;
             }
         }
         else{
             f = 0;
             n = 0;
             k += 1;
-            Car_Back(50, 50);
+            Car_Back(70, 70);
         } 
         delay(10);
     }
