@@ -126,7 +126,9 @@ int main() {
             n = 0;
             k = 0;
             Car_Run(50, 50);
-            delay(50);
+            delay(30);
+            Car_Stop();
+            delay(30);
             Car_Right(100, 100);
             delay(80);
             Car_Run(50, 50);
