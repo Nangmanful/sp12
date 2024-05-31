@@ -178,14 +178,19 @@ int main() {
 
         // Finding future_x & future_y
 
-        int past_x = present_x, past_y = present_y;
+        int past_x = present_x;
+        int past_y = present_y;
         present_x = index_x;
         present_y = index_y;
 
-        int left_x = present_x, left_y = present_y-1;
-        int up_x = present_x-1, up_y = present_y;
-        int right_x = present_x, right_y = present_y+1;
-        int down_x = present_x+1, down_y = present_y;
+        int left_x = present_x;
+        int left_y = present_y-1;
+        int up_x = present_x-1;
+        int up_y = present_y;
+        int right_x = present_x;
+        int right_y = present_y+1;
+        int down_x = present_x+1;
+        int down_y = present_y;
 
         Node node_r, node_l, node_u, node_d, best_node;
         Item r_item, l_item, u_item, d_item;
@@ -211,8 +216,9 @@ int main() {
         else{best_node = node_r;}
         if(u_item.score>best_item.score){best_node = node_u;}
         if(d_item.score>best_item.score){best_node = node_d;}
-        
-        int future_x = best_node.col, future_y = best_node.row;
+
+        int future_x = best_node.col;
+        int future_y = best_node.row;
 
 
         // Greedy algorithm
