@@ -173,13 +173,13 @@ int main() {
                 // return 1;
             }
 
-            if (index == "22") {
+            if (strcmp(index, "22") == 0) {
                 Car_Stop();
                 break;
             }
 
             //계산 후 direct 정해짐
-            if (index == "00") {      //direct == f
+            if (strcmp(index, "00") == 0) {      //direct == f
                 Car_Run(60, 60);       //일단 라인벗어나지 않는 거 가정. qr지나갈 때까지 달리기
                 delay(20);
                 while (qrrecognition() == "77") {
@@ -203,7 +203,7 @@ int main() {
                 }
                 break;
             }
-            else if (index == "01") {  //direct == left
+            else if (strcmp(index, "01") == 0) {  //direct == left
                 int tv1 = 2;
                 int tv2 = 2;
                 int tv3 = 2;
@@ -247,7 +247,7 @@ int main() {
                 }
                 break;
             }
-            else if (index == "10") {  //direct == right
+            else if (strcmp(index, "10") == 0) {  //direct == right
                 int tv1 = 2;
                 int tv2 = 2;
                 int tv3 = 2;
@@ -292,7 +292,7 @@ int main() {
                 break;
             }
 
-            else if (index == "11") { //direct == b
+            else if (strcmp(index, "11") == 0) { //direct == b
                 Car_Back(100, 100);
                 delay(100);
                 break;
