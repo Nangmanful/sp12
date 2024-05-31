@@ -178,6 +178,19 @@ int main() {
                 Car_Stop();
                 break;
             }
+            if (strcmp(index, "21") {
+                Car_Run(20,20);
+                delay(1000);
+                Car_Run(40,40);
+                delay(1000);
+                Car_Run(30,30);
+                delay(1000);
+                Car_Left(40,40);
+                delay(1000);
+                Car_Left(40,-40);
+                delay(1000);
+                
+            }
 
             //계산 후 direct 정해짐
             if (strcmp(index, "00") == 0) {      //direct == f
@@ -301,6 +314,9 @@ int main() {
                 Car_Back(100, 100);
                 delay(100);
                 break;
+            }
+            else {
+                ;
             }
 
         }
