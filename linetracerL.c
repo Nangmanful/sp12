@@ -103,6 +103,7 @@ int main() {
         int trackValue2 = digitalRead(TRACKING_PIN2);
         int trackValue3 = digitalRead(TRACKING_PIN3);
         int trackValue4 = digitalRead(TRACKING_PIN4);
+        trackValue3 = 1;
         trackValue4 = 1;
         // 각 트래킹 핀의 값을 출력
         printf("Track Values: %d %d %d %d\n", trackValue1, trackValue2, trackValue3, trackValue4);
