@@ -126,7 +126,7 @@ int main(int argc, char *argv[]) {
             // 서버 주소 구조체 설정
     server_addr.sin_family = AF_INET;
     server_addr.sin_addr.s_addr = inet_addr(ip_address);
-    server_addr.sin_port = htons(PORT);
+    server_addr.sin_port = htons(port);
 
             // 서버에 연결
     if (connect(sock, (struct sockaddr*)&server_addr, sizeof(server_addr)) < 0) {
