@@ -106,7 +106,7 @@ int main() {
             Car_Run(50, 50);
             delay(100);
         } 
-        else if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 0 && trackValue4 == 1)  //검검검흰
+        else if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 0 && trackValue4 == 1) {  //검검검흰
             Car_Run(50,50);
             delay(100);
         }
