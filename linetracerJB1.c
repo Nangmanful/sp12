@@ -170,7 +170,7 @@ int main() {
             Car_Run(40, 40);
             delay(400);
             Car_Right(200, 200);
-            delay(300);
+            delay(400);
             Car_Run(40, 40);
             delay(400);
         } 
