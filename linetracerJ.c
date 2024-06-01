@@ -114,7 +114,7 @@ int main() {
             f = 0;
             l += 1;
         }
-        if (trackValue1 == 0 && trackValue2 == 0 && trackValue3 == 0 && trackValue4 == 1)) {
+        if (trackValue1 == 0 && trackValue2 == 0 && trackValue3 == 0 && trackValue4 == 1) {
             n = 0;
             k = 0;
             Car_Right(100, 100);
