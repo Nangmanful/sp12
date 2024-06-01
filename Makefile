@@ -7,7 +7,7 @@ CXXFLAGS = -c `pkg-config --cflags opencv4`
 CFLAGS = -c
 
 # 링크 옵션
-LDFLAGS = `pkg-config --libs opencv4` -lwiringPi
+LDFLAGS = `pkg-config --libs opencv4` -lwiringPi -lpthread
 
 # 대상 파일
 TARGET = myprogram
