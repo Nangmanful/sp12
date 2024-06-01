@@ -167,6 +167,8 @@ int main() {
             delay(100);
             Car_Left(200, 200);
             delay(800);
+            Car_Run(40, 40);
+            delay(100);
             Car_Right(200, 200);
             delay(250);
         } 
