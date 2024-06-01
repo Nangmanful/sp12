@@ -869,7 +869,6 @@ time_t start_time = time(NULL);
     else if(run_direct == 'n'){
     }
     }
-	free(index);
 }
     close(sock);    
     return 0;
