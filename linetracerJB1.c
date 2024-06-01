@@ -165,10 +165,10 @@ int main() {
             n = 0;
             Car_Right(200, 200);
             delay(200);
-            Car_Left(70, 70);
-            delay(2000);
+            Car_Left(100, 100);
+            delay(1800);
             Car_Run(40, 40);
-            delay(300);
+            delay(500);
             Car_Right(200, 200);
             delay(120);
         } 
