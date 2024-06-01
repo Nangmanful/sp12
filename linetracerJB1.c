@@ -165,12 +165,12 @@ int main() {
             n = 0;
             Car_Right(200, 200);
             delay(200);
-            Car_Left(200, 200);
-            delay(900);
+            Car_Left(100, 100);
+            delay(1500);
             Car_Run(40, 40);
             delay(300);
             Car_Right(200, 200);
-            delay(250);
+            delay(120);
         } 
         else if(trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 0 && trackValue4 == 1){
             n = 0;
