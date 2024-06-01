@@ -176,7 +176,7 @@ int main() {
             Car_Run(80,80);
             delay(100);
         }
-        else{               //1111포함
+        else{               //1100
             Car_Run(80,80);
             delay(100);
         } 
