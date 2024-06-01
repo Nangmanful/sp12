@@ -12,6 +12,7 @@
 #include <math.h>
 #include <errno.h>
 #include <time.h>
+#include <pthread.h>
 
 #include <sys/socket.h>
 
@@ -22,11 +23,8 @@
 
 #define I2C_ADDR 0x16 
 
-#define PORT 8080
-#define BUF_SIZE 1024
-
 int i2c_fd;
-
+DGIST global_info;
 
 void i2c_init() {
     if ((i2c_fd = open("/dev/i2c-1", O_RDWR)) < 0) {
@@ -86,21 +84,48 @@ void Car_Right(int speed1, int speed2) {
     Ctrl_Car(1, speed1, 0, speed2);
 }
 
+typedef struct {
+    int sock;
+} thread_args;
+
+void* handle_info(void* arg) {
+    thread_args *args = (thread_args*) arg;
+    int sock = args->sock;
+    int n;
+
+    while ((n = recv(sock, &global_info, sizeof(DGIST), 0)) > 0) {
+        data_ready = 1; // Indicate that new data is available
+        printf("Received data from server\n");
+    }
+
+    if (n == 0) {
+        printf("Connection closed by server\n");
+    } else if (n < 0) {
+        perror("recv failed");
+    }
+
+    close(sock);
+    free(arg);
+    return NULL;
+}
+
+
+
 int main(int argc, char *argv[]) {
-    char* index1;
-    int xxx = 0;
-    while(xxx < 1000){index1 = qrrecognition(); ++xxx;}
-    printf(index1);
-    
+    int present_x;
+	int present_y;
     int port = atoi(argv[1]);
     int char_num = atoi(argv[2]);
     const char* ip_address = argv[3];
     int enemy_num;
     if(char_num == 0){
         enemy_num =1;
+	present_y = 0;
     }
     else{
         enemy_num = 0;
+	present_x = 5;
+	present_y = 4;
     }
     int pin = 27;
     
@@ -138,11 +163,18 @@ int main(int argc, char *argv[]) {
                 // return 1;
     }
 
-    int present_x = -1;
-    int present_y = -1;
-
     printf("Connected to server\0");
-    while (1) {
+
+    pthread_t recv_thread;
+    thread_args *args = malloc(sizeof(thread_args));
+    args->sock = sock;
+
+    if (pthread_create(&recv_thread, NULL, handle_info, args) != 0) {
+        perror("Could not create thread");
+        close(sock);
+        exit(EXIT_FAILURE);
+    }
+while (1) {
         char direct = 'r';
         int index_x; // our
         int index_y; // our
@@ -169,11 +201,7 @@ int main(int argc, char *argv[]) {
         //서버 통신
 
             // 서버로부터 데이터 수신
-            if (recv(sock, &info, sizeof(DGIST), 0) < 0) {
-                perror("Recv failed\0");
-                // return 1;
-            }
-
+		info = global_info;
             // 버퍼를 구조체로 복사
             player_info = info.players[char_num];
             enemy_info = info.players[enemy_num];
@@ -201,19 +229,48 @@ int main(int argc, char *argv[]) {
     
             if(eleft_x>=0 && eleft_x<=4 && eleft_y>=0 && eleft_y<=4){
                 enode_l = info.map[eleft_x][eleft_y];
-                el_item = enode_l.item;}
+                el_item = enode_l.item;
+            if(el_item.status == 0){
+		        el_item.score =0;
+	        }
+	        else if(el_item.status ==2){
+		        el_item.score = -8;
+    	    }
+            }
             else{el_item.score = -100;}
             if(eright_x>=0 && eright_x<=4 && eright_y>=0 && eright_y<=4){
                 enode_r = info.map[eright_x][eright_y];
-                er_item = enode_r.item;}
+                er_item = enode_r.item;
+            if(er_item.status == 0){
+		        er_item.score =0;
+	        }
+	        else if(er_item.status ==2){
+		        er_item.score = -8;
+	        }
+            }
             else{er_item.score = -100;}
             if(eup_x>=0 && eup_x<=4 && eup_y>=0 && eup_y<=4){
                 enode_u = info.map[eup_x][eup_y];
-                eu_item = enode_u.item;}
+                eu_item = enode_u.item;
+            	if(eu_item.status == 0){
+		            eu_item.score =0;
+	            }
+	            else if(eu_item.status ==2){
+		            eu_item.score = -8;
+	            }    
+
+            }
             else{eu_item.score = -100;}
             if(edown_x>=0 && edown_x<=4 && edown_y>=0 && edown_y<=4){
                 enode_d = info.map[edown_x][edown_y];
-                ed_item = enode_d.item;}
+                ed_item = enode_d.item;
+            	if(ed_item.status == 0){
+	            	ed_item.score =0;
+	            }
+	            else if(ed_item.status ==2){
+		            ed_item.score = -8;
+	            }
+            }
             else{ed_item.score = -100;}
     
             if(el_item.score>er_item.score){ebest_node = enode_l;}
@@ -222,13 +279,13 @@ int main(int argc, char *argv[]) {
             if(eu_item.score>ebest_item.score){ebest_node = enode_u;}
             if(ed_item.score>ebest_item.score){ebest_node = enode_d;}
     
-            int efuture_x = ebest_node.col;
-            int efuture_y = ebest_node.row;
+            int efuture_x = ebest_node.row;
+            int efuture_y = ebest_node.col;
             //bomb check
 
             
-            game_state.col = index_x;
-            game_state.row = index_y;
+            game_state.row = index_x;
+            game_state.col = index_y;
             if(index_x == efuture_x && index_y == efuture_y){
                 game_state.action = setBomb;
             }
@@ -301,14 +358,16 @@ int main(int argc, char *argv[]) {
         int pp_x = present_x-past_x;
         int pp_y = present_y-past_y;
 
-        if(past_x==-1 && past_y==-1){
+        if(past_x==-1 && past_y==0){
             if(present_x==0 && present_y==0){
-                if(fp_x==0 && fp_y==1){run_direct = 'f';}
-                else if(fp_x==1 && fp_y==0){run_direct = 'r';}
-            else if(present_x==4 && present_y==4){
-                if(fp_x==0 && fp_y==-1){run_direct = 'f';}
-                else if(fp_x==-1 && fp_y==0){run_direct = 'r';}
-            }
+                if(fp_x==0 && fp_y==1){run_direct = 'l';}
+                else if(fp_x==1 && fp_y==0){run_direct = 'f';}
+		}
+		}
+	else if(past_x == 5 && past_y == 4){
+            if(present_x==4 && present_y==4){
+                if(fp_x==0 && fp_y==-1){run_direct = 'l';}
+                else if(fp_x==-1 && fp_y==0){run_direct = 'f';}
             }
         }
         else{
