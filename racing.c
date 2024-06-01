@@ -86,8 +86,19 @@ void Car_Right(int speed1, int speed2) {
     Ctrl_Car(1, speed1, 0, speed2);
 }
 
-int main() {
+int main(int argc, char *argv[]) {
+    
+    int port = atoi(argv[1]);
+    int char_num = atoi(argv[2]);
+    int enemy_num;
+    if(char_num == 0){
+        enemy_num =1;
+    }
+    else{
+        enemy_num = 0;
+    }
     int pin = 27;
+    
     if (wiringPiSetup() == -1) {
         printf("WiringPi setup failed!\n");
         return 1;
@@ -159,8 +170,8 @@ int main() {
             }
 
             // 버퍼를 구조체로 복사
-            player_info = info.players[0];
-            enemy_info = info.players[1];
+            player_info = info.players[char_num];
+            enemy_info = info.players[enemy_num];
             int ex;
             int ey;
             ex = enemy_info.col;
