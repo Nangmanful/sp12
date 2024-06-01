@@ -188,6 +188,7 @@ while (1) {
         printf("qr시작\0");
         index = qrrecognition();
         printf("qr끝\0");
+	Car_Stop();
         if (strcmp(index, "77") == 0) { // no qr recognition
                 printf("no qr\0");
         }
@@ -295,7 +296,7 @@ while (1) {
                 perror("Send failed\0");
                 // return 1;
             }
-        }
+        
         /*
             algorithm 구현(linetracer)
         */
@@ -390,7 +391,7 @@ while (1) {
             else if(fp_x==1 && fp_y==0){run_direct = 'l';}
         }
         }
-
+   }
         // linetracer
 
 
