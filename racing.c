@@ -112,6 +112,7 @@ void* handle_info(void* arg) {
 
 int main(int argc, char *argv[]) {
     int present_x;
+        char run_direct;
 	int present_y;
     int port = atoi(argv[1]);
     int char_num = atoi(argv[2]);
@@ -354,7 +355,6 @@ while (1) {
 
         // Greedy algorithm
         
-        char run_direct;
 
         int fpp_x = future_x-past_x;
         int fpp_y = future_y-past_y;
