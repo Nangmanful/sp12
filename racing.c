@@ -111,7 +111,7 @@ void* handle_info(void* arg) {
 
 
 int main(int argc, char *argv[]) {
-	printf("시작");
+	printf("시작\0");
     int present_x;
         char run_direct;
 	int present_y;
@@ -134,7 +134,7 @@ int main(int argc, char *argv[]) {
         printf("WiringPi setup failed!\n");
         return 1;
     }
-	printf("시작");
+	printf("시작\0");
     pinMode(pin, INPUT);
     pullUpDnControl(pin, PUD_UP);
 
