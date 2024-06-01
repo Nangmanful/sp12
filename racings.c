@@ -86,6 +86,34 @@ void Car_Right(int speed1, int speed2) {
     Ctrl_Car(1, speed1, 0, speed2);
 }
 
+typedef struct {
+    int sock;
+	
+} thread_args;
+
+void* handle_info(void* arg) {
+    thread_args *args = (thread_args*) arg;
+    int sock = args->sock;
+    char buffer[BUF_SIZE];
+    int n;
+
+    while ((n = recv(sock, buffer, BUF_SIZE, 0)) > 0) {
+        buffer[n] = '\0';
+        printf("Received: %s\n", buffer);
+    }
+
+    if (n == 0) {
+        printf("Connection closed by server\n");
+    } else if (n < 0) {
+        perror("recv failed");
+    }
+
+    close(sock);
+    free(arg);
+    return NULL;
+}
+
+
 int main(int argc, char *argv[]) {
     
     int port = atoi(argv[1]);
