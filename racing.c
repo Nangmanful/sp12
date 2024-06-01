@@ -94,7 +94,6 @@ void* handle_info(void* arg) {
     int n;
 
     while ((n = recv(sock, &global_info, sizeof(DGIST), 0)) > 0) {
-        data_ready = 1; // Indicate that new data is available
         printf("Received data from server\n");
     }
 
