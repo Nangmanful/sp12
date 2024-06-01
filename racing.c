@@ -90,6 +90,7 @@ int main(int argc, char *argv[]) {
     
     int port = atoi(argv[1]);
     int char_num = atoi(argv[2]);
+    const char* ip_address = argv[3];
     int enemy_num;
     if(char_num == 0){
         enemy_num =1;
@@ -124,7 +125,7 @@ int main(int argc, char *argv[]) {
 
             // 서버 주소 구조체 설정
     server_addr.sin_family = AF_INET;
-    server_addr.sin_addr.s_addr = inet_addr("127.0.0.1");
+    server_addr.sin_addr.s_addr = inet_addr(ip_address);
     server_addr.sin_port = htons(PORT);
 
             // 서버에 연결
