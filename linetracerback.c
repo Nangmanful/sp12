@@ -185,3 +185,10 @@ int main() {
     close(i2c_fd);
     return 0;
 }
+
+// Car_Left(80, 80);
+//             delay(50);
+//             Car_Run(40, 40);
+//             delay(30);
+//             Car_Left(80, 80);
+//             delay(50);
