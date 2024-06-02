@@ -109,10 +109,9 @@ void* handle_info(void* arg) {
     return NULL;
 }
 
-void* qrRecognitionThread(void* arg) {
-    void* cap = (void*)arg;
+void* qrRecognitionThread() {
     while (1) {
-        const char* data = qrrecognition(cap);
+        const char* data = qrrecognition();
         pthread_mutex_lock(&qrCodeMutex);
         strncpy((char*)qrCodeData, data, sizeof(qrCodeData) - 1);
         pthread_mutex_unlock(&qrCodeMutex);
@@ -157,7 +156,6 @@ int main(int argc, char *argv[]) {
     pinMode(TRACKING_PIN4, INPUT);
 
     i2c_init();
-    void* cap = create_capture();
 
     int sock;
     struct sockaddr_in server_addr;
@@ -190,12 +188,12 @@ int main(int argc, char *argv[]) {
         perror("Could not create thread");
         close(sock);
         exit(EXIT_FAILURE);
-    }
+    }//server thread
 	pthread_t threadId;
-    if (pthread_create(&threadId, NULL, qrRecognitionThread, &cap) != 0) {
+    if (pthread_create(&threadId, NULL, qrRecognitionThread, NULL) != 0) {
         perror("Failed to create QR recognition thread");
         return 1;
-    }
+    } // qr thread
 while (1) {
 	    int n = 0;
     int f = 0;
