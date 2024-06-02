@@ -209,9 +209,8 @@ while (1) {
         Node node;
         Item now_item;
         ClientAction game_state;
-        Car_Stop();
-        printf("qr시작\0");
-
+        printf("qr시작 현재 qr%s\0", qrCodeData);
+	fflush(stdout);
         pthread_mutex_lock(&qrCodeMutex);
 	int count = 1;
         if (strcmp(qrCodeData, "77") != 0 && strcmp(index, qrCodeData) != 0) {
@@ -224,12 +223,12 @@ while (1) {
         pthread_mutex_unlock(&qrCodeMutex);
 	printf("qr끝 %d \0", count);
 	fflush(stdout);
-	Car_Stop();
         if (count) { // no qr recognition
                 printf("no qr\0");
 		fflush(stdout);
         }
         else {
+	        Car_Stop();
 		printf("else start");
 		fflush(stdout);
             index_x = index[0] - '0'; // ASCII 값을 실제 숫자로 변환
@@ -255,6 +254,7 @@ while (1) {
             now_item = node.item;
             int item_state;
             item_state = now_item.status;
+	fflush(stdout);
 
             //bomb
             int eleft_x = ex;
@@ -279,6 +279,8 @@ while (1) {
 		        el_item.score = -8;
     	    }
             }
+	fflush(stdout);
+
             else{el_item.score = -100;}
             if(eright_x>=0 && eright_x<=4 && eright_y>=0 && eright_y<=4){
                 enode_r = info.map[eright_x][eright_y];
@@ -314,7 +316,8 @@ while (1) {
 	            }
             }
             else{ed_item.score = -100;}
-    
+    	fflush(stdout);
+
             if(el_item.score>er_item.score){ebest_node = enode_l;}
             else{ebest_node = enode_r;}
             Item ebest_item = ebest_node.item;
@@ -396,6 +399,7 @@ while (1) {
 	printf("x:%d, y:%d \n", future_x, future_y); 
         // Greedy algorithm
         
+	fflush(stdout);
 
         int fpp_x = future_x-past_x;
         int fpp_y = future_y-past_y;
@@ -441,8 +445,8 @@ while (1) {
         // linetracer
 
 
-time_t start_time = time(NULL);
-    while (difftime(time(NULL), start_time) < 3) {
+	time_t start_time = time(NULL);
+    while (difftime(time(NULL), start_time) < 2) {
 
     if(run_direct == 'l'){ // left
 	int trackValue1 = digitalRead(TRACKING_PIN1);
