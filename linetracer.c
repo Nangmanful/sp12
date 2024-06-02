@@ -187,17 +187,14 @@ int main() {
             Car_Back(40,40);
         }
         else if(trackValue2 == 1 && trackValue3 == 1 && trackValue1 == 1 && trackValue4 == 1){
-            if (n == 10){
-                Car_Stop();
-                delay(100);
-            }
-            else if(n == 7){
+            if(n == 25){
                 Car_Back(100, 100);   
                 delay(100);
                 f += 1;
             }
             else{
-            Car_Run(40,40);
+            Car_Run(80,80);
+            delay(30);
             n += 1;
             }
         }
