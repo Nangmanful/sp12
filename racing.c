@@ -200,6 +200,8 @@ int main(int argc, char *argv[]) {
         	return 1;
     	} // qr thread
 	char* index ="77";
+        DGIST info;
+	info = global_info;
 	while (1) {
 		int n = 0;
     		int f = 0;
@@ -208,7 +210,6 @@ int main(int argc, char *argv[]) {
         	char direct = 'r';
         	int index_x; // our
         	int index_y; // our
-        	DGIST info;
         	client_info player_info;
         	client_info enemy_info;
         	Node node;
