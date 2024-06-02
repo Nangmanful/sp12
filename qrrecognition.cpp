@@ -8,6 +8,10 @@
 
 #include <ctime>
 
+cv::VideoCapture* create_capture() {
+        return new cv::VideoCapture(0, cv::CAP_V4L2);
+}
+
 const char* qrrecognition(cv::VideoCapture* cap) {
     if (!cap->isOpened()) {
             result = "카메라를 열 수 없습니다.";
@@ -17,17 +21,17 @@ const char* qrrecognition(cv::VideoCapture* cap) {
     cv::QRCodeDetector qrDecoder;
 
     std::clock_t start_time = std::clock();
+    cv::Mat frame;
 
     while (true) {
-        cv::Mat frame;
         std::cout << "카메라 시작" << std::endl;
         // 현재 시간을 가져옵니다.
         std::clock_t current_time = std::clock();
 
         // 경과된 시간이 1초 이상인지 확인합니다.
         double elapsed_time = static_cast<double>(current_time - start_time) / CLOCKS_PER_SEC;
-        if (elapsed_time >= 120) {
-            std::cout << "1초 지남" << std::endl;
+        if (elapsed_time >= 10) {
+            std::cout << "10초 지남" << std::endl;
             break;
         }
 
@@ -40,7 +44,6 @@ const char* qrrecognition(cv::VideoCapture* cap) {
         if (!data.empty()) {
             std::cout << "qr 인식!" << std::endl;
             const char* data2 = data.c_str();;
-            frame.release();
             return data2;
         }
         //cv::imshow("QR 코드 스캐너", frame);
@@ -48,9 +51,8 @@ const char* qrrecognition(cv::VideoCapture* cap) {
         //if (c == 27) // ESC 키
         //    break;
         std::cout << "카메라 작동 중" << std::endl;
-        frame.release();
     }
-
+        frame.release();
     std::cout << "이제 나감" << std::endl;
     return "77";
 }
