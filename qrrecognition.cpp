@@ -8,12 +8,10 @@
 
 #include <ctime>
 
-const char* qrrecognition() {
-    cv::VideoCapture cap(0, cv::CAP_V4L2);
-
-    if (!cap.isOpened()) {
-        std::cerr << "카메라를 열 수 없습니다." << std::endl;
-        return "-1";
+const char* qrrecognition(cv::VideoCapture* cap) {
+    if (!cap->isOpened()) {
+            result = "카메라를 열 수 없습니다.";
+            return result.c_str();
     }
 
     cv::QRCodeDetector qrDecoder;
@@ -33,7 +31,7 @@ const char* qrrecognition() {
             break;
         }
 
-        cap >> frame; // 프레임 캡처
+        (*cap) >> frame; // 프레임 캡처
         if (frame.empty()) break;
 
         std::vector<cv::Point> points;
@@ -42,8 +40,6 @@ const char* qrrecognition() {
         if (!data.empty()) {
             std::cout << "qr 인식!" << std::endl;
             const char* data2 = data.c_str();;
-            cap.release();
-            cv::destroyAllWindows();
             frame.release();
             return data2;
         }
@@ -55,8 +51,6 @@ const char* qrrecognition() {
         frame.release();
     }
 
-    cap.release();
-    cv::destroyAllWindows();
     std::cout << "이제 나감" << std::endl;
     return "77";
 }
