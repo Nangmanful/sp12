@@ -147,7 +147,12 @@ int main() {
         }
         else if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 0) {
             n = 0;
-            Car_Run(60, 60);
+            Car_Left(80, 80);
+            delay(50);
+            Car_Run(40, 40);
+            delay(30);
+            Car_Left(80, 80);
+            delay(50);
         }
         else if (trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 1 && trackValue4 == 0) {
             n = 0;
