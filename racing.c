@@ -130,7 +130,6 @@ int main(int argc, char *argv[]) {
 	fflush(stdout);
 	int present_x;
         char run_direct;
-	int present_y;
 	int port = atoi(argv[1]);
 	int char_num = atoi(argv[2]);
 	const char* ip_address = argv[3];
@@ -223,10 +222,11 @@ int main(int argc, char *argv[]) {
 		fflush(stdout);
         	if (strcmp(qrCodeData, "77") != 0 && strcmp(index, qrCodeData) != 0) {
             		printf("QR 코드 데이터: %s\n", qrCodeData);
+			fflush(stdout);
         		index = qrCodeData;
 			count = 0;
 		}
-		printf("unlock\n");
+		printf("unlock, count: %d\n", count);
 		fflush(stdout);
         	pthread_mutex_unlock(&qrCodeMutex);
 		printf("qr끝 \n");
