@@ -43,6 +43,7 @@ const char* qrrecognition() {
             std::cout << "qr 인식!" << std::endl;
             const char* data2 = data.c_str();;
             cap.release();
+            cv::destroyAllWindows();
             frame.release();
             return data2;
         }
@@ -51,7 +52,7 @@ const char* qrrecognition() {
         //if (c == 27) // ESC 키
         //    break;
         std::cout << "카메라 작동 중" << std::endl;
-                frame.release();
+        frame.release();
     }
 
     cap.release();
