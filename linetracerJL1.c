@@ -207,7 +207,7 @@ int main() {
                 delay(100);
             }
             else if(n == 7){
-                Car_Back(50, 50);   
+                Car_Back(100, 100);   
                 delay(30);
                 f += 1;
             }
@@ -221,7 +221,7 @@ int main() {
             n = 0;
             k += 1;
             Car_Back(50, 50);
-        }
+        } 
     }
 
     close(i2c_fd);
