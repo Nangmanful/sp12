@@ -125,7 +125,7 @@ int main() {
             Car_Run(70, 70);
             delay(50);
             Car_Left(100, 100);
-            delay(800);
+            delay(700);
             Car_Run(70, 70);
             delay(300);
         }
@@ -170,7 +170,7 @@ int main() {
             Car_Run(70, 70);
             delay(50);
             Car_Left(100, 100);
-            delay(800);
+            delay(700);
             Car_Run(70, 70);
             delay(300);
         } 
@@ -181,7 +181,7 @@ int main() {
             Car_Run(70, 70);
             delay(50);
             Car_Left(100, 100);
-            delay(800);
+            delay(700);
             Car_Run(70, 70);
             delay(300);
         }
@@ -214,7 +214,7 @@ int main() {
                 Car_Stop();
                 delay(100);
             }
-            else if(n == 30){
+            else if(n == 40){
                 Car_Back(100, 100);   
                 delay(30);
                 f += 1;
