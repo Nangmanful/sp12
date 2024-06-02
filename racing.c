@@ -256,7 +256,7 @@ while (1) {
             // 서버로부터 데이터 수신
 		info = global_info;
             // 버퍼를 구조체로 복사
-            player_info = info.players[char_num];
+	        player_info = info.players[char_num];
             enemy_info = info.players[enemy_num];
             int ex;
             int ey;
@@ -355,6 +355,7 @@ while (1) {
         */
 
         // Finding future_x & future_y
+	info = global_info;
 
         int past_x = present_x;
         int past_y = present_y;
