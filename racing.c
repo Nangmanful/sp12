@@ -139,7 +139,6 @@ void* qrRecognitionThread() {
         	pthread_mutex_unlock(&qrCodeMutex);
 	    	printf("qrthread action\n");
 	    	fflush(stdout);
-        	usleep(500000); // 0.5초 대기
     	}
     	return NULL;
 }
