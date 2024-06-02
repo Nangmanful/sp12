@@ -159,14 +159,14 @@ int main() {
             Car_Run(70, 70);
             delay(50);
         }
-        else if (trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 0 && trackValue4 == 0) {
-            n = 0;
-            Car_Back(40, 40);
-        } 
-        else if (trackValue2 == 1 && trackValue3 == 0 && trackValue1 == 0 && trackValue4 == 0) {
-            n = 0;
-            Car_Back(40, 40);
-        } 
+        // else if (trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 0 && trackValue4 == 0) {
+        //     n = 0;
+        //     Car_Back(40, 40);
+        // } 
+        // else if (trackValue2 == 1 && trackValue3 == 0 && trackValue1 == 0 && trackValue4 == 0) {
+        //     n = 0;
+        //     Car_Back(40, 40);
+        // } 
         else if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 0 && trackValue4 == 0) {
             n = 0;
             Car_Stop();
