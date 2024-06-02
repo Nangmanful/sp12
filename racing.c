@@ -343,7 +343,6 @@ int main(int argc, char *argv[]) {
 		        }
 		        else{
 		                game_state.action = move;
-				    
 		        }
 			printf("send time\n");
 			fflush(stdout);
