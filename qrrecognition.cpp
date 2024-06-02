@@ -8,20 +8,19 @@
 
 #include <ctime>
 
-cv::VideoCapture* create_capture() {
-        return new cv::VideoCapture(0, cv::CAP_V4L2);
-}
 
-const char* qrrecognition(cv::VideoCapture* cap) {
-    if (!cap->isOpened()) {
-            result = "카메라를 열 수 없습니다.";
-            return result.c_str();
+
+const char* qrrecognition() {
+    cv::VideoCapture cap(0, cv::CAP_V4L2);
+
+    if (!cap.isOpened()) {
+        std::cerr << "카메라를 열 수 없습니다." << std::endl;
+        return "-1";
     }
 
     cv::QRCodeDetector qrDecoder;
-
-    std::clock_t start_time = std::clock();
     cv::Mat frame;
+    std::clock_t start_time = std::clock();
 
     while (true) {
         std::cout << "카메라 시작" << std::endl;
