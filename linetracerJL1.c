@@ -236,7 +236,6 @@ int main() {
             k += 1;
             Car_Back(50, 50);
         } 
-        delay(10);
     }
 
     close(i2c_fd);
