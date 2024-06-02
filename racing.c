@@ -129,7 +129,8 @@ int main(int argc, char *argv[]) {
 	printf("main 시작\n");
 	fflush(stdout);
 	int present_x;
-        char run_direct;
+	int present_y;
+	char run_direct;
 	int port = atoi(argv[1]);
 	int char_num = atoi(argv[2]);
 	const char* ip_address = argv[3];
