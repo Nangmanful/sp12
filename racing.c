@@ -666,11 +666,11 @@ int main(int argc, char *argv[]) {
 			        }
 			        if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 1) {
 			            n = 0;
-			            Car_Run(70, 70);
+			            Car_Run(60, 60);
 			        } 
 			        else if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 0 && trackValue4 == 1) {
 			            n = 0;
-			            Car_Run(70, 70);
+			            Car_Run(60, 60);
 			        }
 			        else if (trackValue2 == 1 && trackValue3 == 1 && trackValue1 == 0 && trackValue4 == 1) {
 			            n = 0;
@@ -678,8 +678,6 @@ int main(int argc, char *argv[]) {
 			            delay(50);
 			            Car_Run(40, 40);
 			            delay(30);
-			            Car_Left(80, 80);
-			            delay(50);
 			        }
 			        else if (trackValue2 == 1 && trackValue3 == 1 && trackValue1 == 1 && trackValue4 == 0) {
 			            n = 0;
@@ -687,73 +685,92 @@ int main(int argc, char *argv[]) {
 			            delay(50);
 			            Car_Run(40, 40);
 			            delay(30);
-			            Car_Right(80, 80);
-			            delay(50);
 			        }
 			        else if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 0) {
 			            n = 0;
-			            Car_Right(200, 200);
-			            delay(260);
-			            Car_Back(40, 40);
-			            delay(60);
+			            Car_Stop(); 
+			            delay(30);
+			            Car_Run(70, 70);
+			            delay(50);
+			            Car_Right(100, 100);
+			            delay(700);
+			            Car_Run(70, 70);
+			            delay(300);
 			        }
-			        else if (trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 1 && trackValue4 == 0) {
-			            n = 0;
-			            Car_Back(40, 40);
-			        }
+			        // else if (trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 1 && trackValue4 == 0) {
+			        //     n = 0;
+			        //     Car_Back(40, 40);
+			        // }
 			        else if (trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 1 && trackValue4 == 1) {
 			            n = 0;
-			            Car_Left(80, 80);
-			            delay(30);
+			            Car_Run(60, 60);
 			        }
-			        else if (trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 0 && trackValue4 == 0) {
-			            n = 0;
-			            Car_Back(40, 40);
-			        } 
-			        else if (trackValue2 == 1 && trackValue3 == 0 && trackValue1 == 0 && trackValue4 == 0) {
-			            n = 0;
-			            Car_Back(40, 40);
-			        } 
+			        // else if (trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 0 && trackValue4 == 0) {
+			        //     n = 0;
+			        //     Car_Back(40, 40);
+			        // } 
+			        // else if (trackValue2 == 1 && trackValue3 == 0 && trackValue1 == 0 && trackValue4 == 0) {
+			        //     n = 0;
+			        //     Car_Back(40, 40);
+			        //} 
 			        else if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 0 && trackValue4 == 0) {
 			            n = 0;
-			            Car_Right(200, 200);
-			            delay(260);
-			            Car_Back(40, 40);
-			            delay(60);
+			            Car_Stop(); 
+			            delay(30);
+			            Car_Run(70, 70);
+			            delay(50);
+			            Car_Right(100, 100);
+			            delay(700);
+			            Car_Run(70, 70);
+			            delay(300);
 			        } 
 			        else if(trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 0 && trackValue4 == 1){
 			            n = 0;
-			            Car_Left(80, 80);
-			            delay(30);
+			            Car_Run(60, 60);
 			        }
 			        else if(trackValue2 == 1 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 0){
 			            n = 0;
-			            Car_Right(200, 200);
-			            delay(260);
-			            Car_Back(40, 40);
-			            delay(60);
+			            Car_Stop(); 
+			            delay(30);
+			            Car_Run(70, 70);
+			            delay(50);
+			            Car_Right(100, 100);
+			            delay(700);
+			            Car_Run(70, 70);
+			            delay(300);
 			        }
 			        else if(trackValue2 == 1 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 1){
 			            n = 0;
 			            Car_Right(80, 80);
+			            delay(50);
+			            Car_Run(40, 40);
 			            delay(30);
 			        }
-			        else if(trackValue2 == 1 && trackValue3 == 0 && trackValue1 == 0 && trackValue4 == 1){
+			        else if (trackValue2 == 1 && trackValue3 == 1 && trackValue1 == 0 && trackValue4 == 0) {
 			            n = 0;
-			            Car_Back(40,40);
+			            Car_Stop(); 
+			            delay(30);
+			            Car_Right(200, 200);
+			            delay(250);
+			            Car_Run(70, 70);
+			            delay(100);
 			        }
+			        // else if(trackValue2 == 1 && trackValue3 == 0 && trackValue1 == 0 && trackValue4 == 1){
+			        //     n = 0;
+			        //     Car_Back(40,40);
+			        // }
 			        else if(trackValue2 == 1 && trackValue3 == 1 && trackValue1 == 1 && trackValue4 == 1){
-			            if (n == 10){
+			            if (n == 100){
 			                Car_Stop();
 			                delay(100);
 			            }
-			            else if(n == 7){
+			            else if(n == 40){
 			                Car_Back(100, 100);   
 			                delay(30);
 			                f += 1;
 			            }
 			            else{
-			            Car_Run(40,40);
+			            Car_Run(50,50);
 			            n += 1;
 			            }
 			        }
@@ -761,9 +778,9 @@ int main(int argc, char *argv[]) {
 			            f = 0;
 			            n = 0;
 			            k += 1;
-			            Car_Back(50, 50);
+			            Car_Run(50, 50);
 			        } 
-			        delay(10);
+
 			}
 				
     			else if(run_direct == 'f'){
