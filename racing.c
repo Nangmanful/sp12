@@ -13,7 +13,6 @@
 #include <errno.h>
 #include <time.h>
 #include <pthread.h>
-#include <opencv2/opencv.hpp>
 #include <sys/socket.h>
 
 #define TRACKING_PIN1 7  
@@ -27,6 +26,19 @@ int i2c_fd;
 DGIST global_info;
 volatile char qrCodeData[256] = "77";
 pthread_mutex_t qrCodeMutex = PTHREAD_MUTEX_INITIALIZER;
+
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+const char* qrrecognition(void* cap);
+void* create_capture();
+void release_capture(void* cap);
+
+#ifdef __cplusplus
+}
+#endif
 
 void i2c_init() {
     if ((i2c_fd = open("/dev/i2c-1", O_RDWR)) < 0) {
@@ -111,7 +123,7 @@ void* handle_info(void* arg) {
 }
 
 void* qrRecognitionThread(void* arg) {
-    cv::VideoCapture* cap = (cv::VideoCapture*)arg;
+    void* cap = (void*)arg;
     while (1) {
         const char* data = qrrecognition(cap);
         pthread_mutex_lock(&qrCodeMutex);
@@ -158,7 +170,7 @@ int main(int argc, char *argv[]) {
     pinMode(TRACKING_PIN4, INPUT);
 
     i2c_init();
-    cv::VideoCapture cap(0, cv::CAP_V4L2);
+    void* cap = create_capture();
 
     int sock;
     struct sockaddr_in server_addr;
