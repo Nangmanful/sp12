@@ -37,7 +37,8 @@ const char* qrrecognition() {
         if (!data.empty()) {
             std::cout << "qr 인식!" << std::endl;
             cap.release();
-            return data;
+            const char* data2 = data.c_str();;
+            return data2;
         }
     }
 
