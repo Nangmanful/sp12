@@ -43,7 +43,7 @@ const char* qrrecognition() {
             std::cout << "qr 인식!" << std::endl;
             const char* data2 = data.c_str();;
             return data2;
-            cv::Mat::release();
+            frame.release();
         }
         //cv::imshow("QR 코드 스캐너", frame);
         //char c = (char)cv::waitKey(25);
