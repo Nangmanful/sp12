@@ -235,7 +235,7 @@ while (1) {
 	printf("unlock\n");
 	fflush(stdout);
         pthread_mutex_unlock(&qrCodeMutex);
-	printf("qr끝\0");
+	printf("qr끝 %d \0", count);
 	fflush(stdout);
 	Car_Stop();
         if (count) { // no qr recognition
@@ -243,9 +243,12 @@ while (1) {
 		fflush(stdout);
         }
         else {
+		printf("else start");
+		fflush(stdout);
             index_x = index[0] - '0'; // ASCII 값을 실제 숫자로 변환
             index_y = index[1] - '0'; // ASCII 값을 실제 숫자로 변환
             printf("%d %d\0", index_x, index_y);
+		fflush(stdout);
             printf("데이터 송수신 시작\0");
 
         //서버 통신
