@@ -279,8 +279,6 @@ while (1) {
 		        el_item.score = -8;
     	    }
             }
-	fflush(stdout);
-
             else{el_item.score = -100;}
             if(eright_x>=0 && eright_x<=4 && eright_y>=0 && eright_y<=4){
                 enode_r = info.map[eright_x][eright_y];
