@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include "qrrecognition.h" //function qrrecogntion();
 #include <arpa/inet.h>
 #include "server.h"
 #include <string.h>
@@ -228,7 +227,7 @@ while (1) {
     }
         pthread_mutex_lock(&qrCodeMutex);
 	int count = 1;
-        if (strcmp(qrCodeData, "77") != 0 || strcmp(index, qrCodeData) != 0) {
+        if (strcmp(qrCodeData, "77") == 0 && strcmp(index, qrCodeData) == 0) {
             printf("QR 코드 데이터: %s\n", qrCodeData);
         	index = qrCodeData;
 		count = 0;
