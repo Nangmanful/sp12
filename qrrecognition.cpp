@@ -5,7 +5,7 @@
 #include <string>
 #include <ctime>
 
-std::string qrrecognition() {
+const char* qrrecognition() {
     cv::VideoCapture cap(0, cv::CAP_V4L2);
 
     if (!cap.isOpened()) {
