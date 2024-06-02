@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <ctime>
+#include "qrrecognition.h"
 
 const char* qrrecognition() {
     cv::VideoCapture cap(0, cv::CAP_V4L2);
