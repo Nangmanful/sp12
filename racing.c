@@ -511,6 +511,7 @@ int main(int argc, char *argv[]) {
 				else {                     //뺐더니 2,1 3,1 2,2 등등 지나갔을 때
 					run_direct = 'n';
 				}
+			}
    		} //else 끝
 		
         	// linetracer
@@ -977,7 +978,7 @@ int main(int argc, char *argv[]) {
 				;
     			}
     		}   //while 2초 끝
-	} //while(1) 끝
+	} //while(1)
     close(sock);    
     return 0;
 }
