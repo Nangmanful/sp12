@@ -214,9 +214,11 @@ int main() {
                 f += 1;
             }
             else{
-            Car_Run(50,50);
-            delay(10);
-            n += 1;
+                Car_Left(40,40);
+                delay(10);
+                Car_Right(40,40);
+                delay(10);
+                n += 1;
             }
         }
         else{
