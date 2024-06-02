@@ -200,7 +200,6 @@ int main() {
             k += 1;
             Car_Run(50, 50);
         } 
-        delay(10);
     }
 
     close(i2c_fd);
