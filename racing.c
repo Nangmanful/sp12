@@ -117,7 +117,6 @@ void* handle_info(void* arg) {
     while ((n = recv(sock, &global_info, sizeof(DGIST), 0)) > 0) {
         printf("Received data from server\n");
     	fflush(stdout);
-	    delay(50);
     }
 
     if (n == 0) {
@@ -380,6 +379,7 @@ int main(int argc, char *argv[]) {
         		/*
             		algorithm 구현(linetracer)
         		*/
+			delay(300);
 			info = global_info;
 
         		// Finding future_x & future_y
