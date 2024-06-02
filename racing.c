@@ -354,7 +354,7 @@ while (1) {
         int future_x = best_node.col;
         int future_y = best_node.row;
 
-
+	printf("x:%d, y:%d \n" future_x, future_y); 
         // Greedy algorithm
         
 
@@ -526,7 +526,6 @@ time_t start_time = time(NULL);
         int trackValue4 = digitalRead(TRACKING_PIN4);
 
         // 각 트래킹 핀의 값을 출력
-        printf("Track Values: %d %d %d %d\n", trackValue1, trackValue2, trackValue3, trackValue4);
 
         // 트래킹 핀 값을 바탕으로 자동차 제어 로직
         if (f == 3){
@@ -643,7 +642,6 @@ time_t start_time = time(NULL);
         int trackValue4 = digitalRead(TRACKING_PIN4);
 
         // 각 트래킹 핀의 값을 출력
-        printf("Track Values: %d %d %d %d\n", trackValue1, trackValue2, trackValue3, trackValue4);
 
         // 트래킹 핀 값을 바탕으로 자동차 제어 로직
         if (f == 3){
@@ -754,7 +752,6 @@ time_t start_time = time(NULL);
         int trackValue4 = digitalRead(TRACKING_PIN4);
 
         // 각 트래킹 핀의 값을 출력
-        printf("Track Values: %d %d %d %d\n", trackValue1, trackValue2, trackValue3, trackValue4);
 
         // 트래킹 핀 값을 바탕으로 자동차 제어 로직
         if (f == 3){
