@@ -518,8 +518,16 @@ int main(int argc, char *argv[]) {
    		} //else 끝
 		
         	// linetracer
-		time_t start_time = time(NULL);
-    		while (difftime(time(NULL), start_time) < 2) {
+		struct timespec start_time, current_time;
+		
+		    // 현재 시간을 가져옵니다.
+	    clock_gettime(CLOCK_REALTIME, &start_time);
+		
+		    double elapsed;
+		    do {
+		        clock_gettime(CLOCK_REALTIME, &current_time);
+		        elapsed = (current_time.tv_sec - start_time.tv_sec) + 
+		                  (current_time.tv_nsec - start_time.tv_nsec) / 1000000000.0;
 
     			if(run_direct == 'l'){ // left
 				int trackValue1 = digitalRead(TRACKING_PIN1);
@@ -1136,7 +1144,8 @@ int main(int argc, char *argv[]) {
 				            Car_Run(50, 50);
 				        } 
     			}
-    		}   //while 2초 끝
+    		
+		    } while (elapsed < 1.5);   //while 1.5초 끝
 		Car_Stop();
 		delay(500);
 	} //while(1)
