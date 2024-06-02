@@ -354,7 +354,7 @@ while (1) {
         int future_x = best_node.col;
         int future_y = best_node.row;
 
-	printf("x:%d, y:%d \n" future_x, future_y); 
+	printf("x:%d, y:%d \n", future_x, future_y); 
         // Greedy algorithm
         
 
