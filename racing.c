@@ -460,8 +460,8 @@ int main(int argc, char *argv[]) {
 		        if(u_item.score>best_item.score){best_node = node_u;}
 		        if(d_item.score>best_item.score){best_node = node_d;}
 		
-		        int future_x = best_node.col;
-		        int future_y = best_node.row;
+		        int future_x = best_node.row;
+		        int future_y = best_node.col;
 		
 			printf("x:%d, y:%d \n", future_x, future_y); 
         		// Greedy algorithm
