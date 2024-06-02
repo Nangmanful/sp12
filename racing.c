@@ -452,17 +452,20 @@ int main(int argc, char *argv[]) {
 		        else{d_item.score = -100;}
 
 			printf("up, down, left, right : %d, %d, %d, %d\n", u_item.score, d_item.score, l_item.score, r_item.score); 
+
+			int future_x;
+		        int future_y;
+			Item best_item = best_node.item;
 			
-		        if(l_item.score>r_item.score){best_node = node_l;}
-		        else{best_node = node_r;}
+			if(l_item.score>r_item.score){future_x = left_x; future_y = left_y; best_item.score = l_item.score;}
+		        else{future_x = right_x; future_y = right_y; best_item.score = r_item.score;}
 			
-		        Item best_item = best_node.item;
-			
-		        if(u_item.score>best_item.score){best_node = node_u;}
-		        if(d_item.score>best_item.score){best_node = node_d;}
-		
-		        int future_x = best_node.row;
-		        int future_y = best_node.col;
+		        if(u_item.score>best_item.score){
+				future_x = up_x; future_y = up_y; best_item.score = u_item.score;
+			}
+		        if(d_item.score>best_item.score){
+				future_x = down_x; future_y = down_y; best_item.score = d_item.score;
+			}
 		
 			printf("x:%d, y:%d \n", future_x, future_y); 
         		// Greedy algorithm
