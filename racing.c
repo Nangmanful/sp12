@@ -25,6 +25,8 @@
 
 int i2c_fd;
 DGIST global_info;
+volatile char qrCodeData[256] = "77";
+pthread_mutex_t qrCodeMutex = PTHREAD_MUTEX_INITIALIZER;
 
 void i2c_init() {
     if ((i2c_fd = open("/dev/i2c-1", O_RDWR)) < 0) {
@@ -108,6 +110,16 @@ void* handle_info(void* arg) {
     return NULL;
 }
 
+void* qrRecognitionThread(void* arg) {
+    while (1) {
+        const char* data = qrrecognition();
+        pthread_mutex_lock(&qrCodeMutex);
+        strncpy((char*)qrCodeData, data, sizeof(qrCodeData) - 1);
+        pthread_mutex_unlock(&qrCodeMutex);
+        usleep(100000); // 0.1초 대기
+    }
+    return NULL;
+}
 
 
 int main(int argc, char *argv[]) {
@@ -120,7 +132,8 @@ int main(int argc, char *argv[]) {
     const char* ip_address = argv[3];
     int enemy_num;
     if(char_num == 0){
-        enemy_num =1;
+        enemy_num = 1;
+	present_x = -1;
 	present_y = 0;
     }
     else{
@@ -194,10 +207,22 @@ while (1) {
         ClientAction game_state;
         Car_Stop();
         printf("qr시작\0");
-        index = qrrecognition();
-        printf("qr끝\0");
+	    pthread_t threadId;
+    if (pthread_create(&threadId, NULL, qrRecognitionThread, NULL) != 0) {
+        perror("Failed to create QR recognition thread");
+        return 1;
+    }
+        pthread_mutex_lock(&qrCodeMutex);
+	int count = 1;
+        if (strcmp(qrCodeData, "77") != 0 || index != qrCodeData) {
+            printf("QR 코드 데이터: %s\n", qrCodeData);
+        	index = qrCodeData;
+		count = 0;
+	}
+        pthread_mutex_unlock(&qrCodeMutex);
+	printf("qr끝\0");
 	Car_Stop();
-        if (strcmp(index, "77") == 0) { // no qr recognition
+        if (count) { // no qr recognition
                 printf("no qr\0");
         }
         else {
