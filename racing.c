@@ -228,7 +228,7 @@ while (1) {
     }
         pthread_mutex_lock(&qrCodeMutex);
 	int count = 1;
-        if (strcmp(qrCodeData, "77") != 0 || index != qrCodeData) {
+        if (strcmp(qrCodeData, "77") != 0 || strcmp(index, qrCodeData) != 0) {
             printf("QR 코드 데이터: %s\n", qrCodeData);
         	index = qrCodeData;
 		count = 0;
