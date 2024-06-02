@@ -1,0 +1,11 @@
+# C++ 파일 컴파일
+g++ -c opencv_qr_wrapper.cpp `pkg-config --cflags --libs opencv4`
+
+# C 파일 컴파일
+gcc -c main.c
+
+# 링크 및 실행 파일 생성
+g++ -o qr_app main.o opencv_qr_wrapper.o `pkg-config --cflags --libs opencv4`
+
+# 실행
+./qr_app
