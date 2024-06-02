@@ -193,7 +193,7 @@ int main() {
             Car_Back(40,40);
         }
         else if(trackValue2 == 1 && trackValue3 == 1 && trackValue1 == 1 && trackValue4 == 1){
-            if(n == 20){
+            if(n == 33){
                 Car_Back(100, 100);   
                 delay(50);
                 f += 1;
