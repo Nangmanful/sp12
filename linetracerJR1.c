@@ -189,7 +189,7 @@ int main() {
             delay(50);
         }
         else if(trackValue2 == 1 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 0){
-            nn = 0;
+            n = 0;
             Car_Stop(); 
             delay(30);
             Car_Right(200, 200);
