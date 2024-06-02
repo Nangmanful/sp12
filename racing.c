@@ -242,6 +242,8 @@ while (1) {
 
             // 서버로부터 데이터 수신
 		info = global_info;
+		printf("수신\n");
+		fflush(stdout);
             // 버퍼를 구조체로 복사
 	        player_info = info.players[char_num];
             enemy_info = info.players[enemy_num];
@@ -332,10 +334,14 @@ while (1) {
             else{
                 game_state.action = move;
             }
+		printf("send time\n");
+		fflush(stdout);
             if (send(sock, &game_state, sizeof(ClientAction), 0) < 0) {
                 perror("Send failed\0");
                 // return 1;
             }
+		printf("send complete");
+		fflush(stdout);
         
         /*
             algorithm 구현(linetracer)
