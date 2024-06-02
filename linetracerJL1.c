@@ -214,7 +214,7 @@ int main() {
                 Car_Stop();
                 delay(100);
             }
-            else if(n == 20){
+            else if(n == 30){
                 Car_Back(100, 100);   
                 delay(30);
                 f += 1;
