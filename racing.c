@@ -115,7 +115,7 @@ void* qrRecognitionThread() {
         pthread_mutex_lock(&qrCodeMutex);
         strncpy((char*)qrCodeData, data, sizeof(qrCodeData) - 1);
         pthread_mutex_unlock(&qrCodeMutex);
-        usleep(100000); // 0.1초 대기
+        usleep(500000); // 0.1초 대기
     }
     return NULL;
 }
@@ -334,6 +334,7 @@ char* index ="77";
             }
             else{
                 game_state.action = move;
+		    
             }
 		printf("send time\n");
 		fflush(stdout);
@@ -350,7 +351,6 @@ char* index ="77";
 
         // Finding future_x & future_y
 	info = global_info;
-
         int past_x = present_x;
         int past_y = present_y;
         present_x = index_x;
@@ -370,19 +370,47 @@ char* index ="77";
 
         if(left_x>=0 && left_x<=4 && left_y>=0 && left_y<=4){
             node_l = info.map[left_x][left_y];
-            l_item = node_l.item;}
+            l_item = node_l.item;
+       if(l_item.status == 0){
+		l_item.score =0;
+	}
+	else if(l_item.status ==2){
+		l_item.score = -8;
+	}
+	}
         else{l_item.score = -100;}
         if(right_x>=0 && right_x<=4 && right_y>=0 && right_y<=4){
             node_r = info.map[right_x][right_y];
-            r_item = node_r.item;}
+            r_item = node_r.item;
+	            if(r_item.status == 0){
+		        r_item.score =0;
+	        }
+	        else if(r_item.status ==2){
+		        r_item.score = -8;
+	        }
+	}
         else{r_item.score = -100;}
         if(up_x>=0 && up_x<=4 && up_y>=0 && up_y<=4){
             node_u = info.map[up_x][up_y];
-            u_item = node_u.item;}
+            u_item = node_u.item;
+	            if(er_item.status == 0){
+		        er_item.score =0;
+	        }
+	        else if(er_item.status ==2){
+		        er_item.score = -8;
+	        }
+            }
         else{u_item.score = -100;}
         if(down_x>=0 && down_x<=4 && down_y>=0 && down_y<=4){
             node_d = info.map[down_x][down_y];
-            d_item = node_d.item;}
+            d_item = node_d.item;
+	            if(er_item.status == 0){
+		        er_item.score =0;
+	        }
+	        else if(er_item.status ==2){
+		        er_item.score = -8;
+	        }
+            }
         else{d_item.score = -100;}
 
         if(l_item.score>r_item.score){best_node = node_l;}
