@@ -13,7 +13,7 @@
 #include <errno.h>
 #include <time.h>
 #include <pthread.h>
-
+#include <opencv2/opencv.hpp>
 #include <sys/socket.h>
 
 #define TRACKING_PIN1 7  
@@ -111,8 +111,9 @@ void* handle_info(void* arg) {
 }
 
 void* qrRecognitionThread(void* arg) {
+    cv::VideoCapture* cap = (cv::VideoCapture*)arg;
     while (1) {
-        const char* data = qrrecognition();
+        const char* data = qrrecognition(cap);
         pthread_mutex_lock(&qrCodeMutex);
         strncpy((char*)qrCodeData, data, sizeof(qrCodeData) - 1);
         pthread_mutex_unlock(&qrCodeMutex);
@@ -157,6 +158,7 @@ int main(int argc, char *argv[]) {
     pinMode(TRACKING_PIN4, INPUT);
 
     i2c_init();
+    cv::VideoCapture cap(0, cv::CAP_V4L2);
 
     int sock;
     struct sockaddr_in server_addr;
@@ -207,8 +209,8 @@ while (1) {
         ClientAction game_state;
         Car_Stop();
         printf("qr시작\0");
-	    pthread_t threadId;
-    if (pthread_create(&threadId, NULL, qrRecognitionThread, NULL) != 0) {
+	pthread_t threadId;
+    if (pthread_create(&threadId, NULL, qrRecognitionThread, &cap) != 0) {
         perror("Failed to create QR recognition thread");
         return 1;
     }
