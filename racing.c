@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "qrrecognition.h"
 #include <arpa/inet.h>
 #include "server.h"
 #include <string.h>
@@ -25,19 +26,6 @@ int i2c_fd;
 DGIST global_info;
 volatile char qrCodeData[256] = "77";
 pthread_mutex_t qrCodeMutex = PTHREAD_MUTEX_INITIALIZER;
-
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-const char* qrrecognition(void* cap);
-void* create_capture();
-void release_capture(void* cap);
-
-#ifdef __cplusplus
-}
-#endif
 
 void i2c_init() {
     if ((i2c_fd = open("/dev/i2c-1", O_RDWR)) < 0) {
