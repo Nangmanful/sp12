@@ -43,6 +43,7 @@ const char* qrrecognition() {
         if (!data.empty()) {
             std::cout << "qr 인식!" << std::endl;
             const char* data2 = data.c_str();;
+            cap.release();
             return data2;
         }
         //cv::imshow("QR 코드 스캐너", frame);
@@ -51,6 +52,7 @@ const char* qrrecognition() {
         //    break;
         std::cout << "카메라 작동 중" << std::endl;
     }
+    cap.release();
         frame.release();
     std::cout << "이제 나감" << std::endl;
     return "77";
