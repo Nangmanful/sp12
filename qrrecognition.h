@@ -5,7 +5,7 @@ extern "C" {
 #endif
 
 const char* qrrecognition(void* cap);
-void* createcap();
+void* create_capture();
 
 #ifdef __cplusplus
 }
