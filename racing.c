@@ -194,22 +194,22 @@ int main(int argc, char *argv[]) {
         perror("Failed to create QR recognition thread");
         return 1;
     } // qr thread
-while (1) {
+char* index ="77";
+	while (1) {
 	    int n = 0;
-    int f = 0;
-    int k = 0;
-    int l = 0;
+    	int f = 0;
+    	int k = 0;
+    	int l = 0;
         char direct = 'r';
         int index_x; // our
         int index_y; // our
-        char* index;
         DGIST info;
         client_info player_info;
         client_info enemy_info;
         Node node;
         Item now_item;
         ClientAction game_state;
-        printf("qr시작 현재 qr%s\0", qrCodeData);
+        printf("qr시작 현재: qr%s\n", qrCodeData);
 	fflush(stdout);
         pthread_mutex_lock(&qrCodeMutex);
 	int count = 1;
@@ -221,7 +221,7 @@ while (1) {
 	printf("unlock\n");
 	fflush(stdout);
         pthread_mutex_unlock(&qrCodeMutex);
-	printf("qr끝 %d \0", count);
+	printf("qr끝 \n");
 	fflush(stdout);
         if (count) { // no qr recognition
                 printf("no qr\0");
