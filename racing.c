@@ -519,7 +519,7 @@ int main(int argc, char *argv[]) {
 		
         	// linetracer
 		time_t start_time = time(NULL);
-    		while (difftime(time(NULL), start_time) < 2) {
+    		while (difftime(time(NULL), start_time) < 1.5) {
 
     			if(run_direct == 'l'){ // left
 				int trackValue1 = digitalRead(TRACKING_PIN1);
