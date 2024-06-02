@@ -122,7 +122,7 @@ int main() {
             n = 0;
             Car_Stop(); 
             delay(30);
-            Car_Back(70, 70);
+            Car_Run(70, 70);
             delay(100);
             Car_Left(200, 200);
             delay(470);
@@ -167,7 +167,7 @@ int main() {
             n = 0;
             Car_Stop(); 
             delay(30);
-            Car_Back(70, 70);
+            Car_Run(70, 70);
             delay(100);
             Car_Left(200, 200);
             delay(470);
@@ -178,7 +178,7 @@ int main() {
             n = 0;
             Car_Stop(); 
             delay(30);
-            Car_Back(70, 70);
+            Car_Run(70, 70);
             delay(100);
             Car_Left(200, 200);
             delay(470);
