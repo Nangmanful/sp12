@@ -191,6 +191,11 @@ int main(int argc, char *argv[]) {
         close(sock);
         exit(EXIT_FAILURE);
     }
+	pthread_t threadId;
+    if (pthread_create(&threadId, NULL, qrRecognitionThread, &cap) != 0) {
+        perror("Failed to create QR recognition thread");
+        return 1;
+    }
 while (1) {
 	    int n = 0;
     int f = 0;
@@ -208,11 +213,7 @@ while (1) {
         ClientAction game_state;
         Car_Stop();
         printf("qr시작\0");
-	pthread_t threadId;
-    if (pthread_create(&threadId, NULL, qrRecognitionThread, &cap) != 0) {
-        perror("Failed to create QR recognition thread");
-        return 1;
-    }
+
         pthread_mutex_lock(&qrCodeMutex);
 	int count = 1;
         if (strcmp(qrCodeData, "77") == 0 && strcmp(index, qrCodeData) == 0) {
