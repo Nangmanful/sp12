@@ -193,7 +193,7 @@ int main(int argc, char *argv[]) {
     }
 
     printf("Connected to server\0");
-
+	fflush(stdout);
     pthread_t recv_thread;
     thread_args *args = malloc(sizeof(thread_args));
     args->sock = sock;
@@ -232,11 +232,15 @@ while (1) {
         	index = qrCodeData;
 		count = 0;
 	}
+	printf("unlock\n");
+	fflush(stdout);
         pthread_mutex_unlock(&qrCodeMutex);
 	printf("qr끝\0");
+	fflush(stdout);
 	Car_Stop();
         if (count) { // no qr recognition
                 printf("no qr\0");
+		fflush(stdout);
         }
         else {
             index_x = index[0] - '0'; // ASCII 값을 실제 숫자로 변환
