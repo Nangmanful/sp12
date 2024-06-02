@@ -96,6 +96,8 @@ void* handle_info(void* arg) {
 
     while ((n = recv(sock, &global_info, sizeof(DGIST), 0)) > 0) {
         printf("Received data from server\n");
+    	fflush(stdout);
+	    delay(50);
     }
 
     if (n == 0) {
@@ -103,7 +105,7 @@ void* handle_info(void* arg) {
     } else if (n < 0) {
         perror("recv failed");
     }
-
+	fflush(stdout);
     close(sock);
     free(arg);
     return NULL;
@@ -115,7 +117,9 @@ void* qrRecognitionThread() {
         pthread_mutex_lock(&qrCodeMutex);
         strncpy((char*)qrCodeData, data, sizeof(qrCodeData) - 1);
         pthread_mutex_unlock(&qrCodeMutex);
-        usleep(500000); // 0.1초 대기
+	    printf("qrthread action\n");
+	    fflush(stdout);
+        usleep(500000); // 0.5초 대기
     }
     return NULL;
 }
