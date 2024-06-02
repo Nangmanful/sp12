@@ -888,7 +888,7 @@ int main(int argc, char *argv[]) {
 			        delay(10);
 			}
 
-    			else if(run_direct == 'b'){
+    			else if(run_direct == 'b' || run_direct == 'n'){
 	    			//case cross T
 	    			int trackValue1 = digitalRead(TRACKING_PIN1);
 			        int trackValue2 = digitalRead(TRACKING_PIN2);
@@ -1133,7 +1133,7 @@ int main(int argc, char *argv[]) {
     			}
     		}   //while 2초 끝
 		Car_Stop();
-		delay(300);
+		delay(700);
 	} //while(1)
     close(sock);    
     return 0;
