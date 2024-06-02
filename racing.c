@@ -519,9 +519,6 @@ int main(int argc, char *argv[]) {
 		
         	// linetracer
 		time_t start_time = time(NULL);
-		if(run_direct == 'n'){
-			start_time -= 1;
-		}
     		while (difftime(time(NULL), start_time) < 0.8) {
 
     			if(run_direct == 'l'){ // left
