@@ -519,7 +519,7 @@ int main(int argc, char *argv[]) {
 		
         	// linetracer
 		time_t start_time = time(NULL);
-    		while (difftime(time(NULL), start_time) < 1) {
+    		while (difftime(time(NULL), start_time) < 2) {
 
     			if(run_direct == 'l'){ // left
 				int trackValue1 = digitalRead(TRACKING_PIN1);
@@ -891,7 +891,7 @@ int main(int argc, char *argv[]) {
 			        delay(10);
 			}
 
-    			else if(run_direct == 'b' || run_direct == 'n'){
+    			else if(run_direct == 'b'){
 	    			//case cross T
 	    			int trackValue1 = digitalRead(TRACKING_PIN1);
 			        int trackValue2 = digitalRead(TRACKING_PIN2);
@@ -1121,10 +1121,12 @@ int main(int argc, char *argv[]) {
 				                delay(20);
 				                f += 1;
 				            }
-				            else{
-				            Car_Run(50,50);
-				            delay(10);
-				            n += 1;
+				            	else{
+				            		Car_Left(40,40);
+				            		delay(10);
+							Car_Right(40,40);
+							delay(10);
+				            		n += 1;
 				            }
 				        }
 				        else{
@@ -1136,7 +1138,7 @@ int main(int argc, char *argv[]) {
     			}
     		}   //while 2초 끝
 		Car_Stop();
-		delay(700);
+		delay(500);
 	} //while(1)
     close(sock);    
     return 0;
