@@ -206,7 +206,8 @@ int main() {
                 f += 1;
             }
             else{
-            Car_Run(40,40);
+            Car_Left(80, 80);
+            delay(30);
             n += 1;
             }
         }
