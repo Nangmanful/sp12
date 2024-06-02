@@ -27,6 +27,26 @@ DGIST global_info;
 volatile char qrCodeData[256] = "77";
 pthread_mutex_t qrCodeMutex = PTHREAD_MUTEX_INITIALIZER;
 
+char* copy_string(const char* src) {
+    // 원본 문자열의 길이를 계산
+    size_t len = strlen(src);
+    
+    // 문자열을 저장할 새로운 메모리 할당
+    char* dest = (char*)malloc((len + 1) * sizeof(char)); // +1은 null 종료 문자('\0')를 위한 공간
+    
+    // 메모리 할당이 성공했는지 확인
+    if (dest == NULL) {
+        perror("Failed to allocate memory");
+        exit(EXIT_FAILURE);
+    }
+    
+    // 원본 문자열을 새로 할당된 메모리로 복사
+    strcpy(dest, src);
+    
+    // 새로 복사된 문자열의 포인터 반환
+    return dest;
+}
+
 void i2c_init() {
     if ((i2c_fd = open("/dev/i2c-1", O_RDWR)) < 0) {
         perror("Failed to open the i2c bus");
@@ -202,7 +222,6 @@ int main(int argc, char *argv[]) {
 	char* index ="77";
         DGIST info;
 	info = global_info;
-	char* pre_index = "77";
 	while (1) {
 		int n = 0;
     		int f = 0;
@@ -222,11 +241,10 @@ int main(int argc, char *argv[]) {
         	pthread_mutex_lock(&qrCodeMutex);
 		printf("index : %s, qrcode : %s\n", index, qrCodeData);
 		fflush(stdout);
-        	if (strcmp(qrCodeData, "77") != 0 && strcmp(pre_index, qrCodeData) != 0) {
+        	if (strcmp(qrCodeData, "77") != 0 && strcmp(index, qrCodeData) != 0) {
             		printf("QR 코드 데이터: %s\n", qrCodeData);
 			fflush(stdout);
-			pre_index = index;
-        		index = qrCodeData;
+        		index = copy_string(qrCodeData);
 			count = 0;
 		}
 		printf("unlock, count: %d\n", count);
