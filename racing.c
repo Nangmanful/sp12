@@ -202,6 +202,7 @@ int main(int argc, char *argv[]) {
 	char* index ="77";
         DGIST info;
 	info = global_info;
+	char* pre_index = "77";
 	while (1) {
 		int n = 0;
     		int f = 0;
@@ -221,9 +222,10 @@ int main(int argc, char *argv[]) {
         	pthread_mutex_lock(&qrCodeMutex);
 		printf("index : %s, qrcode : %s\n", index, qrCodeData);
 		fflush(stdout);
-        	if (strcmp(qrCodeData, "77") != 0 && strcmp(index, qrCodeData) != 0) {
+        	if (strcmp(qrCodeData, "77") != 0 && strcmp(pre_index, qrCodeData) != 0) {
             		printf("QR 코드 데이터: %s\n", qrCodeData);
 			fflush(stdout);
+			pre_index = index;
         		index = qrCodeData;
 			count = 0;
 		}
