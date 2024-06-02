@@ -207,7 +207,7 @@ int main() {
                 delay(100);
             }
             else if(n == 7){
-                Car_Run(50, 50);
+                Car_Run(100, 100);
                 delay(50);
                 Car_Back(100, 100);   
                 delay(30);
