@@ -209,10 +209,12 @@ char* index ="77";
         Node node;
         Item now_item;
         ClientAction game_state;
-        printf("qr시작 현재: qr%s\n", qrCodeData);
+        printf("qr시작\n");
 	fflush(stdout);
         pthread_mutex_lock(&qrCodeMutex);
 	int count = 1;
+	printf("index : %s, qrcode : %s\n", index, qrCodeData);
+	fflush(stdout);
         if (strcmp(qrCodeData, "77") != 0 && strcmp(index, qrCodeData) != 0) {
             printf("QR 코드 데이터: %s\n", qrCodeData);
         	index = qrCodeData;
@@ -350,7 +352,6 @@ char* index ="77";
         */
 
         // Finding future_x & future_y
-	info = global_info;
         int past_x = present_x;
         int past_y = present_y;
         present_x = index_x;
