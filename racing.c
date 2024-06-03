@@ -326,7 +326,10 @@ int main(int argc, char *argv[]) {
 		        int item_state;
 		        item_state = now_item.status;
 			fflush(stdout);
-		
+			int bomb_check = 0;
+			if(ex>5 || ey>4 ||ex<-1 ||ey <0){
+				bomb_check = 1;
+			} 
 		        //bomb
 		  	int eleft_x = ex;
 		        int eleft_y = ey-1;
@@ -415,15 +418,21 @@ int main(int argc, char *argv[]) {
 		
 		        game_state.row = index_x;
 		        game_state.col = index_y;
-			if(ex == -1 && ey == -1){
+			
+			if(bomb_check){
 				game_state.action = move;
 			}
-		        else if(index_x == efuture_x && index_y == efuture_y){
-		                game_state.action = setBomb;
-		        }
-		        else{
-		                game_state.action = move;
-		        }
+			else{
+				if(ex == -1 && ey == -1){
+					game_state.action = move;
+				}
+			        else if(index_x == efuture_x && index_y == efuture_y){
+			                game_state.action = setBomb;
+			        }
+			        else{
+		        	        game_state.action = move;
+		        	}
+			}
 			printf("send time\n");
 			fflush(stdout);
 		        if (send(sock, &game_state, sizeof(ClientAction), 0) < 0) {
