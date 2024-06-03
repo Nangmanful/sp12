@@ -329,7 +329,8 @@ int main(int argc, char *argv[]) {
 			int bomb_check = 0;
 			if(ex>5 || ey>4 ||ex<-1 ||ey <0){
 				bomb_check = 1;
-			} 
+			}
+
 		        //bomb
 		  	int eleft_x = ex;
 		        int eleft_y = ey-1;
@@ -418,9 +419,12 @@ int main(int argc, char *argv[]) {
 		
 		        game_state.row = index_x;
 		        game_state.col = index_y;
-			
+			printf("ex, ey: %d, %d/n", ex, ey);
+			fflush(stdout);
 			if(bomb_check){
 				game_state.action = move;
+				printf("bomb_check =1 %d\n", bomb_check);
+				fflush(stdout);
 			}
 			else{
 				if(ex == -1 && ey == -1){
