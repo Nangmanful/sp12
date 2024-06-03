@@ -835,109 +835,75 @@ int main(int argc, char *argv[]) {
 			}
 				
     			else if(run_direct == 'f'){
-                		int trackValue1 = digitalRead(TRACKING_PIN1);
-        			int trackValue2 = digitalRead(TRACKING_PIN2);
-        			int trackValue3 = digitalRead(TRACKING_PIN3);
-        			int trackValue4 = digitalRead(TRACKING_PIN4);
-
-        			// 각 트래킹 핀의 값을 출력
-
-        			// 트래킹 핀 값을 바탕으로 자동차 제어 로직
-        			// 트래킹 핀 값을 바탕으로 자동차 제어 로직
-			        if (f == 3){
-			            	Car_Stop();    
-			            	delay(100);
-			            	f = 0;
-			            	l += 1;
-			        }
-			        if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 1) {
-			            	n = 0;
-			            	Car_Run(80, 80);
-			        } 
-			        else if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 0 && trackValue4 == 1) {
-			            	n = 0;
-			            	Car_Run(80, 80);
-			        }
-			        else if (trackValue2 == 1 && trackValue3 == 1 && trackValue1 == 0 && trackValue4 == 1) {
-			            	n = 0;
-			            	Car_Left(80, 80);
-			            	delay(50);
-			            	Car_Run(40, 40);
-			            	delay(30);
-			        }
-			        else if (trackValue2 == 1 && trackValue3 == 1 && trackValue1 == 1 && trackValue4 == 0) {
-			            	n = 0;
-			            	Car_Right(80, 80);
-			            	delay(50);
-			            	Car_Run(40, 40);
-			            	delay(30);
-			        }
-			        else if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 0) {
-			            	n = 0;
-			            	Car_Run(80, 80);
-			        }
-			        // else if (trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 1 && trackValue4 == 0) {
-			        //     n = 0;
-			        //     Car_Back(40, 40);
-			        // }
-			        else if (trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 1 && trackValue4 == 1) {
-			            	n = 0;
-			            	Car_Run(80, 80);
-			        }
-			        // else if (trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 0 && trackValue4 == 0) {
-			        //     n = 0;
-			        //     Car_Back(40, 40);
-			        // } 
-			        // else if (trackValue2 == 1 && trackValue3 == 0 && trackValue1 == 0 && trackValue4 == 0) {
-			        //     n = 0;
-			        //     Car_Back(40, 40);
-			        //} 
-			        else if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 0 && trackValue4 == 0) {
-			            	n = 0;
-			            	Car_Run(80, 80);
-			        } 
-			        else if(trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 0 && trackValue4 == 1){
-			            	n = 0;
-			            	Car_Run(80, 80);
-			        }
-			        else if(trackValue2 == 1 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 0){
-			            	n = 0;
-			            	Car_Run(80, 80);
-			        }
-			        else if(trackValue2 == 1 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 1){
-			            	n = 0;
-			            	Car_Right(80, 80);
-			            	delay(50);
-			            	Car_Run(40, 40);
-			            	delay(30);
-			        }
-			        // else if(trackValue2 == 1 && trackValue3 == 0 && trackValue1 == 0 && trackValue4 == 1){
-			        //     n = 0;
-			        //     Car_Back(40,40);
-			        // }
-			        else if(trackValue2 == 1 && trackValue3 == 1 && trackValue1 == 1 && trackValue4 == 1){
-			            	if (n == 10){
-			                	Car_Stop();
-			                	delay(100);
-			            	}
-			            	else if(n == 7){
-			                	Car_Back(100, 100);   
-			                	delay(30);
-			                	f += 1;
-			            	}
-			            	else{
-			            		Car_Run(40,40);	
-			            		n += 1;
-			            	}
-			        }
-			        else{
-			            	f = 0;
-			            	n = 0;
-			            	k += 1;
-			            	Car_Run(50, 50);
-			        } 
-			        delay(10);
-			}
+                		        if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 1) {  //흰검검흰
+				            Car_Run(60, 60);
+				            delay(10);
+				        } 
+				        else if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 0 && trackValue4 == 1) {  //검검검흰
+				            Car_Run(60, 60);
+				            delay(10);
+				        }
+				        else if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 0) {  //흰검검검
+				            Car_Run(60, 60);
+				            delay(10);
+				        }
+				        else if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 0 && trackValue4 == 0) { //검검검검
+				            Car_Run(60, 60);
+				            delay(10);
+				        }
+				
+				        else if (trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 1 && trackValue4 == 0) { //흰검흰검
+				            Car_Run(40,90);
+				            delay(10);
+				        }
+				        else if (trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 1 && trackValue4 == 1) {  //흰검흰흰
+				            Car_Run(40,90);
+				            delay(10);
+				        }
+				        else if (trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 0 && trackValue4 == 0) { //검검흰검
+				            Car_Run(40,90);
+				            delay(10);
+				        } 
+				        else if(trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 0 && trackValue4 == 1){  //검검흰흰
+				            Car_Run(40,90);
+				            delay(10);
+				        }
+				
+				        else if (trackValue2 == 1 && trackValue3 == 0 && trackValue1 == 0 && trackValue4 == 0) {  //검흰검검
+				            Car_Run(90,40);
+				            delay(10);
+				        } 
+				        else if(trackValue2 == 1 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 0){  //흰흰검검
+				            Car_Run(90,40);
+				            delay(10);
+				        }
+				        else if(trackValue2 == 1 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 1){  //흰흰검흰
+				            Car_Run(90,40);
+				            delay(10);
+				        }
+				        else if(trackValue2 == 1 && trackValue3 == 0 && trackValue1 == 0 && trackValue4 == 1){  //검흰검흰
+				            Car_Run(90,40);
+				            delay(10);
+				        }
+				
+				        else if (trackValue2 == 1 && trackValue3 == 1 && trackValue1 == 0 && trackValue4 == 1) { //검흰흰흰
+				            Car_Left(40,90);
+				            delay(100);
+				        }
+				        else if (trackValue2 == 1 && trackValue3 == 1 && trackValue1 == 1 && trackValue4 == 0) { //흰흰흰검
+				            Car_Right(90, 40);
+				            delay(100);
+				        }
+				        
+				        else if(trackValue2 == 1 && trackValue3 == 1 && trackValue1 == 1 && trackValue4 == 1){  //흰흰흰흰
+				            Car_Run(60,60);
+				            delay(10);
+				        }
+				        else{               //검흰흰검
+				            Car_Run(60,60);
+				            delay(10);
+				        }
+				    }
 
     			else if(run_direct == 'b'){
 	    			//case cross T
