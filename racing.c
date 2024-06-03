@@ -22,7 +22,7 @@
 
 #define I2C_ADDR 0x16 
 
-int i2c_fd;
+
 DGIST global_info;
 volatile char qrCodeData[256] = "77";
 pthread_mutex_t qrCodeMutex = PTHREAD_MUTEX_INITIALIZER;
@@ -78,33 +78,58 @@ void write_array(int reg, unsigned char* data, int length) {
     }
 }
 
-void Ctrl_Car(int l_dir, int l_speed, int r_dir, int r_speed) {
-    int reg = 0x01;
-    unsigned char data[4] = { l_dir, l_speed, r_dir, r_speed };
-    write_array(reg, data, 4);
-}
+// 레지스터 정의
+#define REG_MOTOR_CONTROL 0x01
+#define REG_STOP_ALL 0x02
+#define REG_SERVO_CONTROL 0x03
 
-void Car_Run(int speed1, int speed2) {
-    Ctrl_Car(1, speed1, 1, speed2);
+// 모터 방향 정의
+#define b 0
+#define f 1
+
+int i2c_fd;
+
+// 함수 선언
+void Car_Control(int leftDir, int leftSpeed, int rightDir, int rightSpeed) {
+    if (leftSpeed < 0) leftSpeed = 0;
+    if (leftSpeed > 180) leftSpeed = 180;
+    if (rightSpeed < 0) rightSpeed = 0;
+    if (rightSpeed > 180) rightSpeed = 180;
+
+    unsigned char buffer[5];
+    buffer[0] = REG_MOTOR_CONTROL;
+    buffer[1] = leftDir;
+    buffer[2] = leftSpeed;
+    buffer[3] = rightDir;
+    buffer[4] = rightSpeed;
+
+    if (write(i2c_fd, buffer, 5) != 5) {
+        perror("Failed to write to the i2c bus");
+    }
 }
 
 void Car_Stop() {
-    int reg = 0x02;
-    write_u8(reg, 0x00);
+    unsigned char buffer[2];
+    buffer[0] = REG_STOP_ALL;
+    buffer[1] = 0x00;
+
+    if (write(i2c_fd, buffer, 2) != 2) {
+        perror("Failed to write to the i2c bus");
+    }
 }
 
-void Car_Back(int speed1, int speed2) {
-    Ctrl_Car(0, speed1, 0, speed2);
+void Car_Run(int leftSpeed, int rightSpeed) {
+    Car_Control(f, leftSpeed, f, rightSpeed);
 }
-
-void Car_Left(int speed1, int speed2) {
-    Ctrl_Car(0, speed1, 1, speed2);
+void Car_Back(int leftSpeed, int rightSpeed) {
+    Car_Control(b, leftSpeed, b, rightSpeed);
 }
-
-void Car_Right(int speed1, int speed2) {
-    Ctrl_Car(1, speed1, 0, speed2);
+void Car_Left(int leftSpeed, int rightSpeed) {
+    Car_Control(b, leftSpeed, f, rightSpeed);
 }
-
+void Car_Right(int leftSpeed, int rightSpeed) {
+    Car_Control(f, leftSpeed, b, rightSpeed);
+}
 typedef struct {
     int sock;
 } thread_args;
