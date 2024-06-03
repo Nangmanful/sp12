@@ -268,8 +268,7 @@ int main(int argc, char *argv[]) {
         DGIST info;
 	info = global_info;
 	while (1) {
-        	char direct = 'r';
-        	int index_x; // our
+		int index_x; // our
         	int index_y; // our
         	client_info player_info;
         	client_info enemy_info;
@@ -437,7 +436,7 @@ int main(int argc, char *argv[]) {
         		/*
             		algorithm 구현(linetracer)
         		*/
-			delay(300);
+			delay(500);
 			info = global_info;
 
         		// Finding future_x & future_y
@@ -540,13 +539,21 @@ int main(int argc, char *argv[]) {
             			if(present_x==0 && present_y==0){
                 			if(fp_x==0 && fp_y==1){run_direct = 'l';}
                 			else if(fp_x==1 && fp_y==0){run_direct = 'f';}
+					else{run_direct = 'n';}
+				}
+				else{
+					run_direct ='n';
 				}
 			}
 			else if(past_x == 5 && past_y == 4){
             			if(present_x==4 && present_y==4){
                 			if(fp_x==0 && fp_y==-1){run_direct = 'l';}
 			                else if(fp_x==-1 && fp_y==0){run_direct = 'f';}
-            			}
+            				else{run_direct = 'n';}
+				}
+				else{
+					run_direct ='n';
+				}
         		}
         		else{
         			if(fpp_x==0 && fpp_y==0){run_direct = 'b';}
@@ -573,7 +580,7 @@ int main(int argc, char *argv[]) {
 				}
 			}
    		} //else 끝
-		printf("direct : %s", run_direct);
+		printf("direct : %c", run_direct);
 		fflush(stdout);
         	// linetracer
 		struct timespec start_time, current_time;
