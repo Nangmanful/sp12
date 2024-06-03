@@ -573,6 +573,8 @@ int main(int argc, char *argv[]) {
 				}
 			}
    		} //else 끝
+		printf("direct : %s", run_direct);
+		fflush(stdout);
         	// linetracer
 		struct timespec start_time, current_time;
 		
