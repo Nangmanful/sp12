@@ -865,6 +865,7 @@ int main(int argc, char *argv[]) {
 			        // 트래킹 핀 값을 바탕으로 자동차 제어 로직
 				        if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 1) {  //흰검검흰
             Car_Run(50, 50);
+		delay(10);
         }
         else if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 0 && trackValue4 == 1) {  //검검검흰
                 Car_Control(f, 100, b, 30);
@@ -889,10 +890,12 @@ int main(int argc, char *argv[]) {
 
         else if (trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 1 && trackValue4 == 0) { //흰검흰검
             Car_Run(40,80);
+		delay(10);
 
         }
         else if (trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 1 && trackValue4 == 1) {  //흰검흰흰
             Car_Run(40,80);
+		delay(10);
 
         }
         else if (trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 0 && trackValue4 == 0) { //검검흰검
@@ -927,9 +930,11 @@ int main(int argc, char *argv[]) {
         }
         else if(trackValue2 == 1 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 1){  //흰흰검흰
             Car_Run(80,40);
+		delay(10);
         }
         else if(trackValue2 == 1 && trackValue3 == 0 && trackValue1 == 0 && trackValue4 == 1){  //검흰검흰
             Car_Run(80,40);
+		delay(10);
         }
 
         else if (trackValue2 == 1 && trackValue3 == 1 && trackValue1 == 0 && trackValue4 == 1) { //검흰흰흰
@@ -943,109 +948,132 @@ int main(int argc, char *argv[]) {
 
         else if(trackValue2 == 1 && trackValue3 == 1 && trackValue1 == 1 && trackValue4 == 1){  //흰흰흰흰
             Car_Run(50,50);
+		delay(10);
         }
         else{               //검흰흰검
             Car_Run(50,50);
-        }
-        delay(10);
-    
-
-				
-			}
+		delay(10);
+        } 		
+}
     			else if(run_direct == 'n'){
-				        int trackValue1 = digitalRead(TRACKING_PIN1);
-				        int trackValue2 = digitalRead(TRACKING_PIN2);
-				        int trackValue3 = digitalRead(TRACKING_PIN3);
-				        int trackValue4 = digitalRead(TRACKING_PIN4);
-								
-				        // 트래킹 핀 값을 바탕으로 자동차 제어 로직
+				int trackValue1 = digitalRead(TRACKING_PIN1);
+        int trackValue2 = digitalRead(TRACKING_PIN2);
+        int trackValue3 = digitalRead(TRACKING_PIN3);
+        int trackValue4 = digitalRead(TRACKING_PIN4);
+
+        // 트래킹 핀 값을 바탕으로 자동차 제어 로직
         if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 1) {  //흰검검흰
             Car_Run(50, 50);
-        }
+            delay(10);
+        } 
         else if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 0 && trackValue4 == 1) {  //검검검흰
-                Car_Control(f, 100, b, 30);
-                delay(650);
+            Car_Control(f, 100, b, 30);
+            delay(650);
+    
+            Car_Control(b, 100, f, 100);
+            delay(1200);
 
-                Car_Control(b, 100, f, 100);
-            delay(1550);
+            trackValue2 = digitalRead(TRACKING_PIN2);
+            trackValue3 = digitalRead(TRACKING_PIN3);
+            while ((trackValue2 == 1) || (trackValue3 == 1)) {
+                Car_Control(b, 80, f, 80);
+                delay(10);
+                trackValue2 = digitalRead(TRACKING_PIN2);
+                trackValue3 = digitalRead(TRACKING_PIN3);
+            }
+            Car_Control(f,90,f,40);
+            delay(10);
         }
         else if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 0) {  //흰검검검
-                Car_Control(f, 100, b, 30);
-                delay(650);
-                Car_Control(b, 100, f, 100);
-            delay(1550);
+            Car_Control(f, 100, b, 30);
+            delay(650);
+    
+            Car_Control(b, 100, f, 100);
+            delay(1200);
+
+            trackValue2 = digitalRead(TRACKING_PIN2);
+            trackValue3 = digitalRead(TRACKING_PIN3);
+            while ((trackValue2 == 1) || (trackValue3 == 1)) {
+                Car_Control(b, 80, f, 80);
+                delay(10);
+                trackValue2 = digitalRead(TRACKING_PIN2);
+                trackValue3 = digitalRead(TRACKING_PIN3);
+            }
+            Car_Control(f,90,f,40);
+            delay(10);
         }
         else if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 0 && trackValue4 == 0) { //검검검검
-                Car_Control(f, 100, b, 30);
-                delay(650);
-                Car_Control(b, 100, f, 100);
-            delay(1550);
+            Car_Control(f, 100, b, 30);
+            delay(650);
+    
+            Car_Control(b, 100, f, 100);
+            delay(1200);
 
+            trackValue2 = digitalRead(TRACKING_PIN2);
+            trackValue3 = digitalRead(TRACKING_PIN3);
+            while ((trackValue2 == 1) || (trackValue3 == 1)) {
+                Car_Control(b, 80, f, 80);
+                delay(10);
+                trackValue2 = digitalRead(TRACKING_PIN2);
+                trackValue3 = digitalRead(TRACKING_PIN3);
+            }
+            Car_Control(f,90,f,40);
+            delay(10);
         }
 
         else if (trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 1 && trackValue4 == 0) { //흰검흰검
-            Car_Run(40,80);
-
+            Car_Run(40,90);
+            delay(10);
         }
         else if (trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 1 && trackValue4 == 1) {  //흰검흰흰
-            Car_Run(40,80);
-
+            Car_Run(40,90);
+            delay(10);
         }
         else if (trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 0 && trackValue4 == 0) { //검검흰검
-                Car_Control(f, 100, b, 30);
-                delay(650);
-                Car_Control(b, 100, f, 100);
-            delay(1550);
-
-        }
+            Car_Run(40,90);
+            delay(10);
+        } 
         else if(trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 0 && trackValue4 == 1){  //검검흰흰
-                Car_Control(f, 100, b, 30);
-                delay(650);
-                Car_Control(b, 100, f, 100);
-            delay(1550);
-
+            Car_Run(40,90);
+            delay(10);
         }
+
         else if (trackValue2 == 1 && trackValue3 == 0 && trackValue1 == 0 && trackValue4 == 0) {  //검흰검검
-                Car_Control(f, 100, b, 30);
-                delay(650);
-                Car_Control(b, 100, f, 100);
-            delay(1550);
-
-
-        }
+            Car_Run(90,40);
+            delay(10);
+        } 
         else if(trackValue2 == 1 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 0){  //흰흰검검
-                Car_Control(f, 100, b, 30);
-                delay(650);
-                Car_Control(b, 100, f, 100);
-            delay(1550);
-
-
+            Car_Run(90,40);
+            delay(10);
         }
         else if(trackValue2 == 1 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 1){  //흰흰검흰
-            Car_Run(80,40);
+            Car_Run(90,40);
+            delay(10);
         }
         else if(trackValue2 == 1 && trackValue3 == 0 && trackValue1 == 0 && trackValue4 == 1){  //검흰검흰
-            Car_Run(80,40);
+            Car_Run(90,40);
+            delay(10);
         }
 
         else if (trackValue2 == 1 && trackValue3 == 1 && trackValue1 == 0 && trackValue4 == 1) { //검흰흰흰
-            Car_Run(0, 60);
-            delay(400);
+            Car_Left(40,90);
+            delay(100);
         }
         else if (trackValue2 == 1 && trackValue3 == 1 && trackValue1 == 1 && trackValue4 == 0) { //흰흰흰검
-            Car_Run(60,0);
-            delay(400);
+            Car_Right(90, 40);
+            delay(100);
         }
-
+        
         else if(trackValue2 == 1 && trackValue3 == 1 && trackValue1 == 1 && trackValue4 == 1){  //흰흰흰흰
-            Car_Run(40,40);
+            Car_Run(50,50);
+            delay(10);
         }
         else{               //검흰흰검
-            Car_Run(40,40);
+            Car_Run(50,50);
+            delay(10);
         }
-        delay(10);
 
-    	}
+    }
     		
 		    } while (elapsed < 2);   //while 1.5초 끝
 		Car_Stop();
