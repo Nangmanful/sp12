@@ -534,53 +534,57 @@ int main(int argc, char *argv[]) {
 		        int fp_y = future_y-present_y;
         		int pp_x = present_x-past_x;
         		int pp_y = present_y-past_y;
-
-        		if(past_x==-1 && past_y==0){
-            			if(present_x==0 && present_y==0){
-                			if(fp_x==0 && fp_y==1){run_direct = 'l';}
-                			else if(fp_x==1 && fp_y==0){run_direct = 'f';}
-					else{run_direct = 'n';}
+			if(abs(fp_x) == 1 || abs(fp_y) == 1){
+	        		if(past_x==-1 && past_y==0){
+	            			if(present_x==0 && present_y==0){
+	                			if(fp_x==0 && fp_y==1){run_direct = 'l';}
+	                			else if(fp_x==1 && fp_y==0){run_direct = 'f';}
+						else{run_direct = 'n';}
+					}
+					else{
+						run_direct ='n';
+					}
 				}
-				else{
-					run_direct ='n';
+				else if(past_x == 5 && past_y == 4){
+	            			if(present_x==4 && present_y==4){
+	                			if(fp_x==0 && fp_y==-1){run_direct = 'l';}
+				                else if(fp_x==-1 && fp_y==0){run_direct = 'f';}
+	            				else{run_direct = 'n';}
+					}
+					else{
+						run_direct ='n';
+					}
+	        		}
+	        		else{
+	        			if(fpp_x==0 && fpp_y==0){run_direct = 'b';}
+	        			else if(abs(fpp_x)==2 && fpp_y==0){run_direct = 'f';}
+	        			else if(fpp_x==0 && abs(fpp_y)==2){run_direct = 'f';}
+	        			else if(pp_x==1 && pp_y==0){
+	            				if(fp_x==0 && fp_y==-1){run_direct = 'r';}
+	            				else if(fp_x=0 && fp_y==1){run_direct = 'l';}
+	        			}
+	        			else if(pp_x==-1 && pp_y==0){
+	            				if(fp_x==0 && fp_y==-1){run_direct = 'l';}
+	            				else if(fp_x==0 && fp_y==1){run_direct = 'r';}
+	        			}
+	        			else if(pp_x==0 && pp_y==1){
+				            	if(fp_x==-1 && fp_y==0){run_direct = 'l';}
+	            				else if(fp_x==1 && fp_y==0){run_direct = 'r';}
+				        }
+	        			else if(pp_x==0 && pp_y==-1){
+	            				if(fp_x==-1 && fp_y==0){run_direct = 'r';}
+	            				else if(fp_x==1 && fp_y==0){run_direct = 'l';}
+	        			}
+					else {                     //뺐더니 2,1 3,1 2,2 등등 지나갔을 때
+						run_direct = 'n';
+					}
 				}
 			}
-			else if(past_x == 5 && past_y == 4){
-            			if(present_x==4 && present_y==4){
-                			if(fp_x==0 && fp_y==-1){run_direct = 'l';}
-			                else if(fp_x==-1 && fp_y==0){run_direct = 'f';}
-            				else{run_direct = 'n';}
-				}
-				else{
-					run_direct ='n';
-				}
-        		}
-        		else{
-        			if(fpp_x==0 && fpp_y==0){run_direct = 'b';}
-        			else if(abs(fpp_x)==2 && fpp_y==0){run_direct = 'f';}
-        			else if(fpp_x==0 && abs(fpp_y)==2){run_direct = 'f';}
-        			else if(pp_x==1 && pp_y==0){
-            				if(fp_x==0 && fp_y==-1){run_direct = 'r';}
-            				else if(fp_x=0 && fp_y==1){run_direct = 'l';}
-        			}
-        			else if(pp_x==-1 && pp_y==0){
-            				if(fp_x==0 && fp_y==-1){run_direct = 'l';}
-            				else if(fp_x==0 && fp_y==1){run_direct = 'r';}
-        			}
-        			else if(pp_x==0 && pp_y==1){
-			            	if(fp_x==-1 && fp_y==0){run_direct = 'l';}
-            				else if(fp_x==1 && fp_y==0){run_direct = 'r';}
-			        }
-        			else if(pp_x==0 && pp_y==-1){
-            				if(fp_x==-1 && fp_y==0){run_direct = 'r';}
-            				else if(fp_x==1 && fp_y==0){run_direct = 'l';}
-        			}
-				else {                     //뺐더니 2,1 3,1 2,2 등등 지나갔을 때
-					run_direct = 'n';
-				}
+			else{
+				run_direct = 'n';
 			}
    		} //else 끝
-		printf("direct : %c", run_direct);
+		printf("direct : %c\n", run_direct);
 		fflush(stdout);
         	// linetracer
 		struct timespec start_time, current_time;
