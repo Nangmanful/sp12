@@ -248,10 +248,6 @@ int main(int argc, char *argv[]) {
         DGIST info;
 	info = global_info;
 	while (1) {
-		int n = 0;
-    		int f = 0;
-    		int k = 0;
-    		int l = 0;
         	char direct = 'r';
         	int index_x; // our
         	int index_y; // our
