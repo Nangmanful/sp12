@@ -26,6 +26,8 @@
 DGIST global_info;
 volatile char qrCodeData[256] = "77";
 pthread_mutex_t qrCodeMutex = PTHREAD_MUTEX_INITIALIZER;
+int i2c_fd;
+
 
 char* copy_string(const char* src) {
     // 원본 문자열의 길이를 계산
@@ -87,7 +89,6 @@ void write_array(int reg, unsigned char* data, int length) {
 #define b 0
 #define f 1
 
-int i2c_fd;
 
 // 함수 선언
 void Car_Control(int leftDir, int leftSpeed, int rightDir, int rightSpeed) {
