@@ -187,10 +187,7 @@ void* qrRecognitionThread() {
 }
 
 
-int main(int argc, char *argv[]) {
-	controlServo(i2c_fd, 1, 90);    //카메라 컨트롤 상하(잘못건드리면찢어짐)
-    	controlServo(i2c_fd, 2, 90);    //좌우(90이 가운데)
-	
+int main(int argc, char *argv[]) {	
 	printf("main 시작\n");
 	fflush(stdout);
 	int present_x;
@@ -226,6 +223,9 @@ int main(int argc, char *argv[]) {
     	pinMode(TRACKING_PIN4, INPUT);
 
     	i2c_init();
+
+	controlServo(i2c_fd, 1, 90);    //카메라 컨트롤 상하(잘못건드리면찢어짐)
+    	controlServo(i2c_fd, 2, 90);    //좌우(90이 가운데)
 
     	int sock;
     	struct sockaddr_in server_addr;
