@@ -119,9 +119,9 @@ int main() {
             Car_Stop(); 
             delay(30);
             Car_Run(80, 0);
-            delay(400);
+            delay(500);
             Car_Left(0, 80);
-            delay(2500);
+            delay(3000);
             Car_Run(70, 70);
             delay(100);
         } 
@@ -131,10 +131,8 @@ int main() {
             delay(30);
             Car_Run(80, 0);
             delay(500);
-            Car_Run(70, 70);
-            delay(300);
             Car_Left(0, 80);
-            delay(2500);
+            delay(3000);
             Car_Run(70, 70);
             delay(100);
         }
@@ -144,10 +142,8 @@ int main() {
             delay(30);
             Car_Run(80, 0);
             delay(500);
-            Car_Run(70, 70);
-            delay(300);
             Car_Left(0, 80);
-            delay(2500);
+            delay(3000);
             Car_Run(70, 70);
             delay(100);
         }    
@@ -162,10 +158,8 @@ int main() {
             delay(30);
             Car_Run(80, 0);
             delay(500);
-            Car_Run(70, 70);
-            delay(300);
             Car_Left(0, 80);
-            delay(2500);
+            delay(3000);
             Car_Run(70, 70);
             delay(100);
         }
@@ -183,10 +177,8 @@ int main() {
             delay(30);
             Car_Run(80, 0);
             delay(500);
-            Car_Run(70, 70);
-            delay(300);
             Car_Left(0, 80);
-            delay(2500);
+            delay(3000);
             Car_Run(70, 70);
             delay(100);
         }
