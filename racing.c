@@ -131,6 +131,23 @@ void Car_Left(int leftSpeed, int rightSpeed) {
 void Car_Right(int leftSpeed, int rightSpeed) {
     Car_Control(f, leftSpeed, b, rightSpeed);
 }
+
+void controlServo(int fd, int servoNum, int angle) {
+    if (servoNum < 1) servoNum = 1;
+    if (servoNum > 4) servoNum = 4;
+    if (angle < 0) angle = 0;
+    if (angle > 180) angle = 180;
+
+    unsigned char buffer[3];
+    buffer[0] = REG_SERVO_CONTROL;
+    buffer[1] = servoNum;
+    buffer[2] = angle;
+
+    if (write(fd, buffer, 3) != 3) {
+        perror("Failed to write to the i2c bus");
+    }
+}
+
 typedef struct {
     int sock;
 } thread_args;
@@ -171,6 +188,9 @@ void* qrRecognitionThread() {
 
 
 int main(int argc, char *argv[]) {
+	controlServo(i2c_fd, 1, 90);    //카메라 컨트롤 상하(잘못건드리면찢어짐)
+    	controlServo(i2c_fd, 2, 90);    //좌우(90이 가운데)
+	
 	printf("main 시작\n");
 	fflush(stdout);
 	int present_x;
