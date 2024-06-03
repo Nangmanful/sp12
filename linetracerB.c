@@ -117,22 +117,22 @@ int main(void) {
         }
         else if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 0 && trackValue4 == 1) {  //검검검흰
                 Car_Control(f, 100, b, 30);
-                delay(600);
+                delay(650);
 
                 Car_Control(b, 100, f, 100);
-            delay(1600);
+            delay(1500);
         }
         else if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 0) {  //흰검검검
                 Car_Control(f, 100, b, 30);
-                delay(600);
+                delay(650);
                 Car_Control(b, 100, f, 100);
-            delay(1600);
+            delay(1500);
         }
         else if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 0 && trackValue4 == 0) { //검검검검
                 Car_Control(f, 100, b, 30);
-                delay(600);
+                delay(650);
                 Car_Control(b, 100, f, 100);
-            delay(1600);
+            delay(1500);
 
         }
 
@@ -146,31 +146,31 @@ int main(void) {
         }
         else if (trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 0 && trackValue4 == 0) { //검검흰검
                 Car_Control(f, 100, b, 30);
-                delay(600);
+                delay(650);
                 Car_Control(b, 100, f, 100);
-            delay(1600);
+            delay(1500);
 
         }
         else if(trackValue2 == 0 && trackValue3 == 1 && trackValue1 == 0 && trackValue4 == 1){  //검검흰흰
                 Car_Control(f, 100, b, 30);
-                delay(600);
+                delay(650);
                 Car_Control(b, 100, f, 100);
-            delay(1600);
+            delay(1500);
 
         }
         else if (trackValue2 == 1 && trackValue3 == 0 && trackValue1 == 0 && trackValue4 == 0) {  //검흰검검
                 Car_Control(f, 100, b, 30);
-                delay(600);
+                delay(650);
                 Car_Control(b, 100, f, 100);
-            delay(1600);
+            delay(1500);
 
 
         }
         else if(trackValue2 == 1 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 0){  //흰흰검검
                 Car_Control(f, 100, b, 30);
-                delay(600);
+                delay(650);
                 Car_Control(b, 100, f, 100);
-            delay(1600);
+            delay(1500);
 
 
         }
