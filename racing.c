@@ -1050,8 +1050,9 @@ int main(int argc, char *argv[]) {
 
     	}
     		
-		    } while (elapsed < 1);   //while 1.5초 끝
+		    } while (elapsed < 2);   //while 1.5초 끝
 		Car_Stop();
+		delay(500);
 	} //while(1)
     close(sock);    
     return 0;
