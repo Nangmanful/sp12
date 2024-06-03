@@ -345,19 +345,33 @@ int main(int argc, char *argv[]) {
 		        else{ed_item.score = -100;}
     			fflush(stdout);
 
-		        if(el_item.score>er_item.score){ebest_node = enode_l;}
-		        else{ebest_node = enode_r;}
+		        // if(el_item.score>er_item.score){ebest_node = enode_l;}
+		        // else{ebest_node = enode_r;}
 			
-		        Item ebest_item = ebest_node.item;
+		        // Item ebest_item = ebest_node.item;
 			
-		        if(eu_item.score>ebest_item.score){ebest_node = enode_u;}
-		        if(ed_item.score>ebest_item.score){ebest_node = enode_d;}
+		        // if(eu_item.score>ebest_item.score){ebest_node = enode_u;}
+		        // if(ed_item.score>ebest_item.score){ebest_node = enode_d;}
 		    
-		        int efuture_x = ebest_node.row;
-		        int efuture_y = ebest_node.col;
-		        //bomb check
+		        // int efuture_x = ebest_node.row;
+		        // int efuture_y = ebest_node.col;
+		        // //bomb check
+
+
+			int efuture_x = -1;
+		        int efuture_y = -1;
+			Item ebest_item = ebest_node.item;
+			
+			if(el_item.score>er_item.score){efuture_x = eleft_x; efuture_y = eleft_y; ebest_item.score = el_item.score;}
+		        else{efuture_x = eright_x; efuture_y = eright_y; ebest_item.score = er_item.score;}
+			
+		        if(eu_item.score>ebest_item.score){
+				efuture_x = eup_x; efuture_y = eup_y; ebest_item.score = eu_item.score;
+			}
+		        if(ed_item.score>ebest_item.score){
+				efuture_x = edown_x; efuture_y = edown_y; ebest_item.score = ed_item.score;
+			}
 		
-		            
 		        game_state.row = index_x;
 		        game_state.col = index_y;
 			if(ex == -1 && ey == -1){
