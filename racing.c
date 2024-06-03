@@ -416,10 +416,7 @@ int main(int argc, char *argv[]) {
 		
 		        game_state.row = index_x;
 		        game_state.col = index_y;
-			if ((index_x == 0 && index_y ==0) || (index_x == 0 && index_y ==4) || (index_x == 4 && index_y ==0) || (index_x == 4 && index_y ==4)){
-		                game_state.action = setBomb;
-			}
-			else if(ex == -1 && ey == -1){
+			if(ex == -1 && ey == -1){
 				game_state.action = move;
 			}
 		        else if(index_x == efuture_x && index_y == efuture_y){
