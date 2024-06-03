@@ -559,7 +559,7 @@ int main(int argc, char *argv[]) {
 				}
 			}
    		} //else 끝
-		
+		int f=0;
         	// linetracer
 		struct timespec start_time, current_time;
 		
@@ -766,6 +766,10 @@ int main(int argc, char *argv[]) {
 			}
 				
     			else if(run_direct == 'f'){
+				int trackValue1 = digitalRead(TRACKING_PIN1);
+        			int trackValue2 = digitalRead(TRACKING_PIN2);
+        			int trackValue3 = digitalRead(TRACKING_PIN3);
+        			int trackValue4 = digitalRead(TRACKING_PIN4);
                 		        if (trackValue2 == 0 && trackValue3 == 0 && trackValue1 == 1 && trackValue4 == 1) {  //흰검검흰
 				            Car_Run(60, 60);
 				            delay(10);
