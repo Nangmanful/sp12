@@ -8,7 +8,7 @@ Our team completed two tasks. First, we implemented a program for an IR tracking
 <br><br>
 # BEFORE START
 
-## ENVIRONMENT
+## ~~ENVIRONMENT~~
 
 Build wiringpi  from  https://github.com/WiringPi/WiringPi.git<br>
 And execute the following command:
@@ -26,7 +26,7 @@ make
 
 <br>
 
-# LINETRACER
+# ~~LINETRACER~~ (FOR DEMO IT WAS REPLACED, SO DO NOT WORK NOW)
 
 ```bash
 sudo ./linetracer
@@ -48,7 +48,7 @@ https://github.com/Nangmanful/sp12/assets/154849613/909b5be8-a4cf-4695-bdd4-8332
 
 <br>
 
-# QRCODERECOGNITION
+# ~~QRCODERECOGNITION~~ (FOR DEMO IT WAS REPLACED, SO DO NOT WORK NOW)
 
 ```bash
 ./qrrecognition
